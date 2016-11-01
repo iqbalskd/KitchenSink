@@ -88,6 +88,7 @@
     <Compile Include="Tests\ButtonPageTest.cs" />
     <Compile Include="Tests\CheckboxPageTest.cs" />
     <Compile Include="Tests\PasswordPageTest.cs" />
+    <Compile Include="Tests\StarcounterDebugAidTest.cs" />
     <Compile Include="Tests\TextareaPageTest.cs" />
     <Compile Include="Tests\AutocompletePageTest.cs" />
     <Compile Include="Tests\ValidationPageTest.cs" />
