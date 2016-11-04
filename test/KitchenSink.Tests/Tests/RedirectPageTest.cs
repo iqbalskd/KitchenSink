@@ -53,7 +53,7 @@ namespace KitchenSink.Tests.Tests
             //}
 
             // redirecting can take some time
-            this.WaitUntil(ExpectedConditions.UrlContains("http://starcounter.io/"));
+            this.WaitUntil(ExpectedConditions.UrlContains("https://starcounter.io/"));
         }
 
         private bool WaitForNoConnectionAndDismiss(IWebDriver d)

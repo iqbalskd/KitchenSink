@@ -29,7 +29,7 @@ namespace KitchenSink
 
         void Handle(Input.GoToDocs Action)
         {
-            this.RedirectUrl = "http://starcounter.io/";
+            this.RedirectUrl = "https://starcounter.io/";
         }
     }
 }
