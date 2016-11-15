@@ -8,9 +8,8 @@ using OpenQA.Selenium.Interactions;
 namespace KitchenSink.Tests.Tests
 {
     [TestFixture("firefox")]
-    //[TestFixture("chrome")]
-    //[TestFixture("edge")]
-    //[TestFixture("internet explorer")]
+    [TestFixture("chrome")]
+    [TestFixture("edge")]
     public class StarcounterDebugAidTest : BaseTest
     {
         public StarcounterDebugAidTest(string browser) : base(browser)
@@ -32,7 +31,6 @@ namespace KitchenSink.Tests.Tests
             }
             else
             {
-                // Does not seem to work
                 OpenAndCloseWithActionsBuilder();
             }
         }
@@ -63,12 +61,14 @@ namespace KitchenSink.Tests.Tests
 
         private void OpenAndCloseWithActionsBuilder()
         {
-            new Actions(driver).KeyDown(Keys.Control).SendKeys("§").Build().Perform();
+            // Open debug-aid
+            Actions action = new Actions(driver).KeyDown(Keys.Control).SendKeys("`").KeyUp(Keys.Control);
+            action.Build().Perform();
 
-            this.WaitUntil(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.CssSelector("html body starcounter-debug-aid")));
             var debugAidElement = driver.FindElement(By.ClassName("starcounter-debug-aid"));
             Assert.IsTrue(debugAidElement.Displayed);
 
+            // Close debug-aid
             new Actions(driver).SendKeys(Keys.Escape).Build().Perform();
 
             debugAidElement = driver.FindElement(By.ClassName("starcounter-debug-aid"));
