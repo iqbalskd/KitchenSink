@@ -85,6 +85,9 @@
     <Compile Include="ChartPage.json.cs">
       <DependentUpon>ChartPage.json</DependentUpon>
     </Compile>
+    <Compile Include="LazyLoadingPage.json.cs">
+      <DependentUpon>LazyLoadingPage.json</DependentUpon>
+    </Compile>
     <Compile Include="ProgressBarPage.json.cs">
       <DependentUpon>ProgressBarPage.json</DependentUpon>
     </Compile>
@@ -192,6 +195,10 @@
     <Content Include="wwwroot\KitchenSink\ButtonPage.html" />
     <Content Include="wwwroot\KitchenSink\CallbackPage.html" />
     <Content Include="wwwroot\KitchenSink\ChartPage.html" />
+    <TypedJSON Include="LazyLoadingPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+    <None Include="wwwroot\KitchenSink\LazyLoadingPage.html" />
     <Content Include="wwwroot\KitchenSink\ProgressBarPage.html" />
     <Content Include="wwwroot\KitchenSink\ValidationPage.html" />
     <Content Include="wwwroot\KitchenSink\ToggleButtonPage.html" />

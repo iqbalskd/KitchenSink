@@ -1,0 +1,15 @@
+{
+  "Html": "/Kitchensink/LazyLoadingPage.html",
+  "People": [
+    {
+      "Order": 0,
+      "FirstName": "",
+      "LastName": "",
+      "FavoriteGame": ""
+    }
+  ],
+  "SelectedPersonsName$": "",
+  "ShowLoading$": "",
+  "TestInt$": 0
+
+}

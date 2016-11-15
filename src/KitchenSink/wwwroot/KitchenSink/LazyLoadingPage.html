@@ -1,0 +1,104 @@
+﻿<link rel="import" href="/sys/polymer/polymer.html">
+
+<style>
+    .kitchensink-lazy-loading__hover-box {
+        background-color: rgba(255, 255, 255, 0.80);
+        color: #000000;
+        border: 2px solid rgba(255, 133, 0, 1);
+        border-radius: 5px;
+        width: 75%;
+        min-height: 100px;
+        margin-left: 12.5%;
+    }
+    .kitchensink-lazy-loading__hover-box p {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .kitchensink-lazy-loading__hover-content {
+        display: block;
+    }
+
+    .loader {
+        border: 5px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 5px solid rgba(255, 133, 0, 1);
+        border-bottom: 5px solid rgba(255, 133, 0, 1);
+        width: 50px;
+        height: 50px;
+        margin-left: calc(50% - 25px);
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+    }
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+</style>
+
+<template>
+    <template is="dom-bind">
+       <h4> Insert meaningful Title </h4>
+        <p> Insert important information </p>
+        <p> Perhaps a bit more information!</p>
+
+        <table class="table table-striped table-hover table-sortable-list">
+            <thead>
+                <tr>
+                    <th> Order </th>
+                    <th> Name </th>
+                    <th> Favorite Game </th>
+                </tr>
+            </thead>
+            <tbody>
+                <template is="dom-repeat" items="{{model.People}}" as="people">
+                    <tr class="kitchensink-lazy-loading__tooltip" onmouseover="{{hoverFunction}}" onmouseout="{{hoverOutFunction}}">
+                        <td>{{people.Order}}</td>
+                        <td>{{people.FirstName}} {{people.LastName}} </td>
+                        <td>{{people.FavoriteGame}}</td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+
+        <div class="kitchensink-lazy-loading__hover-box">
+            <div class="kitchensink-lazy-loading__hover-content" style="display:{{model.ShowLoading$}};">
+                <p>{{model.SelectedPersonsName$}}'s Data</p>
+                <div class="loader"></div>
+            </div>
+        </div>
+
+    </template>
+    <script>
+        (function () {
+            var script = document._currentScript || document.currentScript;
+            var template = script.previousElementSibling;
+
+            template.hoverFunction = function (event) {
+                var index = event.currentTarget.rowIndex - 1; // Gets the Index of the currently hovered row
+                template.set("model.SelectedPersonsName$", template.model.People[index].FirstName); // Displays which rows data is currently being displayed
+
+                //Start loading -> After loading is done = show data / hide loading
+
+                // "Retrieve" data, if the targets data is already loaded, dont show "loading"
+            };
+
+            template.hoverOutFunction = function (event) {
+                //cancel data loading
+                //- The loading should set a bool "loaded" to true as it finishes, If user changes hover while its loading, this bool should not become true
+            };
+
+            template.showData = function () {
+                template.set("model.ShowLoading$", "none");
+            }
+
+        })();
+    </script>
+</template>
