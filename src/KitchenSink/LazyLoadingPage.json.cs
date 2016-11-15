@@ -10,7 +10,7 @@ namespace KitchenSink
             FillDummyData();
         }
 
-        void Handle(Input.ShowLoading action)
+        void Handle(Input.SelectedPersonsData action)
         {
 
         }

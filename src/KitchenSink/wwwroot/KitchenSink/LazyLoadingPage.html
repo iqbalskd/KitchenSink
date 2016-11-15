@@ -16,7 +16,7 @@
     }
 
     .kitchensink-lazy-loading__hover-content {
-        display: block;
+        display: none;
     }
 
     .loader {
@@ -69,10 +69,25 @@
         </table>
 
         <div class="kitchensink-lazy-loading__hover-box">
-            <div class="kitchensink-lazy-loading__hover-content" style="display:{{model.ShowLoading$}};">
-                <p>{{model.SelectedPersonsName$}}'s Data</p>
-                <div class="loader"></div>
-            </div>
+            <template is="dom-if" if="{{!model.SelectedPersonsData$}}"> <!-- Will Show loading if the persons data is 0-->
+                <div class="kitchensink-lazy-loading__hover-content" style="display:{{model.ShowLoading$}};">
+                    <p>{{model.SelectedPersonsName$}}'s Data</p>
+                    <div class="loader"></div>
+                </div>
+            </template>
+            <template is="dom-if" if="{{model.SelectedPersonsData$}}">
+                <div class="kitchensink-lazy-loading__hover-content" style="display:{{model.ShowLoading$}};">
+                    <p>{{model.SelectedPersonsName$}}'s Data</p>
+                    <p> Diplay Data </p>
+                    <p> Diplay Data </p>
+                    <p> Diplay Data </p>
+                    <p> Diplay Data </p>
+                    <div class="loader"></div>
+                    <div class="loader"></div>
+                    <div class="loader"></div>
+                    <div class="loader"></div>
+                </div>
+            </template>
         </div>
 
     </template>
@@ -82,22 +97,32 @@
             var template = script.previousElementSibling;
 
             template.hoverFunction = function (event) {
-                var index = event.currentTarget.rowIndex - 1; // Gets the Index of the currently hovered row
-                template.set("model.SelectedPersonsName$", template.model.People[index].FirstName); // Displays which rows data is currently being displayed
-
+                myFunction = setTimeout(template.startLoading.bind(null, event.currentTarget.rowIndex - 1), 500); // Makes the loading start after half a second
+                
                 //Start loading -> After loading is done = show data / hide loading
 
                 // "Retrieve" data, if the targets data is already loaded, dont show "loading"
             };
 
+            template.startLoading = function (target) {
+                template.set("model.ShowLoading$", "block");
+                var index = target; // Gets the Index of the currently hovered row
+
+                template.set("model.SelectedPersonsName$", template.model.People[index].FirstName); // Displays which rows data is currently being displayed
+                template.set("model.SelectedPersonsData$", template.model.People[index].DataIsLoaded); // Decided whether or not the loading should show
+            };
+
             template.hoverOutFunction = function (event) {
+                clearTimeout(myFunction); // Cancels the current "wait" for the loading to start.
+                //template.set("model.SelectedPersonsData$", 0);
+                template.set("model.ShowLoading$", "none");
+
+                //debugger;
+
+
                 //cancel data loading
                 //- The loading should set a bool "loaded" to true as it finishes, If user changes hover while its loading, this bool should not become true
             };
-
-            template.showData = function () {
-                template.set("model.ShowLoading$", "none");
-            }
 
         })();
     </script>
