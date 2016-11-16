@@ -15,9 +15,11 @@
         text-align: center;
     }
 
-    .kitchensink-lazy-loading__hover-content {
+    .kitchensink-lazy-loading__hover-content,
+    .kitchensink-lazy-loading__hover-content--loading {
         display: none;
     }
+
 
     .loader {
         border: 5px solid #f3f3f3;
@@ -69,27 +71,18 @@
         </table>
 
         <div class="kitchensink-lazy-loading__hover-box">
-            <template is="dom-if" if="{{!model.SelectedPersonsData$}}"> <!-- Will Show loading if the persons data is 0-->
-                <div class="kitchensink-lazy-loading__hover-content" style="display:{{model.ShowLoading$}};">
-                    <p>{{model.SelectedPersonsName$}}'s Data</p>
-                    <div class="loader"></div>
-                </div>
-            </template>
-            <template is="dom-if" if="{{model.SelectedPersonsData$}}">
-                <div class="kitchensink-lazy-loading__hover-content" style="display:{{model.ShowLoading$}};">
-                    <p>{{model.SelectedPersonsName$}}'s Data</p>
-                    <p> Diplay Data </p>
-                    <p> Diplay Data </p>
-                    <p> Diplay Data </p>
-                    <p> Diplay Data </p>
-                    <div class="loader"></div>
-                    <div class="loader"></div>
-                    <div class="loader"></div>
-                    <div class="loader"></div>
-                </div>
-            </template>
+            <div class="kitchensink-lazy-loading__hover-content--loading" style="display:{{model.ShowLoading$}};">
+                <p>{{model.SelectedPersonsName$}}'s Data</p>
+                <div class="loader"></div>
+            </div>
+            <div class="kitchensink-lazy-loading__hover-content" style="display:{{model.ShowData$}};">
+                <p>{{model.SelectedPersonsName$}}'s Data</p>
+                <template id="test2" is="dom-repeat" items="{{model.PeopleData}}" as="peopleData">
+                    <p>{{peopleData.Random}}</p>
+                </template>
+            </div>
         </div>
-
+        <button id="test" onclick="{{test}}"> hello </button>
     </template>
     <script>
         (function () {
@@ -97,31 +90,32 @@
             var template = script.previousElementSibling;
 
             template.hoverFunction = function (event) {
-                myFunction = setTimeout(template.startLoading.bind(null, event.currentTarget.rowIndex - 1), 500); // Makes the loading start after half a second
-                
-                //Start loading -> After loading is done = show data / hide loading
-
-                // "Retrieve" data, if the targets data is already loaded, dont show "loading"
+                myFunction = setTimeout(template.startLoading.bind(null, event.currentTarget), 500); // Makes the loading start after half a second
             };
 
+            template.stopLoadingAndShowData = function () {
+                template.set("model.ShowLoading$", "none");
+                template.set("model.ShowData$", "block");
+                template.set("model.SelectedPersonsName$", "I can change in real time without click for some reason");
+            };
+
+
             template.startLoading = function (target) {
+                template.set("model.SelectedPersonsData$", 1); // Decided whether or not the loading should show
                 template.set("model.ShowLoading$", "block");
-                var index = target; // Gets the Index of the currently hovered row
+                template.set("model.ShowData$", "none");
+                var index = target.rowIndex - 1; // Gets the Index of the currently hovered row
 
                 template.set("model.SelectedPersonsName$", template.model.People[index].FirstName); // Displays which rows data is currently being displayed
-                template.set("model.SelectedPersonsData$", template.model.People[index].DataIsLoaded); // Decided whether or not the loading should show
+                myFunction2 = setTimeout(template.stopLoadingAndShowData.bind(null), 1000);
+                target.click();
             };
 
             template.hoverOutFunction = function (event) {
                 clearTimeout(myFunction); // Cancels the current "wait" for the loading to start.
                 //template.set("model.SelectedPersonsData$", 0);
                 template.set("model.ShowLoading$", "none");
-
-                //debugger;
-
-
-                //cancel data loading
-                //- The loading should set a bool "loaded" to true as it finishes, If user changes hover while its loading, this bool should not become true
+                template.set("model.ShowData$", "none");
             };
 
         })();

@@ -12,7 +12,14 @@ namespace KitchenSink
 
         void Handle(Input.SelectedPersonsData action)
         {
+            LazyLoadingPagePeopleData pplData;
+            pplData = this.PeopleData.Add();
+            pplData.Random = "Hello";
+        }
 
+        void Handle(Input.SelectedPersonsName action)
+        {
+            People[0].FirstName = "Alice";
         }
 
         private void FillDummyData() // Just some random names, and added "a favorite game" just for fun
@@ -38,6 +45,18 @@ namespace KitchenSink
 
         [LazyLoadingPage_json.People]
         partial class LazyLoadingPagePeople : Json
+        {
+            public LazyLoadingPage ParentPage
+            {
+                get
+                {
+                    return this.Parent.Parent as LazyLoadingPage;
+                }
+            }
+        }
+
+        [LazyLoadingPage_json.PeopleData]
+        partial class LazyLoadingPagePeopleData : Json
         {
             public LazyLoadingPage ParentPage
             {
