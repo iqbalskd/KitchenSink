@@ -16,7 +16,8 @@
   "LoadVisualCss$": "",
   "DataVisualCss$": "",
   "CssMaxHeight$": 0,
-    "DisplayedData": {
-      "Random": ""
-    }
+  "DisplayedData": 
+  {
+    "Random": ""
+  }
 }

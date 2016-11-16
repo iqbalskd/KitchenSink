@@ -58,15 +58,16 @@ namespace KitchenSink
 
             public void Handle(Input.IsHovered action) // TODO: NOT set DataIsLoaded to 1 if the user has left the area
             {
-                if (action.Value == 0) // If the item gets de-hovered
-                {
-                    this.ParentPage.LoadVisualCss = "none"; // Displays the loading
-                    this.ParentPage.DataVisualCss = "none";
-                    return;
-                }
+                //if (action.Value == 0) // If the item gets de-hovered
+                //{
+                //    this.ParentPage.LoadVisualCss = "none"; // Displays the loading
+                //    this.ParentPage.DataVisualCss = "none";
+                //    return;
+                //}
 
                 if (this.DataIsLoaded == 1)
                 {
+                    this.DataToShow = this.FavoriteGame;
                     this.ParentPage.DataVisualCss = "block"; // Changes the CSS of the data-box to "block" in order for it to appear on the screen
                     return;
                 }
@@ -76,6 +77,11 @@ namespace KitchenSink
 
 
                 this.CreateData(); // Creates the data
+                if (action.Value == 1) // If this person is still being hovered - Need to get current value of isHovered
+                {
+                    this.DataIsLoaded = 1; // Functions like a bool. It sets it to true
+                }
+
                 this.ParentPage.LoadVisualCss = "none"; // Disables the loading and shows the data after a while
                 this.ParentPage.DataVisualCss = "block";
 
@@ -87,10 +93,6 @@ namespace KitchenSink
             {
                 Thread.Sleep(1000);
                 this.DataToShow = this.FavoriteGame;
-                if (this.IsHovered == 1) // If this person is still being hovered
-                {
-                    this.DataIsLoaded = 1; // Functions like a bool. It sets it to true
-                }
                 //switch case? compare the name and fill data accordingly?
             }
         }
