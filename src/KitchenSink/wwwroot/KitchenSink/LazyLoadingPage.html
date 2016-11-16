@@ -90,13 +90,18 @@
             var template = script.previousElementSibling;
 
             template.hoverFunction = function (event) {
-                myFunction = setTimeout(template.startLoading.bind(null, event.currentTarget), 500); // Makes the loading start after half a second
+                var index = event.currentTarget.rowIndex - 1;
+
+                if (template.model.People[index].DataIsLoaded == 0) { // Need to access loading screen, an access c#
+                    myFunction = setTimeout(template.startLoading.bind(null, event.currentTarget), 200); // Makes the loading start after half a second - set to 500 when done
+                } else {
+                    // Display data
+                }
             };
 
             template.stopLoadingAndShowData = function () {
                 template.set("model.ShowLoading$", "none");
                 template.set("model.ShowData$", "block");
-                template.set("model.SelectedPersonsName$", "I can change in real time without click for some reason");
             };
 
 
@@ -107,8 +112,7 @@
                 var index = target.rowIndex - 1; // Gets the Index of the currently hovered row
 
                 template.set("model.SelectedPersonsName$", template.model.People[index].FirstName); // Displays which rows data is currently being displayed
-                myFunction2 = setTimeout(template.stopLoadingAndShowData.bind(null), 1000);
-                target.click();
+                myFunction2 = setTimeout(template.stopLoadingAndShowData.bind(null), 200); // set to 1000 once done
             };
 
             template.hoverOutFunction = function (event) {

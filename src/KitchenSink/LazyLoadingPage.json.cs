@@ -12,6 +12,7 @@ namespace KitchenSink
 
         void Handle(Input.SelectedPersonsData action)
         {
+            var test = action;
             LazyLoadingPagePeopleData pplData;
             pplData = this.PeopleData.Add();
             pplData.Random = "Hello";

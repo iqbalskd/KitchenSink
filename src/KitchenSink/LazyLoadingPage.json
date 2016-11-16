@@ -6,7 +6,8 @@
       "FirstName": "",
       "LastName": "",
       "FavoriteGame": "",
-      "DataIsLoaded": 0
+      "DataIsLoaded": 0,
+      "DataToShow":  ""
     }
   ],
   "PeopleData": [
