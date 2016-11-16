@@ -6,19 +6,17 @@
       "FirstName": "",
       "LastName": "",
       "FavoriteGame": "",
+      "IsHovered$": 0,
       "DataIsLoaded": 0,
-      "DataToShow":  ""
-    }
-  ],
-  "PeopleData": [
-    {
-      "Random": ""
+      "DataToShow": ""
     }
   ],
   "SelectedPersonsName$": "",
   "SelectedPersonsData$": 0,
-  "ShowLoading$": "",
-  "ShowData$": "",
-  "CssMaxHeight$": 0
-
+  "LoadVisualCss$": "",
+  "DataVisualCss$": "",
+  "CssMaxHeight$": 0,
+    "DisplayedData": {
+      "Random": ""
+    }
 }

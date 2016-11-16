@@ -71,18 +71,16 @@
         </table>
 
         <div class="kitchensink-lazy-loading__hover-box">
-            <div class="kitchensink-lazy-loading__hover-content--loading" style="display:{{model.ShowLoading$}};">
+            <div class="kitchensink-lazy-loading__hover-content--loading" style="display:{{model.LoadVisualCss$}};">
                 <p>{{model.SelectedPersonsName$}}'s Data</p>
                 <div class="loader"></div>
             </div>
-            <div class="kitchensink-lazy-loading__hover-content" style="display:{{model.ShowData$}};">
+            <div class="kitchensink-lazy-loading__hover-content" style="display:{{model.DataVisualCss$}};">
                 <p>{{model.SelectedPersonsName$}}'s Data</p>
-                <template id="test2" is="dom-repeat" items="{{model.PeopleData}}" as="peopleData">
-                    <p>{{peopleData.Random}}</p>
-                </template>
+                <p>{{model.DisplayedData.Random}}</p>
             </div>
         </div>
-        <button id="test" onclick="{{test}}"> hello </button>
+
     </template>
     <script>
         (function () {
@@ -91,35 +89,46 @@
 
             template.hoverFunction = function (event) {
                 var index = event.currentTarget.rowIndex - 1;
-
+                template.set("model.SelectedPersonsName$", template.model.People[index].FirstName);
                 if (template.model.People[index].DataIsLoaded == 0) { // Need to access loading screen, an access c#
-                    myFunction = setTimeout(template.startLoading.bind(null, event.currentTarget), 200); // Makes the loading start after half a second - set to 500 when done
+                    template.set("model.LoadVisualCss$", "block");
+                    template.set("model.DataVisualCss$", "none");
+                    template.set("model.People." + index + ".IsHovered$", 1); // Set a specific person as hovered
+
+                    //myFunction = setTimeout(template.startLoading.bind(null, event.currentTarget), 200); // Makes the loading start after half a second - set to 500 when done
                 } else {
+                    template.set("model.DataVisualCss$", "block");
                     // Display data
                 }
             };
 
-            template.stopLoadingAndShowData = function () {
-                template.set("model.ShowLoading$", "none");
-                template.set("model.ShowData$", "block");
-            };
+            //template.stopLoadingAndShowData = function () {
+            //    template.set("model.LoadVisualCss$", "none");
+            //    template.set("model.DataVisualCss$", "block");
+            //};
 
 
-            template.startLoading = function (target) {
-                template.set("model.SelectedPersonsData$", 1); // Decided whether or not the loading should show
-                template.set("model.ShowLoading$", "block");
-                template.set("model.ShowData$", "none");
-                var index = target.rowIndex - 1; // Gets the Index of the currently hovered row
+            //template.startLoading = function (target) {
+            //    template.set("model.LoadVisualCss$", "block");
+            //    template.set("model.DataVisualCss$", "none");
 
-                template.set("model.SelectedPersonsName$", template.model.People[index].FirstName); // Displays which rows data is currently being displayed
-                myFunction2 = setTimeout(template.stopLoadingAndShowData.bind(null), 200); // set to 1000 once done
-            };
+            //    var index = target.rowIndex - 1; // Gets the Index of the currently hovered row
+            //    template.set("model.SelectedPersonsName$", template.model.People[index].FirstName); // Displays which rows data is currently being displayed
+
+            //    myFunction2 = setTimeout(template.stopLoadingAndShowData.bind(null), 200); // set to 1000 once done
+            //};
 
             template.hoverOutFunction = function (event) {
-                clearTimeout(myFunction); // Cancels the current "wait" for the loading to start.
-                //template.set("model.SelectedPersonsData$", 0);
-                template.set("model.ShowLoading$", "none");
-                template.set("model.ShowData$", "none");
+                var index = event.currentTarget.rowIndex - 1;
+                template.set("model.People." + index + ".IsHovered$", 0);
+
+                //clearTimeout(myFunction); // Cancels the current "wait" for the loading to start.
+
+                //var index = event.currentTarget.rowIndex - 1;
+                //template.set("model.People." + index + ".IsHovered$", 0); // De-hovers a person
+
+                template.set("model.LoadVisualCss$", "none");
+                template.set("model.DataVisualCss$", "none");
             };
 
         })();

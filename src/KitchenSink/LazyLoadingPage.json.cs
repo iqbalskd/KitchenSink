@@ -1,4 +1,5 @@
 using Starcounter;
+using System.Threading;
 
 namespace KitchenSink
 {
@@ -12,15 +13,15 @@ namespace KitchenSink
 
         void Handle(Input.SelectedPersonsData action)
         {
-            var test = action;
-            LazyLoadingPagePeopleData pplData;
-            pplData = this.PeopleData.Add();
-            pplData.Random = "Hello";
+            //var test = action;
+            //LazyLoadingPagePeopleData pplData;
+            //pplData = this.PeopleData.Add();
+            //pplData.Random = "Hello";
         }
 
         void Handle(Input.SelectedPersonsName action)
         {
-            People[0].FirstName = "Alice";
+            //People[0].FirstName = "Alice";
         }
 
         private void FillDummyData() // Just some random names, and added "a favorite game" just for fun
@@ -54,10 +55,48 @@ namespace KitchenSink
                     return this.Parent.Parent as LazyLoadingPage;
                 }
             }
+
+            public void Handle(Input.IsHovered action) // TODO: NOT set DataIsLoaded to 1 if the user has left the area
+            {
+                if (action.Value == 0) // If the item gets de-hovered
+                {
+                    this.ParentPage.LoadVisualCss = "none"; // Displays the loading
+                    this.ParentPage.DataVisualCss = "none";
+                    return;
+                }
+
+                if (this.DataIsLoaded == 1)
+                {
+                    this.ParentPage.DataVisualCss = "block"; // Changes the CSS of the data-box to "block" in order for it to appear on the screen
+                    return;
+                }
+
+                this.ParentPage.LoadVisualCss = "block"; // Displays the loading
+                this.ParentPage.DataVisualCss = "none";
+
+
+                this.CreateData(); // Creates the data
+                this.ParentPage.LoadVisualCss = "none"; // Disables the loading and shows the data after a while
+                this.ParentPage.DataVisualCss = "block";
+
+               // this.DataToShow = "Test"; // this.DataToShow = CreateDataAccordingly(); -> Return data
+                this.ParentPage.DisplayedData.Random = this.DataToShow;
+            }
+
+            public void CreateData ()
+            {
+                Thread.Sleep(1000);
+                this.DataToShow = this.FavoriteGame;
+                if (this.IsHovered == 1) // If this person is still being hovered
+                {
+                    this.DataIsLoaded = 1; // Functions like a bool. It sets it to true
+                }
+                //switch case? compare the name and fill data accordingly?
+            }
         }
 
-        [LazyLoadingPage_json.PeopleData]
-        partial class LazyLoadingPagePeopleData : Json
+        [LazyLoadingPage_json.DisplayedData]
+        partial class LazyLoadingPageDisplayedData : Json
         {
             public LazyLoadingPage ParentPage
             {
