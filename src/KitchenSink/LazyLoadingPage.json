@@ -7,7 +7,8 @@
       "LastName": "",
       "FavoriteGame": "",
       "IsHovered$": 0,
-      "DataIsLoaded$": 0,
+      "DataIsLoaded$": false,
+      "RetrievingData": false,
       "DataToShow": ""
     }
   ],
@@ -15,7 +16,7 @@
   "SelectedPersonsData$": 0,
   "LoadVisualCss$": "",
   "DataVisualCss$": "",
-  "CssMaxHeight$": 0,
+  "DisplayHoverBox$": false,
   "DisplayedData": 
   {
     "DataContent$": ""

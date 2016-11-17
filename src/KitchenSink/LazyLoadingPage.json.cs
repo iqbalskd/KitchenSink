@@ -11,7 +11,7 @@ namespace KitchenSink
             FillDummyData();
         }
 
-        private void FillDummyData() // Just some random names, and added "a favorite game" just for fun
+        private void FillDummyData()
         {
             CreatePerson(1, "Alicia", "Alcott", "");
             CreatePerson(2, "Beatrice", "Black", "");
@@ -22,7 +22,7 @@ namespace KitchenSink
             CreatePerson(7, "Grace", "Gather", "");
         }
 
-        private void CreatePerson(int order, string firstName, string lastName, string favoriteGame) // function to create a person
+        private void CreatePerson(int order, string firstName, string lastName, string favoriteGame)
         {
             LazyLoadingPagePeople person;
             person = People.Add();
@@ -42,18 +42,31 @@ namespace KitchenSink
                     return this.Parent.Parent as LazyLoadingPage;
                 }
             }
+            
+            // TODO
+            // Need to base the data retrieval on ScheduleTasks, And somehow make them not overlap. And somehow make them "canellable" if the user hovers another target.
+            // If the user hovers something else, the scheduleTask should not complete (setTimeout?.. somehow),
+
 
             public void Handle(Input.IsHovered action)
             {
-                CreateData();
+                if (!this.DataIsLoaded && !this.RetrievingData)
+                {
+                    this.RetrievingData = true;
+                    CreateData();
+                    if (this.ParentPage.SelectedPersonsName == this.FirstName) // Not Working - Check if the person is still hovered - Does not get updated during sleep
+                    {
+                        this.ParentPage.DisplayedData.DataContent = this.FavoriteGame = this.DataToShow; // This should happen once it HAS the data, and the same person is hovered (meaning the loading was completed)
+                        this.DataIsLoaded = true; // - similar to the above, move somewhere
+                    }
+                }
             }
 
-            public void CreateData () // Maybe Switch to ScheduledTask?
+            public void CreateData () // Maybe make this a Scheduled Task?
             {
                 Thread.Sleep(1000);
                 FakeDataBase(this.FirstName); // Retrieves this persons favorite game
-
-                this.ParentPage.DisplayedData.DataContent = this.DataToShow; // Updates the view model to display the correct data
+                this.RetrievingData = false;
             }
 
             public void FakeDataBase (string firstName) // Picks out different "data" depending on who is invoking this function
@@ -87,19 +100,6 @@ namespace KitchenSink
                     case "Grace":
                         this.DataToShow = this.FavoriteGame = "Counter Strike";
                         break;
-                }
-
-            }
-        }
-
-        [LazyLoadingPage_json.DisplayedData]
-        partial class LazyLoadingPageDisplayedData : Json
-        {
-            public LazyLoadingPage ParentPage
-            {
-                get
-                {
-                    return this.Parent.Parent as LazyLoadingPage;
                 }
             }
         }

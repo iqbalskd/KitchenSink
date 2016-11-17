@@ -20,7 +20,7 @@
         display: none;
     }
 
-    .loader {
+    .kitchensink-lazy-loading__spinning-loading {
         border: 5px solid #f3f3f3;
         border-radius: 50%;
         border-top: 5px solid rgba(255, 133, 0, 1);
@@ -48,7 +48,7 @@
     <template is="dom-bind">
        <h4> Insert meaningful Title </h4>
         <p> Insert important information </p>
-        <p> Perhaps a bit more information!</p>
+        <p> In the table below, you can retrieve data for every person by hovering them and waiting for the loading to complete </p>
 
         <table class="table table-striped table-hover table-sortable-list">
             <thead>
@@ -73,16 +73,30 @@
                 </template>
             </tbody>
         </table>
+        <template is="dom-if" if="{{model.DisplayHoverBox$}}">
+            <div class="kitchensink-lazy-loading__hover-box">
+                <p>{{model.SelectedPersonsName$}}'s Favorite game</p>
 
-        <div class="kitchensink-lazy-loading__hover-box">
-            <p>{{model.SelectedPersonsName$}}</p>
-            <div class="kitchensink-lazy-loading__hover-content--loading" style="display:{{model.LoadVisualCss$}};">
-                <div class="loader"></div>
+                <template is="dom-if" if="{{showLoadSpinner(model.DisplayedData.DataContent$)}}">
+                    <div class="kitchensink-lazy-loading__hover-content--loading"></div>
+                    <div class="kitchensink-lazy-loading__spinning-loading"></div>
+                </template>
+
+                <template is="dom-if" if="{{!showLoadSpinner(model.DisplayedData.DataContent$)}}">
+                    <p>{{model.DisplayedData.DataContent$}}</p>
+                </template>
+
+
+                <!--<div class="kitchensink-lazy-loading__hover-box">
+                <p>{{model.SelectedPersonsName$}}</p>-->
+                <!--<div class="kitchensink-lazy-loading__hover-content--loading" style="display:{{model.LoadVisualCss$}};">
+                <div class="kitchensink-lazy-loading__spinning-loading"></div>
             </div>
             <div class="kitchensink-lazy-loading__hover-content" style="display:{{model.DataVisualCss$}};">
                 <p>{{model.DisplayedData.DataContent$}}</p>
+            </div>-->
             </div>
-        </div>
+        </template>
 
     </template>
     <script>
@@ -90,58 +104,94 @@
             var script = document._currentScript || document.currentScript;
             var template = script.previousElementSibling;
             var currentTargetIndex;
-            var displayLoading;
-            var displayDataAfterLoading;
+
+            //Perhaps base the loading on the actual delay in the code behind...
+
+            //Start the loading -> Let it continue until DisplayedData.DataContent$ isnt empty! - Set the timer in C#
+
+            //On hover, wait 0.2 seconds (this can be javascript) ->
+            //start loading data (C#) - While the data is loading, the loading spinner should be shown
+            //When the data has been loaded, switch "view" in the box, from the loading spinner, to the actual data
+
+            //The data "retrieval" should be a Scheduled Task. -> start it off by checking "is data loaded?"
+            //  -   if yes, then return it right away, if not -> then retrieve it (have a small delay inside the retrieval)
+
+            template.showLoadSpinner = function (displayedData) {
+                if (displayedData == "") { // If there is no data, show the spinner
+                    return true;
+                } else {
+                    return false;
+                }
+            }
 
             template.hoverFunction = function (event) {
                 currentTargetIndex = event.currentTarget.rowIndex - 1;
-                template.set("model.SelectedPersonsName$", template.model.People[currentTargetIndex].FirstName + "'s Data"); // The name should update before the actual loading/data appearance
-                if (template.model.People[currentTargetIndex].DataIsLoaded$ == 1) { // If the hovered person has loaded the data
-                    // Fill the "data-display variable" with the appropriate content
-                    template.set("model.DisplayedData.DataContent$", template.model.People[currentTargetIndex].DataToShow);
-                    // Display Data
-                    template.set("model.DataVisualCss$", "block");
-                    return;
-                }
-
-                displayLoading = setTimeout(template.displayLoading.bind(null, event), 500); // 0.5 sec delay
+                console.log(currentTargetIndex);
+                template.set("model.DisplayHoverBox$", true); // Displays the hover box
+                template.set("model.SelectedPersonsName$", template.model.People[currentTargetIndex].FirstName);
+                template.set("model.DisplayedData.DataContent$", template.model.People[currentTargetIndex].DataToShow);
+                startDataRetrieval = setTimeout(template.startDataRetrieval.bind(null, event), 300); // 1 sec delay
             };
 
-            template.displayLoading = function (event) {
-                //Display Loading
-                template.set("model.LoadVisualCss$", "block");
-                
-                // Start creation of the data
-                template.set("model.People." + currentTargetIndex + ".IsHovered$", 1); // Set a specific person as hovered + triggers the C# handle function
-                triggerMouseup(event.currentTarget);
-
-                // call the data display
-                displayDataAfterLoading = setTimeout(template.displayDataAfterLoading.bind(null, event), 1000); // 1 sec delay
-            };
-
-            template.displayDataAfterLoading = function () {
-                //Stop loading
-                template.set("model.LoadVisualCss$", "none");
-                //Display Data
-                template.set("model.DataVisualCss$", "block");
-
-                //If the target is still hovered, set DataIsLoaded to 1, which will prevent it from loading it again
-                if (template.model.People[currentTargetIndex].IsHovered$ == 1) {
-                    template.set("model.People." + currentTargetIndex + ".DataIsLoaded$", 1);
-                }
+            template.startDataRetrieval = function (event) {
+                clearTimeout(startDataRetrieval);
+                // call a function from C# to start the actual loading of the data. Once its done, put it as "DisplayedData.DataContent$". That way, the spinner will stop.
+                template.set("model.People." + currentTargetIndex + ".IsHovered$", 1); 
+                triggerMouseup(event.currentTarget); // Triggers a mouse event, to trigger a JSON patch
             };
 
             template.hoverOutFunction = function () {
-                //Cancels any "delayed functions" from executing
-                clearTimeout(displayLoading);
-                clearTimeout(displayDataAfterLoading);
+                template.set("model.DisplayHoverBox$", false); // Hides the hover box
+            };
 
-                //Empties the Display box
-                template.set("model.LoadVisualCss$", "none");
-                template.set("model.DataVisualCss$", "none");
-                template.set("model.SelectedPersonsName$", "");
+            //template.hoverFunction = function (event) {
+            //    currentTargetIndex = event.currentTarget.rowIndex - 1;
+            //    template.set("model.SelectedPersonsName$", template.model.People[currentTargetIndex].FirstName + "'s Data"); // The name should update before the actual loading/data appearance
+            //    if (template.model.People[currentTargetIndex].DataIsLoaded$ == 1) { // If the hovered person has loaded the data
+            //        // Fill the "data-display variable" with the appropriate content
+            //        template.set("model.DisplayedData.DataContent$", template.model.People[currentTargetIndex].DataToShow);
+            //        // Display Data
+            //        template.set("model.DataVisualCss$", "block");
+            //        return;
+            //    }
 
-            }
+            //    displayLoading = setTimeout(template.displayLoading.bind(null, event), 500); // 0.5 sec delay
+            //};
+
+            //template.displayLoading = function (event) {
+            //    //Display Loading
+            //    template.set("model.LoadVisualCss$", "block");
+                
+            //    // Start creation of the data
+            //    template.set("model.People." + currentTargetIndex + ".IsHovered$", 1); // Set a specific person as hovered + triggers the C# handle function
+            //    triggerMouseup(event.currentTarget);
+
+            //    // call the data display
+            //    displayDataAfterLoading = setTimeout(template.displayDataAfterLoading.bind(null, event), 1000); // 1 sec delay
+            //};
+
+            //template.displayDataAfterLoading = function () {
+            //    //Stop loading
+            //    template.set("model.LoadVisualCss$", "none");
+            //    //Display Data
+            //    template.set("model.DataVisualCss$", "block");
+
+            //    //If the target is still hovered, set DataIsLoaded to 1, which will prevent it from loading it again
+            //    if (template.model.People[currentTargetIndex].IsHovered$ == 1) {
+            //        template.set("model.People." + currentTargetIndex + ".DataIsLoaded$", 1);
+            //    }
+            //};
+
+            //template.hoverOutFunction = function () {
+            //    //Cancels any "delayed functions" from executing
+            //    clearTimeout(displayLoading);
+            //    clearTimeout(displayDataAfterLoading);
+
+            //    //Empties the Display box
+            //    template.set("model.LoadVisualCss$", "none");
+            //    template.set("model.DataVisualCss$", "none");
+            //    template.set("model.SelectedPersonsName$", "");
+            //}
 
             // Fakes a mouseclick, Is called on hover.
             //https://github.com/PuppetJs/PuppetJs/blob/gh-pages/test/SpecHelper.js
@@ -150,13 +200,11 @@
             }
 
             function fireEvent(obj, evt) {
-
                 var fireOnThis = obj;
                 if (document.createEvent) {
                     var evObj = document.createEvent('MouseEvents');
                     evObj.initEvent(evt, true, false);
                     fireOnThis.dispatchEvent(evObj);
-
                 } else if (document.createEventObject) {
                     var evObj = document.createEventObject();
                     fireOnThis.fireEvent('on' + evt, evObj);
