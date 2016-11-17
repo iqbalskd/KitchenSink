@@ -64,19 +64,25 @@
                     <tr class="kitchensink-lazy-loading__tooltip" onmouseover="{{hoverFunction}}" onmouseout="{{hoverOutFunction}}">
                         <td>{{people.Order}}</td>
                         <td>{{people.FirstName}} {{people.LastName}} </td>
-                        <td>{{people.FavoriteGame}}</td>
+                        <template is="dom-if" if="{{people.DataIsLoaded$}}">
+                            <td>{{people.FavoriteGame}}</td>
+                        </template>
+                        <template is="dom-if" if="{{!people.DataIsLoaded$}}">
+                            <td> </td>
+                        </template>
                     </tr>
                 </template>
             </tbody>
         </table>
 
         <div class="kitchensink-lazy-loading__hover-box">
+            <p>{{model.SelectedPersonsName$}}</p>
             <div class="kitchensink-lazy-loading__hover-content--loading" style="display:{{model.LoadVisualCss$}};">
-                <p>{{model.SelectedPersonsName$}}'s Data</p>
+                <!--<p>{{model.SelectedPersonsName$}}'s Data</p>-->
                 <div class="loader"></div>
             </div>
             <div class="kitchensink-lazy-loading__hover-content" style="display:{{model.DataVisualCss$}};">
-                <p>{{model.SelectedPersonsName$}}'s Data</p>
+                <!--<p>{{model.SelectedPersonsName$}}'s Data</p>-->
                 <p>{{model.DisplayedData.DataContent$}}</p>
             </div>
         </div>
@@ -86,6 +92,9 @@
         (function () {
             var script = document._currentScript || document.currentScript;
             var template = script.previousElementSibling;
+            var currentTargetIndex;
+            var displayLoading;
+            var displayDataAfterLoading;
 
             //On hover: wait 0,2~ seconds then start display something*
             //*something = either loading or data
@@ -96,37 +105,61 @@
             //if *something = data, it should just hide it, and the next time it gets hovered, it just display it again.
 
 
+            //myFunction = setTimeout(template.startLoading.bind(null, event.currentTarget.rowIndex - 1), 500); // Makes the loading start after half a second
 
 
             template.hoverFunction = function (event) {
-                var index = event.currentTarget.rowIndex - 1;
-                template.set("model.SelectedPersonsName$", template.model.People[index].FirstName);
+                currentTargetIndex = event.currentTarget.rowIndex - 1;
+                template.set("model.SelectedPersonsName$", template.model.People[currentTargetIndex].FirstName + "'s Data"); // The name should update before the actual loading/data appearance
+                if (template.model.People[currentTargetIndex].DataIsLoaded$ == 1) { // If the hovered person has loaded the data
+                    // Fill the "data-display variable" with the appropriate content
+                    template.set("model.DisplayedData.DataContent$", template.model.People[currentTargetIndex].DataToShow);
+                    // Display Data
+                    template.set("model.DataVisualCss$", "block");
+                    return;
+                }
+
+                displayLoading = setTimeout(template.displayLoading.bind(null, event), 500); // 0.5 sec delay
+            };
+
+            template.displayLoading = function (event) {
+                //Display Loading
+                template.set("model.LoadVisualCss$", "block");
+                
+                // Start creation of the data
+                template.set("model.People." + currentTargetIndex + ".IsHovered$", 1); // Set a specific person as hovered + triggers the C# handle function
                 triggerMouseup(event.currentTarget);
 
+                // call the data display
+                displayDataAfterLoading = setTimeout(template.displayDataAfterLoading.bind(null, event), 1000); // 1 sec delay
+            };
 
-                if (template.model.People[index].DataIsLoaded == 0) { // Need to access loading screen, and access c#
-                    template.set("model.People." + index + ".IsHovered$", 1); // Set a specific person as hovered + triggers the C# handle function
-                    template.set("model.LoadVisualCss$", "block");
-                    template.set("model.DataVisualCss$", "none");
-                } else {
-                    template.set("model.DataVisualCss$", "block");
-                    template.set("model.DisplayedData.DataContent$", template.model.People[index].DataToShow);
+            template.displayDataAfterLoading = function () {
+                //Stop loading
+                template.set("model.LoadVisualCss$", "none");
+                //Display Data
+                template.set("model.DataVisualCss$", "block");
+
+                //If the target is still hovered, set DataIsLoaded to 1, which will prevent it from loading it again
+                if (template.model.People[currentTargetIndex].IsHovered$ == 1) {
+                    template.set("model.People." + currentTargetIndex + ".DataIsLoaded$", 1);
                 }
             };
 
-            template.hoverOutFunction = function (event) {
-                var index = event.currentTarget.rowIndex - 1; // This is the wrong target. Needs to be fixed
-                template.set("model.People." + index + ".IsHovered$", 0);
+            template.hoverOutFunction = function () {
+                //Cancels any "delayed functions" from executing
+                clearTimeout(displayLoading);
+                clearTimeout(displayDataAfterLoading);
 
+                //Empties the Display box
                 template.set("model.LoadVisualCss$", "none");
                 template.set("model.DataVisualCss$", "none");
-            };
+                template.set("model.SelectedPersonsName$", "");
 
-
-
+            }
 
             // Fakes a mouseclick, Is called on hover.
-            //http://stackoverflow.com/questions/827716/emulate-clicking-a-link-with-javascript-that-works-with-ie
+            //https://github.com/PuppetJs/PuppetJs/blob/gh-pages/test/SpecHelper.js
             function triggerMouseup(elem) {
                 fireEvent((elem || document.body), 'mouseup')
             }
