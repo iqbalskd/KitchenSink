@@ -20,7 +20,6 @@
         display: none;
     }
 
-
     .loader {
         border: 5px solid #f3f3f3;
         border-radius: 50%;
@@ -78,11 +77,9 @@
         <div class="kitchensink-lazy-loading__hover-box">
             <p>{{model.SelectedPersonsName$}}</p>
             <div class="kitchensink-lazy-loading__hover-content--loading" style="display:{{model.LoadVisualCss$}};">
-                <!--<p>{{model.SelectedPersonsName$}}'s Data</p>-->
                 <div class="loader"></div>
             </div>
             <div class="kitchensink-lazy-loading__hover-content" style="display:{{model.DataVisualCss$}};">
-                <!--<p>{{model.SelectedPersonsName$}}'s Data</p>-->
                 <p>{{model.DisplayedData.DataContent$}}</p>
             </div>
         </div>
@@ -95,18 +92,6 @@
             var currentTargetIndex;
             var displayLoading;
             var displayDataAfterLoading;
-
-            //On hover: wait 0,2~ seconds then start display something*
-            //*something = either loading or data
-            //if *something = loading. It should start loading, and when it finishes, it should display person-specific data
-
-            // On hover exit: It should hide *something. 
-            //if *something = loading, it should "cancel" the loading, (at least visually), and next time it gets hovered, it should display the loading again
-            //if *something = data, it should just hide it, and the next time it gets hovered, it just display it again.
-
-
-            //myFunction = setTimeout(template.startLoading.bind(null, event.currentTarget.rowIndex - 1), 500); // Makes the loading start after half a second
-
 
             template.hoverFunction = function (event) {
                 currentTargetIndex = event.currentTarget.rowIndex - 1;

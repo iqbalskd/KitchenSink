@@ -11,19 +11,6 @@ namespace KitchenSink
             FillDummyData();
         }
 
-        void Handle(Input.SelectedPersonsData action)
-        {
-            //var test = action;
-            //LazyLoadingPagePeopleData pplData;
-            //pplData = this.PeopleData.Add();
-            //pplData.Random = "Hello";
-        }
-
-        void Handle(Input.SelectedPersonsName action)
-        {
-            //People[0].FirstName = "Alice";
-        }
-
         private void FillDummyData() // Just some random names, and added "a favorite game" just for fun
         {
             CreatePerson(1, "Alicia", "Alcott", "");
@@ -56,74 +43,20 @@ namespace KitchenSink
                 }
             }
 
-            public void Handle(Input.IsHovered action) // TODO: NOT set DataIsLoaded to 1 if the user has left the area
+            public void Handle(Input.IsHovered action)
             {
-                var test = this.FirstName;
-                var test2 = this.IsHovered;
-                var test3 = action;
-
-                //if (action.Value == 0) // On de-hover
-                //{
-                //    this.ParentPage.LoadVisualCss = "none";
-                //    this.ParentPage.DataVisualCss = "none";
-                //    return;
-                //}
-                //if (this.DataIsLoaded == 0)
-                //{
-                    //this.ParentPage.LoadVisualCss = "block";
-                    //this.ParentPage.DataVisualCss = "none";
-                //}
-                //else if (this.DataIsLoaded == 1)
-                //{
-                //    this.ParentPage.LoadVisualCss = "block";
-                //    this.ParentPage.DataVisualCss = "none";
-                //    return;
-                //}
-
                 CreateData();
-                //this.ParentPage.LoadVisualCss = "none"; // Disables the loading and shows the data after a while
-                //this.ParentPage.DataVisualCss = "block";
-
-                //if (action.Value == 0) // If the item gets de-hovered
-                //{
-                //    this.ParentPage.LoadVisualCss = "none"; // Displays the loading
-                //    this.ParentPage.DataVisualCss = "none";
-                //    return;
-                //}
-
-                //if (this.DataIsLoaded == 1)
-                //{
-                //    this.DataToShow = this.FavoriteGame;
-                //    this.ParentPage.DataVisualCss = "block"; // Changes the CSS of the data-box to "block" in order for it to appear on the screen
-                //    return;
-                //}
-
-                //this.ParentPage.LoadVisualCss = "block"; // Displays the loading
-                //this.ParentPage.DataVisualCss = "none";
-
-
-                //this.CreateData(); // Creates the data
-                //if (action.Value == 1) // If this person is still being hovered - Need to get current value of isHovered
-                //{
-                //    this.DataIsLoaded = 1; // Functions like a bool. It sets it to true
-                //}
-
-                //this.ParentPage.LoadVisualCss = "none"; // Disables the loading and shows the data after a while
-                //this.ParentPage.DataVisualCss = "block";
-
-                // this.DataToShow = "Test"; // this.DataToShow = CreateDataAccordingly(); -> Return data
-                //this.ParentPage.DisplayedData.DataContent = this.DataToShow;
             }
 
             public void CreateData () // Maybe Switch to ScheduledTask?
             {
                 Thread.Sleep(1000);
-                FakeDataBase(this.FirstName);
+                FakeDataBase(this.FirstName); // Retrieves this persons favorite game
 
                 this.ParentPage.DisplayedData.DataContent = this.DataToShow; // Updates the view model to display the correct data
             }
 
-            public void FakeDataBase (string firstName) // Picks out different data depending on who is invoking this function
+            public void FakeDataBase (string firstName) // Picks out different "data" depending on who is invoking this function
             {
                 switch (firstName)
                 {
