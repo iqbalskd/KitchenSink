@@ -72,8 +72,8 @@ namespace KitchenSink
                     return;
                 }
 
-                this.ParentPage.LoadVisualCss = "block"; // Displays the loading
-                this.ParentPage.DataVisualCss = "none";
+                //this.ParentPage.LoadVisualCss = "block"; // Displays the loading
+                //this.ParentPage.DataVisualCss = "none";
 
 
                 this.CreateData(); // Creates the data
@@ -86,13 +86,13 @@ namespace KitchenSink
                 this.ParentPage.DataVisualCss = "block";
 
                // this.DataToShow = "Test"; // this.DataToShow = CreateDataAccordingly(); -> Return data
-                this.ParentPage.DisplayedData.Random = this.DataToShow;
+                this.ParentPage.DisplayedData.DataContent = this.DataToShow;
             }
 
             public void CreateData ()
             {
                 Thread.Sleep(1000);
-                this.DataToShow = this.FavoriteGame;
+                this.DataToShow = this.FavoriteGame; // Temp data to fill - for UI test purposes
                 //switch case? compare the name and fill data accordingly?
             }
         }

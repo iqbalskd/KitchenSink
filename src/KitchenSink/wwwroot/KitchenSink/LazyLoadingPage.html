@@ -77,7 +77,7 @@
             </div>
             <div class="kitchensink-lazy-loading__hover-content" style="display:{{model.DataVisualCss$}};">
                 <p>{{model.SelectedPersonsName$}}'s Data</p>
-                <p>{{model.DisplayedData.Random}}</p>
+                <p>{{model.DisplayedData.DataContent$}}</p>
             </div>
         </div>
 
@@ -86,16 +86,31 @@
         (function () {
             var script = document._currentScript || document.currentScript;
             var template = script.previousElementSibling;
+
+            //On hover: wait 0,2~ seconds then start display something*
+            //*something = either loading or data
+            //if *something = loading. It should start loading, and when it finishes, it should display person-specific data
+
+            // On hover exit: It should hide *something. 
+            //if *something = loading, it should "cancel" the loading, (at least visually), and next time it gets hovered, it should display the loading again
+            //if *something = data, it should just hide it, and the next time it gets hovered, it just display it again.
+
+
+
+
             template.hoverFunction = function (event) {
                 var index = event.currentTarget.rowIndex - 1;
                 template.set("model.SelectedPersonsName$", template.model.People[index].FirstName);
-                if (template.model.People[index].DataIsLoaded == 0) { // Need to access loading screen, an access c#
+                triggerMouseup(event.currentTarget);
+
+
+                if (template.model.People[index].DataIsLoaded == 0) { // Need to access loading screen, and access c#
+                    template.set("model.People." + index + ".IsHovered$", 1); // Set a specific person as hovered + triggers the C# handle function
                     template.set("model.LoadVisualCss$", "block");
                     template.set("model.DataVisualCss$", "none");
-                    template.set("model.People." + index + ".IsHovered$", 1); // Set a specific person as hovered
                 } else {
                     template.set("model.DataVisualCss$", "block");
-                    // Display data
+                    template.set("model.DisplayedData.DataContent$", template.model.People[index].DataToShow);
                 }
             };
 
@@ -106,6 +121,29 @@
                 template.set("model.LoadVisualCss$", "none");
                 template.set("model.DataVisualCss$", "none");
             };
+
+
+
+
+            // Fakes a mouseclick, Is called on hover.
+            //http://stackoverflow.com/questions/827716/emulate-clicking-a-link-with-javascript-that-works-with-ie
+            function triggerMouseup(elem) {
+                fireEvent((elem || document.body), 'mouseup')
+            }
+
+            function fireEvent(obj, evt) {
+
+                var fireOnThis = obj;
+                if (document.createEvent) {
+                    var evObj = document.createEvent('MouseEvents');
+                    evObj.initEvent(evt, true, false);
+                    fireOnThis.dispatchEvent(evObj);
+
+                } else if (document.createEventObject) {
+                    var evObj = document.createEventObject();
+                    fireOnThis.fireEvent('on' + evt, evObj);
+                }
+            }
 
         })();
     </script>
