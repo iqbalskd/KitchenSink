@@ -19,7 +19,7 @@
         <p class="kitchensink-add-carrots">
             <span class="kitchensink-add-carrots__label">Add carrots:</span>
 
-            <button class="btn btn-sm btn-default" value="{{model.AddCarrots$::click}}" onmousedown="++this.value">Button (inline script)</button>
+            <button class="btn btn-sm btn-default" value="{{model.AddCarrotsTrigger$::click}}" onmousedown="++this.value">Button (inline script)</button>
 
             <button class="btn btn-sm btn-default" on-click="onAddCarrotsClick">Button (function)</button>
 
@@ -38,7 +38,7 @@
 
         <p>It is possible to mark button as disabled using the <code>disabled</code> boolean attribute. The below button gets disbled when the value reaches 1.</p>
 
-        <button class="btn btn-sm btn-default kitchensink-toggle-button" value="{{model.AddOneCarrot$::click}}" onmousedown="++this.value" disabled$="{{model.AddOneCarrotDisabled}}">Add carrots</button>
+        <button class="btn btn-sm btn-default kitchensink-toggle-button" value="{{model.AddOneCarrotTrigger$::click}}" onmousedown="++this.value" disabled$="{{model.AddOneCarrotDisabled}}">Add carrots</button>
 
         <span class="kitchensink-test-one-carrot-reaction-label">{{model.OneCarrotReaction}}</span>
 
@@ -47,8 +47,8 @@
         <p>It is also possible to make the server respond to the button click. The following buttons will stay disabled until the server responds to them being clicked.</p>
         <div class="kitchensink-regenerating-carrots">
             <div>
-                <button class="btn btn-sm btn-default kitchensink-toggle-button" value="{{model.TakeOneRegeneratingCarrot$::click}}" disabled="{{model.TakeOneRegeneratingCarrot$}}" onmouseup="++this.value">Take one Regenerating Carrot</button>
-                <template is="dom-if" if="{{model.TakeOneRegeneratingCarrot$}}">
+                <button class="btn btn-sm btn-default kitchensink-toggle-button" value="{{model.TakeOneRegeneratingCarrotTrigger$::click}}" disabled="{{model.TakeOneRegeneratingCarrotTrigger$}}" onmouseup="++this.value">Take one Regenerating Carrot</button>
+                <template is="dom-if" if="{{model.TakeOneRegeneratingCarrotTrigger$}}">
                     <p class="kitchensink-test-self-button-label">Currently Regenerating!</p>
                 </template>
             </div>
@@ -65,7 +65,7 @@
             };
 
             template.onAddCarrotsClick = function () {
-                template.set("model.AddCarrots$", ++template.model.AddCarrots$);
+                template.set("model.AddCarrots$", ++template.model.AddCarrotsTrigger$);
             };
         })();
     </script>

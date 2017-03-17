@@ -11,7 +11,7 @@ namespace KitchenSink
 
     partial class NestedPartial : Json, IBound<AnyData>
     {
-        void Handle(Input.AddChild action)
+        void Handle(Input.AddChildTrigger action)
         {
             this.ChildPartial = new NestedPartial()
             {

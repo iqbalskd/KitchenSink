@@ -9,7 +9,7 @@
         <p>And if you combine that with <code>Scheduling.ScheduleTask</code> and <code>Session.ScheduleTask</code> you can make a server side message appear.</p>
 
         <p>
-            <button class="btn btn-default" value="{{model.ShowMessageClick$::click}}" onmousedown="++this.value">Trigger message from Server side</button>
+            <button class="btn btn-default" value="{{model.ShowMessageTrigger$::click}}" onmousedown="++this.value">Trigger message from Server side</button>
         </p>
 
         <template is="dom-if" if="{{model.ServerMessage}}">

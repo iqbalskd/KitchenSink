@@ -46,7 +46,7 @@ namespace KitchenSink
                 get { return this.ParentPage.GetFileSizeString(this.FileSize); }
             }
 
-            void Handle(Input.DeleteClick Action)
+            void Handle(Input.DeleteTrigger Action)
             {
                 if (File.Exists(this.FilePath))
                 {

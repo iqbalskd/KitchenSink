@@ -22,13 +22,13 @@
 
         <p>Want to morph to another partial? It's as easy.</p>
 
-        <button class="btn btn-sm btn-default kitchensink-test-morph-button" value="{{model.GoToHomePartial$::click}}" onmousedown="++this.value">Morph to another partial</button>
+        <button class="btn btn-sm btn-default kitchensink-test-morph-button" value="{{model.GoToHomePartialTrigger$::click}}" onmousedown="++this.value">Morph to another partial</button>
 
         <h5>Redirect to an external link</h5>
 
         <p>Drop the <code>history</code> attribute to redirect to an external link (without morphing).</p>
 
-        <button class="btn btn-sm btn-default kitchensink-test-redirect-button" value="{{model.GoToDocs$::click}}" onmousedown="++this.value">Redirect to Starcounter.io</button>
+        <button class="btn btn-sm btn-default kitchensink-test-redirect-button" value="{{model.GoToDocsTrigger$::click}}" onmousedown="++this.value">Redirect to Starcounter.io</button>
 
         <link is="puppet-redirect" history url$="{{model.MorphUrl$}}" />
         <link is="puppet-redirect" url$="{{model.RedirectUrl$}}" />

@@ -31,7 +31,7 @@ namespace KitchenSink
             RebuildBreadcrumb(treeItem, isAdd);
             CurrentTreeItem.Data = treeItem;
             CurrentTreeItem.IsAdd = isAdd;
-            CurrentTreeItem.ParentName = treeItem.Parent.Name; //can I do Parent.Name?
+            CurrentTreeItem.ParentName = treeItem.Parent.Name; 
         }
 
         public void RebuildBreadcrumb(TreeItem treeItem, bool isAdd)
@@ -119,7 +119,7 @@ namespace KitchenSink
             }
         }
 
-        void Handle(Input.Select action)
+        void Handle(Input.SelectTrigger action)
         {
             if (Data != null)
             {
@@ -128,7 +128,7 @@ namespace KitchenSink
             }
         }
 
-        void Handle(Input.AddSibling action)
+        void Handle(Input.AddSiblingTrigger action)
         {
             BreadcrumbPage breadcrumbPage = (BreadcrumbPage) Parent.Parent;
             TreeItem item = new TreeItem()
@@ -175,7 +175,7 @@ namespace KitchenSink
     [BreadcrumbPage_json.Breadcrumbs.Siblings]
     partial class BreadcrumbPageBreadcrumbsSiblingsElement : Json, IBound<TreeItem>
     {
-        void Handle(Input.Select action)
+        void Handle(Input.SelectTrigger action)
         {
             BreadcrumbPage breadcrumbPage = (BreadcrumbPage) Parent.Parent.Parent.Parent;
             breadcrumbPage.SetActiveItem(Data);
@@ -185,7 +185,7 @@ namespace KitchenSink
     [BreadcrumbPage_json.CurrentTreeItem]
     partial class BreadcrumbPageCurrentTreeItem : Json, IBound<TreeItem>
     {
-        void Handle(Input.Save action)
+        void Handle(Input.SaveTrigger action)
         {
             Transaction.Commit();
             BreadcrumbPage breadcrumbPage = (BreadcrumbPage) Parent;

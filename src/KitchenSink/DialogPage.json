@@ -1,9 +1,9 @@
 {
   "Html": "/KitchenSink/DialogPage.html",
-  "OpenClick$": 0,
+  "OpenTrigger$": 0,
   "Opened": false,
-  "RejectClick$": 0,
-  "ConfirmClick$": 0,
+  "RejectTrigger$": 0,
+  "ConfirmTrigger$": 0,
   "Message": "Opend dialog and select an action",
   "MessageCss": "alert alert-info"
 }

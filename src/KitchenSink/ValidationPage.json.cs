@@ -13,7 +13,7 @@ namespace KitchenSink
             _settingsValidator = new SettingsValidator();
         }
 
-        void Handle(Input.Validate action)
+        void Handle(Input.ValidateTrigger action)
         {
             _settingsValidator.Validate(this);
         }

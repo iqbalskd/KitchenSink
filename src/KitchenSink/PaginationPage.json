@@ -1,10 +1,10 @@
 {
   "Html": "/KitchenSink/PaginationPage.html",
   "ChangePage$": 0,
-  "NextPage$": 0,
-  "PreviousPage$": 0,
-  "LastPage$": 0,
-  "FirstPage$": 0,
+  "NextPageTrigger$": 0,
+  "PreviousPageTrigger$": 0,
+  "LastPageTrigger$": 0,
+  "FirstPageTrigger$": 0,
   "Library": [
     {
       "Author": "",

@@ -37,7 +37,7 @@ namespace KitchenSink
             DefaultTemplate.Longitude.InstanceType = typeof(double);
         }
 
-        public void Handle(Input.Reset action)
+        public void Handle(Input.ResetTrigger action)
         {
             var geoPageParent = (GeoPage) Parent;
             Latitude = geoPageParent.DefaultLatitude;

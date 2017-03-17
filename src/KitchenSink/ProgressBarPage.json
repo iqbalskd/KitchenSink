@@ -2,7 +2,7 @@
   "Html": "/KitchenSink/ProgressBarPage.html",
   "Progress": 0,
 
-  "StartProgress$": 0,
+  "StartProgressTrigger$": 0,
 
   "TaskIsRunnning": false,
 

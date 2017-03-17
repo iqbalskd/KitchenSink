@@ -17,19 +17,19 @@ namespace KitchenSink
             this.Items.Add();
         }
 
-        protected void Handle(Input.SaveClick Action)
+        protected void Handle(Input.SaveTrigger Action)
         {
             Action.Cancel();
             System.Threading.Thread.CurrentThread.Join(timeout);
         }
 
-        protected void Handle(Input.SaveAndSpinClick Action)
+        protected void Handle(Input.SaveAndSpinTrigger Action)
         {
             Action.Cancel();
             System.Threading.Thread.CurrentThread.Join(timeout);
         }
 
-        protected void Handle(Input.SaveAndMessageClick Action)
+        protected void Handle(Input.SaveAndMessageTrigger Action)
         {
             Action.Cancel();
 
@@ -47,7 +47,7 @@ namespace KitchenSink
             }
         }
 
-        protected void Handle(Input.SaveAndClientMessageClick Action)
+        protected void Handle(Input.SaveAndClientMessageTrigger Action)
         {
             Action.Cancel();
             System.Threading.Thread.CurrentThread.Join(timeout);
@@ -58,19 +58,19 @@ namespace KitchenSink
         {
             protected int timeout = 1000;
 
-            protected void Handle(Input.SaveClick Action)
+            protected void Handle(Input.SaveTrigger Action)
             {
                 Action.Cancel();
                 System.Threading.Thread.CurrentThread.Join(timeout);
             }
 
-            protected void Handle(Input.SaveAndSpinClick Action)
+            protected void Handle(Input.SaveAndSpinTrigger Action)
             {
                 Action.Cancel();
                 System.Threading.Thread.CurrentThread.Join(timeout);
             }
 
-            protected void Handle(Input.SaveAndMessageClick Action)
+            protected void Handle(Input.SaveAndMessageTrigger Action)
             {
                 Action.Cancel();
 
@@ -88,7 +88,7 @@ namespace KitchenSink
                 }
             }
 
-            protected void Handle(Input.SaveAndClientMessageClick Action)
+            protected void Handle(Input.SaveAndClientMessageTrigger Action)
             {
                 Action.Cancel();
                 System.Threading.Thread.CurrentThread.Join(timeout);

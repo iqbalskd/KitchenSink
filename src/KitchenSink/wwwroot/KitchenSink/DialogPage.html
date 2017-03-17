@@ -4,7 +4,7 @@
     <template is="dom-bind">
         <p class="lead">Modal dialog box example</p>
         <p>
-            <button class="btn btn-sm btn-default" value="{{model.OpenClick$::click}}" onmousedown="++this.value">Open dialog box</button>
+            <button class="btn btn-sm btn-default" value="{{model.OpenTrigger$::click}}" onmousedown="++this.value">Open dialog box</button>
         </p>
         <p class$="{{model.MessageCss}}">{{model.Message}}</p>
 
@@ -16,9 +16,9 @@
                 </p>
             </div>
             <div class="buttons">
-                <button class="btn btn-sm btn-default" dialog-dismiss value="{{model.RejectClick$::click}}" onmousedown="++this.value;">Reject</button>
+                <button class="btn btn-sm btn-default" dialog-dismiss value="{{model.RejectTrigger$::click}}" onmousedown="++this.value;">Reject</button>
                 <span>&nbsp;</span>
-                <button class="btn btn-sm btn-primary" dialog-confirm autofocus value="{{model.ConfirmClick$::click}}" onmousedown="++this.value;">Accept</button>
+                <button class="btn btn-sm btn-primary" dialog-confirm autofocus value="{{model.ConfirmTrigger$::click}}" onmousedown="++this.value;">Accept</button>
             </div>
         </paper-dialog>
     </template>

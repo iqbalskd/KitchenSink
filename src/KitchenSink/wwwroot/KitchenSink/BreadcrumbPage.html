@@ -13,7 +13,7 @@
                 <template is="dom-if" if="{{index}}" restamp>
                     &gt;
                 </template>
-                <span class="btn" select="{{item.Select$::mouseup}}" onmousedown="++this.select">{{item.Name}}</span>
+                <span class="btn" select="{{item.SelectTrigger$::mouseup}}" onmousedown="++this.select">{{item.Name}}</span>
             </template>
         </div>
 
@@ -30,9 +30,9 @@
                          ghost$="{{item.IsGhost}}">
                     <ul class="kitchensink-breadcrumb-suggestions">
                         <template is="dom-repeat" items="{{item.Siblings}}" restamp>
-                            <li class="kitchensink-breadcrumb-suggestions__item" select="{{item.Select$::click}}" onmousedown="++this.select">{{item.Name}}</li>
+                            <li class="kitchensink-breadcrumb-suggestions__item" select="{{item.SelectTrigger$::click}}" onmousedown="++this.select">{{item.Name}}</li>
                         </template>
-                        <li class="kitchensink-breadcrumb-suggestions__item" select="{{item.AddSibling$::click}}" onmousedown="++this.select">+ Add a new type</li>
+                        <li class="kitchensink-breadcrumb-suggestions__item" select="{{item.AddSiblingTrigger$::click}}" onmousedown="++this.select">+ Add a new type</li>
                     </ul>
                 </x-crumb>
             </template>
@@ -49,6 +49,6 @@
 
         <input type="text" value="{{model.CurrentTreeItem.Name$::change}}" placeholder="Name" class="form-control">
 
-        <button class="btn btn-sm btn-default" value="{{model.CurrentTreeItem.Save$::click}}" onmousedown="++this.value">Save</button>
+        <button class="btn btn-sm btn-default" value="{{model.CurrentTreeItem.SaveTrigger$::click}}" onmousedown="++this.value">Save</button>
     </template>
 </template>

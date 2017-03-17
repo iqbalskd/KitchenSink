@@ -5,7 +5,7 @@ namespace KitchenSink
 {
     partial class ButtonPage : Json
     {
-        void Handle(Input.AddCarrots action)
+        void Handle(Input.AddCarrotsTrigger action)
         {
             if (action.Value == 0)
             {
@@ -29,7 +29,7 @@ namespace KitchenSink
             }
         }
 
-        void Handle(Input.AddOneCarrot action)
+        void Handle(Input.AddOneCarrotTrigger action)
         {
             if (action.Value == 0)
             {
@@ -42,7 +42,7 @@ namespace KitchenSink
             }
         }
 
-        void Handle(Input.TakeOneRegeneratingCarrot action)
+        void Handle(Input.TakeOneRegeneratingCarrotTrigger action)
         {
             Thread.Sleep(500);
             action.Cancel();

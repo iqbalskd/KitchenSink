@@ -37,7 +37,7 @@ namespace KitchenSink
         }
 
         // Goes to the next page on click
-        void Handle(Input.NextPage action)
+        void Handle(Input.NextPageTrigger action)
         {
             if (this.CurrentOffset + this.EntriesPerPage < this.TotalEntries)
             {
@@ -47,14 +47,14 @@ namespace KitchenSink
         }
 
         // Goes to the previous page on click
-        void Handle(Input.PreviousPage action)
+        void Handle(Input.PreviousPageTrigger action)
         {
             this.CurrentOffset = this.CurrentOffset - this.EntriesPerPage >= 0 ? this.CurrentOffset - this.EntriesPerPage : 0;
             GetNewPage();
         }
 
         // Goes to the last page on click
-        void Handle(Input.LastPage action)
+        void Handle(Input.LastPageTrigger action)
         {
             var remainder = this.TotalEntries % this.EntriesPerPage;
             this.CurrentOffset = remainder != 0 ? this.TotalEntries - (remainder) : this.TotalEntries - this.EntriesPerPage;
@@ -62,7 +62,7 @@ namespace KitchenSink
         }
 
         // Goes to the first page on click
-        void Handle(Input.FirstPage action)
+        void Handle(Input.FirstPageTrigger action)
         {
             this.CurrentOffset = 0;
             GetNewPage();

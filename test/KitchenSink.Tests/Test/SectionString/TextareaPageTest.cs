@@ -45,7 +45,11 @@ namespace KitchenSink.Tests.Test.SectionString
             WaitUntil(x => _textareaPage.Textarea.Displayed);
             _textareaPage.ClearTextarea();
             _textareaPage.FillTextarea(newText);
+<<<<<<< HEAD
             Assert.IsTrue(WaitForText( _textareaPage.TextareaInfoLabel, "Length of your bio: 4 chars", 5));
+=======
+            Assert.IsTrue(WaitForText(_textareaPage.TextareaInfoLabel, "Length of your bio: 4 chars", 5));
+>>>>>>> develop
             _textareaPage.ClearTextarea();
             Assert.IsTrue(WaitForText(_textareaPage.TextareaInfoLabel, "Length of your bio: 0 chars", 5));
         }

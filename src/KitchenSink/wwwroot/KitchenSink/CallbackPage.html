@@ -8,9 +8,9 @@
 
         <h4>Responsive save button</h4>
         <p>
-            <button type="button" class="btn btn-sm btn-default" value="{{model.SaveClick$::click}}" disabled="{{model.SaveClick$}}" onmouseup="++this.value;">Save changes (1s)</button>
-            <button type="button" class="btn btn-sm btn-default" value="{{model.SaveAndSpinClick$::click}}" disabled="{{model.SaveAndSpinClick$}}" onmouseup="++this.value;">
-                <template is="dom-if" if="{{model.SaveAndSpinClick$}}">
+            <button type="button" class="btn btn-sm btn-default" value="{{model.SaveTrigger$::click}}" disabled="{{model.SaveTrigger$}}" onmouseup="++this.value;">Save changes (1s)</button>
+            <button type="button" class="btn btn-sm btn-default" value="{{model.SaveAndSpinTrigger$::click}}" disabled="{{model.SaveAndSpinTrigger$}}" onmouseup="++this.value;">
+                <template is="dom-if" if="{{model.SaveAndSpinTrigger$}}">
                     <i class="kitchen-sink-spinner glyphicon glyphicon-refresh"></i>
                 </template>
                 Save changes with loading icon (1s)
@@ -25,7 +25,7 @@
             <p class="alert alert-danger">{{model.ErrorMessage$}}</p>
         </template>
         <p>
-            <button type="button" class="btn btn-sm btn-default" value="{{model.SaveAndMessageClick$::click}}" disabled="{{model.SaveAndMessageClick$}}" onmouseup="++this.value;">Randomly save or fail changes (1s)</button>
+            <button type="button" class="btn btn-sm btn-default" value="{{model.SaveAndMessageTrigger$::click}}" disabled="{{model.SaveAndMessageTrigger$}}" onmouseup="++this.value;">Randomly save or fail changes (1s)</button>
         </p>
         <br />
         <h4>Save button with client side message</h4>
@@ -45,7 +45,7 @@
             <p class="alert alert-danger">{{local.ErrorMessage$}}</p>
         </template>
         <p>
-            <button type="button" class="btn btn-sm btn-default" value="{{model.SaveAndClientMessageClick$::click}}" disabled="{{model.SaveAndClientMessageClick$}}" onmouseup="++this.value;">Randomly save or fail changes (1s)</button>
+            <button type="button" class="btn btn-sm btn-default" value="{{model.SaveAndClientMessageTrigger$::click}}" disabled="{{model.SaveAndClientMessageTrigger$}}" onmouseup="++this.value;">Randomly save or fail changes (1s)</button>
         </p>
         <br />
         <h4>Same things inside table</h4>
@@ -93,21 +93,21 @@
                             </template>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-xs btn-default" value="{{item.SaveClick$::click}}" disabled="{{item.SaveClick$}}" onmouseup="++this.value;">Save</button>
+                            <button type="button" class="btn btn-xs btn-default" value="{{item.SaveTrigger$::click}}" disabled="{{item.SaveTrigger$}}" onmouseup="++this.value;">Save</button>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-xs btn-default" value="{{item.SaveAndSpinClick$::click}}" disabled="{{item.SaveAndSpinClick$}}" onmouseup="++this.value;">
-                                <template is="dom-if" if="{{item.SaveAndSpinClick$}}">
+                            <button type="button" class="btn btn-xs btn-default" value="{{item.SaveAndSpinTrigger$::click}}" disabled="{{item.SaveAndSpinTrigger$}}" onmouseup="++this.value;">
+                                <template is="dom-if" if="{{item.SaveAndSpinTrigger$}}">
                                     <i class="kitchen-sink-spinner glyphicon glyphicon-refresh"></i>
                                 </template>
                                 Save with icon
                             </button>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-xs btn-default" value="{{item.SaveAndMessageClick$::click}}" disabled="{{item.SaveAndMessageClick$}}" onmouseup="++this.value;">Save</button>
+                            <button type="button" class="btn btn-xs btn-default" value="{{item.SaveAndMessageTrigger$::click}}" disabled="{{item.SaveAndMessageTrigger$}}" onmouseup="++this.value;">Save</button>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-xs btn-default" disabled="{{item.SaveAndClientMessageClick$}}" item="{{item}}" index="{{index}}" on-click="onItemSaveAndClientMessageClick">Save</button>
+                            <button type="button" class="btn btn-xs btn-default" disabled="{{item.SaveAndClientMessageTrigger$}}" item="{{item}}" index="{{index}}" on-click="onItemSaveAndClientMessageClick">Save</button>
                         </td>
                     </tr>
                 </template>
@@ -125,7 +125,7 @@
                 ErrorMessage$: ""
             };
 
-            template.observers = ["onSaveAndClientMessageClickChange(model.SaveAndClientMessageClick$)", "onItemChange(model.Items.*)"];
+            template.observers = ["onSaveAndClientMessageClickChange(model.SaveAndClientMessageTrigger$)", "onItemChange(model.Items.*)"];
 
             template.onSaveAndClientMessageClickChange = function (value) {
                 if (value) {
@@ -148,7 +148,7 @@
             template.onItemChange = function (e) {
                 var path = e.path.split(".");
                 
-                if (path[path.length - 1] != "SaveAndClientMessageClick$") {
+                if (path[path.length - 1] != "SaveAndClientMessageTrigger$") {
                     return;
                 }
 
@@ -192,7 +192,7 @@
                     });
                 }
 
-                template.set("model.Items." + index + ".SaveAndClientMessageClick$", item.SaveAndClientMessageClick$ + 1);
+                template.set("model.Items." + index + ".SaveAndClientMessageTrigger$", item.SaveAndClientMessageClick$ + 1);
             };
         })();
     </script>

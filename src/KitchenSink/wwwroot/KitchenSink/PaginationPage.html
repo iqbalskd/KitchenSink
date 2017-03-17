@@ -23,10 +23,10 @@
         <nav>
             <ul class="pagination kitchensink-test-pagination">
                 <li>
-                    <span id="kitchensink-pagination-first" tabindex="0" value="{{model.FirstPage$::click}}" on-click="onFirstPageClick" href="">&lt;&lt;</span>
+                    <span id="kitchensink-pagination-first" tabindex="0" value="{{model.FirstPageTrigger$::click}}" on-click="onFirstPageClick" href="">&lt;&lt;</span>
                 </li>
                 <li class$="{{getLiClassDisabled(model.DisableFirst)}}">
-                    <span id="kitchensink-pagination-previous" tabindex="0" value="{{model.PreviousPage$::click}}" on-click="onPreviousPageClick">&lt;</span>
+                    <span id="kitchensink-pagination-previous" tabindex="0" value="{{model.PreviousPageTrigger$::click}}" on-click="onPreviousPageClick">&lt;</span>
                 </li>
                 <template is="dom-repeat" items="{{model.Pages}}">
                     <li class$="{{getLiClassActive(item.Active)}}">
@@ -34,10 +34,10 @@
                     </li>
                 </template>
                 <li class$="{{getLiClassDisabled(model.DisableLast)}}">
-                    <span id="kitchensink-pagination-next" tabindex="0" value="{{model.NextPage$::click}}" on-click="onNextPageClick">&gt;</span>
+                    <span id="kitchensink-pagination-next" tabindex="0" value="{{model.NextPageTrigger$::click}}" on-click="onNextPageClick">&gt;</span>
                 </li>
                 <li>
-                    <span id="kitchensink-pagination-last" tabindex="0" value="{{model.LastPage$::click}}" on-click="onLastPageClick">&gt;&gt;</span>
+                    <span id="kitchensink-pagination-last" tabindex="0" value="{{model.LastPageTrigger$::click}}" on-click="onLastPageClick">&gt;&gt;</span>
                 </li>
             </ul>
         </nav>
@@ -58,19 +58,19 @@
             };
 
             template.onFirstPageClick = function (event) {
-                triggerModelAction("FirstPage$");
+                triggerModelAction("FirstPageTrigger$");
             };
 
             template.onLastPageClick = function (event) {
-                triggerModelAction("LastPage$");
+                triggerModelAction("LastPageTrigger$");
             };
 
             template.onNextPageClick = function (event) {
-                triggerModelAction("NextPage$");
+                triggerModelAction("NextPageTrigger$");
             };
 
             template.onPreviousPageClick = function (event) {
-                triggerModelAction("PreviousPage$");
+                triggerModelAction("PreviousPageTrigger$");
             };
 
             template.getLiClassDisabled = function (disabled) {

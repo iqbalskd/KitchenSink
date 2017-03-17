@@ -22,7 +22,7 @@ namespace KitchenSink
             pet.Kind = "Rabbit";
         }
 
-        void Handle(Input.AddPet action)
+        void Handle(Input.AddPetTrigger action)
         {
             var p = Pets.Add();
             p.Name = "Cecil";

@@ -3,9 +3,9 @@
 
   "ChooseFood$": "",
   "YourFavoriteFood": "Select your favorite food",
-  "GoToHomePartial$": 0,
+  "GoToHomePartialTrigger$": 0,
   "MorphUrl$": "",
 
-  "GoToDocs$": 0,
+  "GoToDocsTrigger$": 0,
   "RedirectUrl$": ""
 }

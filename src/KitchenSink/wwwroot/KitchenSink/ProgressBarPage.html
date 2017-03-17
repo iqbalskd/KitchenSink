@@ -11,7 +11,7 @@
             <div class="kitchensink-progress-bar__fill" style="width:{{model.Progress}}%"></div>
         </div>
         <p>
-            <button class="btn btn-sm btn-default kitchensink-progress-bar__button" value="{{model.StartProgress$::click}}" onmousedown="++this.value" disabled$="{{model.TaskIsRunnning}}"> {{model.DownloadButtonText}} </button>
+            <button class="btn btn-sm btn-default kitchensink-progress-bar__button" value="{{model.StartProgressTrigger$::click}}" onmousedown="++this.value" disabled$="{{model.TaskIsRunnning}}"> {{model.DownloadButtonText}} </button>
             <template is="dom-if" if="{{model.Progress}}">
                 <span>{{model.FileDownloadText}}</span>
             </template>

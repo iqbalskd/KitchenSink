@@ -4,7 +4,7 @@ namespace KitchenSink
 {
     partial class RedirectPage : Json
     {
-        void Handle(Input.GoToHomePartial Action)
+        void Handle(Input.GoToHomePartialTrigger Action)
         {
             this.MorphUrl = "/KitchenSink";
         }
@@ -27,7 +27,7 @@ namespace KitchenSink
             }
         }
 
-        void Handle(Input.GoToDocs Action)
+        void Handle(Input.GoToDocsTrigger Action)
         {
             this.RedirectUrl = "https://starcounter.io/";
         }

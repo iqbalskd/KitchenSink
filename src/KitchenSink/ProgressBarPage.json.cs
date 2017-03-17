@@ -9,7 +9,7 @@ namespace KitchenSink
             base.OnData();
         }
 
-        void Handle(Input.StartProgress action) // Button Input
+        void Handle(Input.StartProgressTrigger action)
         {
             if (this.TaskIsRunnning)
             {
