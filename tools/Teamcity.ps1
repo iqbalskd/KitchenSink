@@ -6,7 +6,7 @@ $StarCounterRepoPath = "$StarCounterWorkDirPath\personal"
 $StarCounterConfigPath = "$StarCounterDir\Configuration"
 
 $KitchenSinkWwwPath = "$checkoutdir\KitchenSink\src\KitchenSink\wwwroot"
-$KitchenSinkExePath = "$checkoutdir\KitchenSink\bin\Debug\KitchenSink.exe"
+$KitchenSinkExePath = "$checkoutdir\KitchenSink\src\KitchenSink\bin\Debug\KitchenSink.exe"
 $KitchenSinkTestsPath = "$checkoutdir\KitchenSink\test\KitchenSink.Tests\bin\Debug\KitchenSink.Tests.dll"
 $KitchenSinkArg = "--resourcedir=$KitchenSinkWwwPath $KitchenSinkExePath"
 

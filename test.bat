@@ -10,7 +10,7 @@ IF NOT ERRORLEVEL 1 SET INTERACTIVE=0
 staradmin stop db default
 
 :: Start the tested app
-star --resourcedir="%~dp0src\KitchenSink\wwwroot" "%~dp0bin/%CONFIGURATION%/KitchenSink.exe"
+star --resourcedir="%~dp0src\KitchenSink\wwwroot" "%~dp0src/KitchenSink/bin/%Configuration%/KitchenSink.exe"
 IF ERRORLEVEL 1 EXIT /B 1
 
 :: Start the test
