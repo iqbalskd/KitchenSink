@@ -1,7 +1,7 @@
 Param ($checkoutdir, $user, $password, $organization, $server, $projectName)
 
-$StarCounterDir = "$checkoutdir\sc"
-$StarpackExePath = "$StarCounterDir\starpack.exe"
+$StarcounterDir = "$checkoutdir\sc"
+$StarpackExePath = "$StarcounterDir\starpack.exe"
 
 $FullSourcePath = "$checkoutdir\$projectName\src\$projectName\"
 try 
@@ -11,7 +11,7 @@ try
 		if (-Not (Test-Path Env:\StarcounterBin))
 		{ 
 			echo "StarcounterBin variable not found, creating..."
-			[Environment]::SetEnvironmentVariable("StarcounterBin", "$StarCounterDir", "Process") 
+			[Environment]::SetEnvironmentVariable("StarcounterBin", "$StarcounterDir", "Process") 
 		}
 		else { echo "StarcounterBin variable found, proceeding..." }
 		
@@ -25,7 +25,7 @@ try
 			$uploadPack = Start-Process -FilePath $StarpackExePath -ArgumentList "-u $file -s=$server -o=$organization -u=$user -p=$password" -PassThru -NoNewWindow -Wait
 			if ($uploadPack.ExitCode -eq 0)
 			{
-				echo "File sended"
+				echo "File sent"
 				exit(0)
 			}
 			else { exit(1) }
@@ -34,7 +34,7 @@ try
 	}
 	else 
 	{ 
-		echo "Starpack.exe no found, exiting..." 
+		echo "Starpack.exe not found, exiting..." 
 		exit(1) 
 	}
 } 
