@@ -32,7 +32,7 @@ namespace KitchenSink.Tests.Test.SectionArray
         {
             WaitUntil(x => _datagridPage.CheckTableVisible());
             _datagridPage.AddPet();
-            WaitUntil(x => _datagridPage.GetTableRowsCount() == 4);
+            WaitUntil(x => _datagridPage.GetTableRowsCount() == 5);
         }
     }
 }
