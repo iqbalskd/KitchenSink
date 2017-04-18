@@ -20,17 +20,14 @@ Function createRepo()
 
 Function runApps($apps, $source)
 {
-	if($apps -ne $Null)
+	foreach ($app in $apps)
 	{
-		foreach ($app in $apps)
-		{
-			$AppWWWPath = "$checkoutdir\$testedApp\$source\$app\wwwroot"
-			$AppExePath = "$checkoutdir\$testedApp\$source\$app\bin\Debug\$app.exe"
-			$AppArg = "--resourcedir=$AppWWWPath $AppExePath"
+		$AppWWWPath = "$checkoutdir\$testedApp\$source\$app\wwwroot"
+		$AppExePath = "$checkoutdir\$testedApp\$source\$app\bin\Debug\$app.exe"
+		$AppArg = "--resourcedir=$AppWWWPath $AppExePath"
 		
-			$process = Start-Process -FilePath $StarExePath -ArgumentList $AppArg -PassThru -NoNewWindow		
-			wait-process -id $process.Id
-		}
+		$process = Start-Process -FilePath $StarExePath -ArgumentList $AppArg -PassThru -NoNewWindow		
+		wait-process -id $process.Id
 	}
 }
 
@@ -53,8 +50,10 @@ Function runAppsAndTests()
 	{
 		createRepo
 		createXML
-		runApps -apps $appsToRun -source "src"
-		runApps -apps $helpersToRun -source "test"
+		if($appsToRun)
+			runApps -apps $appsToRun -source "src"
+		if($helpersToRun)
+			runApps -apps $helpersToRun -source "test"
 		runTests
 		killStarcounter
 	}
