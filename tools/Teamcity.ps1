@@ -1,29 +1,38 @@
-Param ($checkoutdir, $nunitversion, $browsersToRun, $testedApp, [String[]] $appsToRun, [String[]] $helpersToRun, $testsPath)
+Param
+(
+	[Parameter(Mandatory=$true)][string] $checkoutDir, 
+	[Parameter(Mandatory=$true)][string] $nunitVersion, 
+	[Parameter(Mandatory=$true)][string] $browsersToRun, 
+	[Parameter(Mandatory=$true)][string] $testedApp, 
+	[Parameter(Mandatory=$true)][string[]] $appsToRun, 
+	[Parameter(Mandatory=$false)][string[]] $helpersToRun, 
+	[Parameter(Mandatory=$false)] $testsPath
+)
 
-$StarCounterDir = "$checkoutdir\sc"
-$StarCounterWorkDirPath = "$StarCounterDir\starcounter-workdir"
-$StarCounterRepoPath = "$StarCounterWorkDirPath\personal"
-$StarCounterConfigPath = "$StarCounterDir\Configuration"
-$StarExePath = "$StarCounterDir\star.exe"
-$StarAdminExePath = "$StarCounterDir\staradmin.exe"
+$StarcounterDir = "$checkoutDir\sc"
+$StarcounterWorkDirPath = "$StarcounterDir\starcounter-workdir"
+$StarcounterRepoPath = "$StarcounterWorkDirPath\personal"
+$StarcounterConfigPath = "$StarcounterDir\Configuration"
+$StarExePath = "$StarcounterDir\star.exe"
+$StarAdminExePath = "$StarcounterDir\staradmin.exe"
 
 Function createXML()
 {
-	$fileContent = "<?xml version=`"1.0`" encoding=`"UTF-8`"?><service><server-dir>$StarCounterRepoPath</server-dir></service>"
-	New-Item -Path $StarCounterConfigPath -Name personal.xml -ItemType "file" -force -Value $fileContent | Out-Null
+	$fileContent = "<?xml version=`"1.0`" encoding=`"UTF-8`"?><service><server-dir>$StarcounterRepoPath</server-dir></service>"
+	New-Item -Path $StarcounterConfigPath -Name personal.xml -ItemType "file" -force -Value $fileContent | Out-Null
 }
 
 Function createRepo()
 {
-	Start-Process -FilePath $StarExePath -ArgumentList "`@`@createrepo $StarCounterWorkDirPath" -NoNewWindow -Wait
+	Start-Process -FilePath $StarExePath -ArgumentList "`@`@createrepo $StarcounterWorkDirPath" -NoNewWindow -Wait
 }
 
 Function runApps($apps, $source)
 {
 	foreach ($app in $apps)
 	{
-		$AppWWWPath = "$checkoutdir\$testedApp\$source\$app\wwwroot"
-		$AppExePath = "$checkoutdir\$testedApp\$source\$app\bin\Debug\$app.exe"
+		$AppWWWPath = "$checkoutDir\$testedApp\$source\$app\wwwroot"
+		$AppExePath = "$checkoutDir\$testedApp\$source\$app\bin\Debug\$app.exe"
 		$AppArg = "--resourcedir=$AppWWWPath $AppExePath"
 		
 		$process = Start-Process -FilePath $StarExePath -ArgumentList $AppArg -PassThru -NoNewWindow		
@@ -33,7 +42,7 @@ Function runApps($apps, $source)
 
 Function runTests()
 {
-	$NunitConsoleRunnerExePath = "$checkoutdir\$testedApp\packages\NUnit.ConsoleRunner.$nunitversion\tools\nunit3-console.exe"
+	$NunitConsoleRunnerExePath = "$checkoutDir\$testedApp\packages\NUnit.ConsoleRunner.$nunitVersion\tools\nunit3-console.exe"
 	$NunitArg = "$testsPath --noheader --teamcity --params Browsers=$browsersToRun"
 	
 	Start-Process -FilePath $NunitConsoleRunnerExePath -ArgumentList $NunitArg -NoNewWindow -Wait
@@ -50,10 +59,7 @@ Function runAppsAndTests()
 	{
 		createRepo
 		createXML
-		if($appsToRun)
-		{
-			runApps -apps $appsToRun -source "src"
-		}
+		runApps -apps $appsToRun -source "src"
 		if($helpersToRun)
 		{
 			runApps -apps $helpersToRun -source "test"
@@ -71,7 +77,7 @@ Function runAppsAndTests()
 
 Function Main()
 {
-	if(Test-Path $testsPath)
+	if($testsPath)
 	{
 		runAppsAndTests
 	}
