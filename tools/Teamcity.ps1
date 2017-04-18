@@ -1,56 +1,82 @@
-Param ($checkoutdir, $nunitversion, $browsersToRun)
+Param ($checkoutdir, $nunitversion, $browsersToRun, $testedApp, [String[]] $appsToRun, [String[]] $helpersToRun, $testsPath)
 
 $StarCounterDir = "$checkoutdir\sc"
 $StarCounterWorkDirPath = "$StarCounterDir\starcounter-workdir"
 $StarCounterRepoPath = "$StarCounterWorkDirPath\personal"
 $StarCounterConfigPath = "$StarCounterDir\Configuration"
-
-$KitchenSinkWwwPath = "$checkoutdir\KitchenSink\src\KitchenSink\wwwroot"
-$KitchenSinkExePath = "$checkoutdir\KitchenSink\src\KitchenSink\bin\Debug\KitchenSink.exe"
-$KitchenSinkTestsPath = "$checkoutdir\KitchenSink\test\KitchenSink.Tests\bin\Debug\KitchenSink.Tests.dll"
-$KitchenSinkArg = "--resourcedir=$KitchenSinkWwwPath $KitchenSinkExePath"
-
-$NunitConsoleRunnerExePath = "$checkoutdir\KitchenSink\packages\NUnit.ConsoleRunner.$nunitversion\tools\nunit3-console.exe"
-$NunitArg = "$KitchenSinkTestsPath --noheader --teamcity --params Browsers=$browsersToRun"
-
 $StarExePath = "$StarCounterDir\star.exe"
 $StarAdminExePath = "$StarCounterDir\staradmin.exe"
 
-Function createXML($repoPath, $configPath)
+Function createXML()
 {
-	$fileContent = "<?xml version=`"1.0`" encoding=`"UTF-8`"?>
-<service><server-dir>$repoPath</server-dir></service>"
-	
-	New-Item -Path $configPath -Name personal.xml -ItemType "file" -force -Value $fileContent | Out-Null
-	return Test-Path $configPath\personal.xml
+	$fileContent = "<?xml version=`"1.0`" encoding=`"UTF-8`"?><service><server-dir>$StarCounterRepoPath</server-dir></service>"
+	New-Item -Path $StarCounterConfigPath -Name personal.xml -ItemType "file" -force -Value $fileContent | Out-Null
 }
 
-try 
+Function createRepo()
 {
-	$createRepo = Start-Process -FilePath $StarExePath -ArgumentList "`@`@createrepo $StarCounterWorkDirPath" -PassThru -NoNewWindow -Wait
-	if ($createRepo.ExitCode -eq 0)
-	{
-		$createXMLExitCode = createXML -repoPath $StarCounterRepoPath -configPath $StarCounterConfigPath
-		if ($createXMLExitCode)
-		{ 
-			$KitchenSink = Start-Process -FilePath $StarExePath -ArgumentList $KitchenSinkArg -PassThru -NoNewWindow
-			wait-process -id $KitchenSink.Id
-			$Tests = Start-Process -FilePath $NunitConsoleRunnerExePath -ArgumentList $NunitArg -PassThru -NoNewWindow -Wait
-			if($Tests.ExitCode -ge 0)
-			{
-				$KillStarcounter = Start-Process -FilePath $StarAdminExePath -ArgumentList "kill all" -PassThru -NoNewWindow -Wait
-				if($KillStarcounter.ExitCode -eq 0) { exit(0) }
-				else { exit(1) }
-			}
-			else { exit(1) }
-		}
-		else { exit(1) }
-	}
-	else { exit(1) }
-} 
-Catch 
-{
-	$ErrorMessage = $_.Exception.Message
-	Write-Output $ErrorMessage
-	exit(1)
+	Start-Process -FilePath $StarExePath -ArgumentList "`@`@createrepo $StarCounterWorkDirPath" -NoNewWindow -Wait
 }
+
+Function runApps($apps, $source)
+{
+	if($apps -ne $Null)
+	{
+		foreach ($app in $apps)
+		{
+			$AppWWWPath = "$checkoutdir\$testedApp\$source\$app\wwwroot"
+			$AppExePath = "$checkoutdir\$testedApp\$source\$app\bin\Debug\$app.exe"
+			$AppArg = "--resourcedir=$AppWWWPath $AppExePath"
+		
+			$process = Start-Process -FilePath $StarExePath -ArgumentList $AppArg -PassThru -NoNewWindow		
+			wait-process -id $process.Id
+		}
+	}
+}
+
+Function runTests()
+{
+	$NunitConsoleRunnerExePath = "$checkoutdir\$testedApp\packages\NUnit.ConsoleRunner.$nunitversion\tools\nunit3-console.exe"
+	$NunitArg = "$testsPath --noheader --teamcity --params Browsers=$browsersToRun"
+	
+	Start-Process -FilePath $NunitConsoleRunnerExePath -ArgumentList $NunitArg -NoNewWindow -Wait
+}
+
+Function killStarcounter()
+{
+	Start-Process -FilePath $StarAdminExePath -ArgumentList "kill all" -NoNewWindow -Wait
+}
+
+Function runAppsAndTests()
+{
+	try
+	{
+		createRepo
+		createXML
+		runApps -apps $appsToRun -source "src"
+		runApps -apps $helpersToRun -source "test"
+		runTests
+		killStarcounter
+	}
+	Catch
+	{
+		$ErrorMessage = $_.Exception.Message
+		Write-Output $ErrorMessage
+		exit(1)
+	}
+}
+
+Function Main()
+{
+	if(Test-Path $testsPath)
+	{
+		runAppsAndTests
+	}
+	else 
+	{ 
+		Write-Output "No tests to run"
+		exit(0)				
+	}
+}
+
+Main
