@@ -51,9 +51,13 @@ Function runAppsAndTests()
 		createRepo
 		createXML
 		if($appsToRun)
+		{
 			runApps -apps $appsToRun -source "src"
+		}
 		if($helpersToRun)
+		{
 			runApps -apps $helpersToRun -source "test"
+		}
 		runTests
 		killStarcounter
 	}
