@@ -22,22 +22,6 @@ Intended for 13 October 2015 webinar: http://starcounter.io/video-expressing-you
 
 ![](screenshot.PNG)
 
-## Excercises
-
-### 1. Change binding feedback event
-
-From:
-
-```cs
-<input type="text" value="{{model.Name$::change}}" placeholder="Name">
-```
-
-To:
-
-```cs
-<input type="text" value="{{model.Name$::input}}" placeholder="Name">
-```
-
 ## Testing
 
 ### Prepare your environment
