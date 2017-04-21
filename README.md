@@ -92,12 +92,6 @@ Before running the steps, you need to:
 3. Run the KitchenSink app (run.bat)
 4. Start the KitchenSink.Test runner (test.bat)
 
-### How to release a package
-
-1. Install [Node.js](https://nodejs.org/).
-2. Run `npm install` to install all dependencies.
-3. Run `grunt package` to generate a packaged version. You can use `grunt package:minor`, `grunt package:major`, `grunt package --setversion=1.0.0-develop.0`, etc. as [grunt-bump](https://github.com/vojtajina/grunt-bump)
-
 ## License
 
 MIT
