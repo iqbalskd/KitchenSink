@@ -14,6 +14,10 @@ Shows how to model different UI patterns in JSON:
 | Redirect  |   |   |   | Breadcrumb  | Pagination  |
 | Validation  |   |   |   |   | Flash Message  |
 
+## Developer instructions
+
+For developer instructions, go to [CONTRIBUTING](CONTRIBUTING.md).
+
 ## Video
 
 Intended for 13 October 2015 webinar: http://starcounter.io/video-expressing-your-ui-in-json-plain-data-binding-advanced-data-binding/
