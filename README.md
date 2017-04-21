@@ -31,16 +31,6 @@ Shows how to model different UI patterns in JSON:
    - Table
    - Chart
 
-## Running
-
-To try the application, first install Visual Studio 2015 Community and Starcounter. 
-
-Download the code from this repo, build it and run it in Visual Studio. Then, go to `http://localhost:8080/KitchenSink` in your web browser.
-
-## Requirements
-
-Requires Starcounter version 2.2.1.2903
-
 ## Video
 
 Intended for 13 October 2015 webinar: http://starcounter.io/video-expressing-your-ui-in-json-plain-data-binding-advanced-data-binding/
