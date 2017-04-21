@@ -20,7 +20,7 @@ Intended for 13 October 2015 webinar: http://starcounter.io/video-expressing-you
 
 ## Screenshot
 
-![](https://raw.githubusercontent.com/StarcounterSamples/KitchenSink/master/screenshot.png)
+![](screenshot.PNG)
 
 ## Excercises
 
