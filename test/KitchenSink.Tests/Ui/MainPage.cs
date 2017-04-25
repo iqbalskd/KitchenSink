@@ -128,5 +128,11 @@ namespace KitchenSink.Tests.Ui
             ClickOn(RadiolistPageLink);
             return new RadiolistPage(Driver);
         }
+
+        public MarkdownPage GoToMarkdownPage()
+        {
+            ClickOn(MarkdownPageLink);
+            return new MarkdownPage(Driver);
+        }
     }
 }

@@ -75,6 +75,7 @@
     <Compile Include="Test\SectionArray\DropdownPageTest.cs" />
     <Compile Include="Test\SectionObject\NestedPartialsPageTest.cs" />
     <Compile Include="Test\SectionArray\TablePageTest.cs" />
+    <Compile Include="Test\SectionString\MarkdownPageTest.cs" />
     <Compile Include="Test\SectionString\PasswordPageTest.cs" />
     <Compile Include="Test\SectionString\RedirectPageTest.cs" />
     <Compile Include="Test\SectionString\TextareaPageTest.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Ui\SectionObject\NestedPartialsPage.cs" />
     <Compile Include="Ui\SectionArray\TablePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ui\SectionString\MarkdownPage.cs" />
     <Compile Include="Ui\SectionString\PasswordPage.cs" />
     <Compile Include="Ui\SectionString\RedirectPage.cs" />
     <Compile Include="Ui\SectionString\TextareaPage.cs" />

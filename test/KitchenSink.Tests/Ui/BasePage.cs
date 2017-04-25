@@ -78,6 +78,9 @@ namespace KitchenSink.Tests.Ui
         [FindsBy(How = How.XPath, Using = "//a[text() = 'Radiolist']")]
         public IWebElement RadiolistPageLink { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//a[text() = 'Markdown']")]
+        public IWebElement MarkdownPageLink { get; set; }
+
         public IWebElement WaitForElementToBeClickable(IWebElement elementName, int seconds)
         {
             WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(seconds));
