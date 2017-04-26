@@ -18,13 +18,13 @@ namespace KitchenSink.Tests.Ui.SectionString
         public bool CheckPreviewVisible()
         {
             var shadowRoot = ExpandShadowRoot(Driver.FindElement(By.XPath("//juicy-markdown")));
-            return shadowRoot.FindElement(By.Id("this-is-a-strucured-text")).Displayed;
+            return shadowRoot.FindElement(By.TagName("h1")).Displayed; //BUG in CHROME b.getElementsByTagName is not a function
         }
 
         public string GetPreviewText()
         {
-            var shadowRoot = ExpandShadowRoot(Driver.FindElement(By.XPath("//juicy-markdown")));
-            return shadowRoot.FindElement(By.Id("this-is-a-strucured-text")).Text;
+            var shadowRoot = ExpandShadowRoot(Driver.FindElement(By.XPath("//juicy-markdown"))); //BUG in CHROME b.getElementsByTagName is not a function
+            return shadowRoot.FindElement(By.TagName("h1")).Text;
         }
     }
 }

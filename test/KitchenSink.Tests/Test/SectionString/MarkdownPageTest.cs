@@ -6,7 +6,6 @@ using NUnit.Framework;
 namespace KitchenSink.Tests.Test.SectionString
 {
     [Parallelizable(ParallelScope.Fixtures)]
-    [TestFixture(Config.Browser.Chrome)]
     [TestFixture(Config.Browser.Edge)]
     [TestFixture(Config.Browser.Firefox)]
     class MarkdownPageTest : BaseTest
@@ -30,7 +29,7 @@ namespace KitchenSink.Tests.Test.SectionString
         {
             WaitUntil(x => _markdown.CheckPreviewVisible());
 
-            Assert.AreEqual("This is a strucured text", _markdown.GetPreviewText());
+            Assert.AreEqual("This is a structured text", _markdown.GetPreviewText());
         }
     }
 }
