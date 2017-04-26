@@ -8,7 +8,7 @@ namespace KitchenSink
         {
             base.OnData();
 
-            this.Bio = @"# This is a strucured text
+            this.Bio = @"# This is a structured text
 
 It supports **markdown** *syntax*.";
         }
