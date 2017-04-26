@@ -4,34 +4,13 @@ namespace KitchenSink
 {
     partial class TextPage : Json
     {
-        public string CalculatedNameReaction
-        {
-            get
-            {
-                if (Name == "")
-                {
-                    return "What's your name?";
-                }
-                else
-                {
-                    return "Hi, " + Name + "!";
-                }
-            }
-        }
+        public string NameReaction => string.IsNullOrEmpty(Name) ? "What's your name?" : "Hi, " + Name + "!";
 
-        public string CalculatedNameLiveReaction
-        {
-            get
-            {
-                if (NameLive == "")
-                {
-                    return "What's your name?";
-                }
-                else
-                {
-                    return "Hi, " + NameLive + "!";
-                }
-            }
-        }
+        public string NameLiveReaction => string.IsNullOrEmpty(NameLive) ? "What's your name?" : "Hi, " + NameLive + "!";
+
+        public string NameForPaperReaction => string.IsNullOrEmpty(NameForPaper) ? "What's your name?" : "Hi, " + NameForPaper + "!";
+
+        public string NameForPaperLiveReaction => string.IsNullOrEmpty(NameForPaperLive) ? "What's your name?" : "Hi, " + NameForPaperLive + "!";
+
     }
 }

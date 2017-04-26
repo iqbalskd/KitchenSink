@@ -1,4 +1,6 @@
-﻿<template>
+﻿<link rel="import" href="/sys/paper-input/paper-input.html" />
+
+<template>
     <template is="dom-bind">
         <p class="lead">JSON's primitive value type <code>string</code> can be mapped directly to HTML form <code>input type="text"</code>.</p>
 
@@ -17,5 +19,17 @@
         <label class="control-label kitchensink-test-name-label-dynamic">{{model.NameLiveReaction}}</label>
 
         <input type="text" value="{{model.NameLive$::input}}" placeholder="Name" class="form-control kitchensink-test-name-input-dynamic">
+        
+        <h5>Listening to changes with paper-text</h5>
+
+        <p>You can also use polymer elements such as paper-text by binding to <code>::change</code>:</p>      
+
+        <paper-input label="{{model.NameForPaperReaction}}" value="{{model.NameForPaper$::change}}" class="kitchensink-test-name-paper-input"></paper-input>
+        
+        <h5>Listening to changes with paper-text while typing</h5>
+
+        <p>With paper-text element use <code>::value-changed</code> binding to update the server after each keystroke:</p>       
+
+        <paper-input label="{{model.NameForPaperLiveReaction}}" value="{{model.NameForPaperLive$::value-changed}}" class="kitchensink-test-name-paper-input-dynamic"></paper-input>
     </template>
 </template>
