@@ -15,15 +15,12 @@ namespace KitchenSink.Tests.Ui.SectionString
             PageFactory.InitElements(Driver, this);
         }
 
-        public bool CheckPreviewVisible()
-        {
-            var shadowRoot = ExpandShadowRoot(Driver.FindElement(By.XPath("//juicy-markdown")));
-            return shadowRoot.FindElement(By.TagName("h1")).Displayed; //BUG in CHROME b.getElementsByTagName is not a function
-        }
+        [FindsBy(How = How.TagName, Using = "juicy-markdown")]
+        public IWebElement JuicyMarkdown { get; set; }
 
         public string GetHeaderText()
         {
-            var shadowRoot = ExpandShadowRoot(Driver.FindElement(By.XPath("//juicy-markdown"))); 
+            var shadowRoot = ExpandShadowRoot(Driver.FindElement(By.TagName("juicy-markdown"))); 
             return shadowRoot.FindElement(By.TagName("h1")).Text; //BUG in CHROME b.getElementsByTagName is not a function
         }
     }
