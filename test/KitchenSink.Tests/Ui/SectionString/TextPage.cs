@@ -22,37 +22,29 @@ namespace KitchenSink.Tests.Ui.SectionString
         [FindsBy(How = How.CssSelector, Using = ".kitchensink-test-name-label-dynamic")]
         public IWebElement InputInfoLabelDynamic { get; set; }
 
-        public void FillInput(string input)
+        [FindsBy(How = How.CssSelector, Using = ".kitchensink-test-name-paper-input")]
+        public IWebElement PaperInput { get; set; }
+
+        [FindsBy(How = How.CssSelector, Using = ".kitchensink-test-name-paper-input-dynamic")]
+        public IWebElement PaperInputDynamic { get; set; }
+
+        public void FillInput(IWebElement inputElement, string input)
         {
-            Input.Clear();
-            Input.SendKeys(input);
-            Input.SendKeys(Keys.Enter);
+            inputElement.Clear();
+            inputElement.SendKeys(input);
+            inputElement.SendKeys(Keys.Enter);
         }
 
-        public void FillInputDynamic(string input)
+        public void ClearInput(IWebElement inputElement)
         {
-            InputDynamic.Clear();
-            InputDynamic.SendKeys(input);
-            InputDynamic.SendKeys(Keys.Enter);
-        }
+            var inputLength = inputElement.GetAttribute("value").Length;
 
-        public void ClearInput()
-        {
-            Input.Clear();
-            Input.SendKeys(Keys.Enter);
-        }
-
-        public void ClearInputDynamic()
-        {
-            var inputLength = InputDynamic.GetAttribute("value").Length;
-
-            //can't use Clear()
             for (var i = 0; i < inputLength; i++)
             {
-                InputDynamic.SendKeys(Keys.Backspace);
+                inputElement.SendKeys(Keys.Backspace);
             }
 
-            InputDynamic.SendKeys(Keys.Enter);
+            inputElement.SendKeys(Keys.Enter);
         }
     }
 }
