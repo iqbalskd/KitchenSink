@@ -29,7 +29,7 @@ namespace KitchenSink.Tests.Test.SectionString
         {
             WaitUntil(x => _markdown.CheckPreviewVisible());
 
-            Assert.AreEqual("This is a structured text", _markdown.GetPreviewText());
+            Assert.AreEqual("This is a structured text", _markdown.GetHeaderText());
         }
     }
 }

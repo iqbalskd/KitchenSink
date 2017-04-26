@@ -21,10 +21,10 @@ namespace KitchenSink.Tests.Ui.SectionString
             return shadowRoot.FindElement(By.TagName("h1")).Displayed; //BUG in CHROME b.getElementsByTagName is not a function
         }
 
-        public string GetPreviewText()
+        public string GetHeaderText()
         {
-            var shadowRoot = ExpandShadowRoot(Driver.FindElement(By.XPath("//juicy-markdown"))); //BUG in CHROME b.getElementsByTagName is not a function
-            return shadowRoot.FindElement(By.TagName("h1")).Text;
+            var shadowRoot = ExpandShadowRoot(Driver.FindElement(By.XPath("//juicy-markdown"))); 
+            return shadowRoot.FindElement(By.TagName("h1")).Text; //BUG in CHROME b.getElementsByTagName is not a function
         }
     }
 }
