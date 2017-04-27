@@ -86,6 +86,7 @@ namespace KitchenSink
             {
                 var page = this.PageEntries.Add();
                 page.Amount = entry;
+                page.Text = $"Show {entry} items per page";
             }
         }
 
