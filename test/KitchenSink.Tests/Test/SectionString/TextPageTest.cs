@@ -56,9 +56,9 @@ namespace KitchenSink.Tests.Test.SectionString
             // Make sure that paper element is loaded.
             WaitUntil(x => _textPage.PaperInput.Displayed);
 
-            var shadowRoot = _textPage.GetShadowRootByXpath("//paper-input[1]");
-            var shadowInput = _textPage.GetInputFromShadowRootById(shadowRoot, "input");
-            var shadowInfoLabel = _textPage.GetLabelFromShadowRootById(shadowRoot, "paper-input-label-1");
+            byte paperInputOnUnfocusIndex = 1;
+            var shadowInput = _textPage.GetInputForPaperElement(paperInputOnUnfocusIndex);
+            var shadowInfoLabel = _textPage.GetLabelForPaperElement(paperInputOnUnfocusIndex);
 
             _textPage.FillInput(shadowInput, "Krystian");
             Assert.IsTrue(WaitForText(shadowInfoLabel, "Hi, Krystian!", 5));
@@ -73,9 +73,9 @@ namespace KitchenSink.Tests.Test.SectionString
             // Make sure that paper element is loaded.
             WaitUntil(x => _textPage.PaperInputDynamic.Displayed);
 
-            var shadowRoot = _textPage.GetShadowRootByXpath("//paper-input[2]");
-            var shadowInput = _textPage.GetInputFromShadowRootById(shadowRoot, "input");
-            var shadowInfoLabel = _textPage.GetLabelFromShadowRootById(shadowRoot, "paper-input-label-2");
+            byte paperInputOnTypingIndex = 2;
+            var shadowInput = _textPage.GetInputForPaperElement(paperInputOnTypingIndex);
+            var shadowInfoLabel = _textPage.GetLabelForPaperElement(paperInputOnTypingIndex);
 
             _textPage.FillInput(shadowInput, "K");
             Assert.IsTrue(WaitForText(shadowInfoLabel, "Hi, K!", 5));

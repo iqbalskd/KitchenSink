@@ -47,19 +47,22 @@ namespace KitchenSink.Tests.Ui.SectionString
             inputElement.SendKeys(Keys.Enter);
         }
 
-        public IWebElement GetShadowRootByXpath(string xPath)
+        public IWebElement GetInputForPaperElement(byte elementIndex)
         {
-            return ExpandShadowRoot(Driver.FindElement(By.XPath(xPath)));
+            var shadowRoot = ExpandShadowRoot(Driver.FindElement(By.XPath($"//paper-input[{elementIndex}]")));
+            return shadowRoot.FindElement(By.Id("input"));
         }
 
-        public IWebElement GetInputFromShadowRootById(IWebElement shadowRoot, string id)
+        public IWebElement GetLabelForPaperElement(byte elementIndex)
         {
-            return shadowRoot.FindElement(By.Id(id));
+            var shadowRoot = ExpandShadowRoot(Driver.FindElement(By.XPath($"//paper-input[{elementIndex}]")));
+            return shadowRoot.FindElement(By.Id($"paper-input-label-{elementIndex}"));
         }
 
-        public IWebElement GetLabelFromShadowRootById(IWebElement shadowRoot, string id)
+        public enum PaperInputs
         {
-            return shadowRoot.FindElement(By.Id(id));
+            PaperInputWithChangeTrigger = 1,
+            PaperInputWithKeystrokeTrigger
         }
     }
 }
