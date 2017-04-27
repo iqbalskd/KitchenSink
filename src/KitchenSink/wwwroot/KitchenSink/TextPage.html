@@ -18,17 +18,15 @@
 
         <label class="control-label kitchensink-test-name-label-dynamic">{{model.NameLiveReaction}}</label>
 
-        <input type="text" value="{{model.NameLive$::input}}" placeholder="Name" class="form-control kitchensink-test-name-input-dynamic">
+        <input type="text" value="{{model.NameLive$::input}}" placeholder="Name" class="form-control kitchensink-test-name-input-dynamic"><br />
         
-        <h5>Listening to changes with paper-text</h5>
+        <h5>Listening to changes in custom elements</h5>
 
-        <p>You can also use polymer elements such as paper-text by binding to <code>::change</code>:</p>      
+        <p>You can also use any custom element, such as <a href="https://www.webcomponents.org/element/PolymerElements/paper-input">paper-input</a>. Make sure to observe an event triggered by the custom element after the interaction. For instance, `paper-input` triggers a <code>change</code> event after its value was changed and unfocused:</p> 
 
-        <paper-input label="{{model.NameForPaperReaction}}" value="{{model.NameForPaper$::change}}" class="kitchensink-test-name-paper-input"></paper-input>
-        
-        <h5>Listening to changes with paper-text while typing</h5>
+        <paper-input label="{{model.NameForPaperReaction}}" value="{{model.NameForPaper$::change}}" class="kitchensink-test-name-paper-input"></paper-input><br />
 
-        <p>With paper-text element use <code>::value-changed</code> binding to update the server after each keystroke:</p>       
+        <p>If you need to observe the changes while typing, `paper-text` triggers a use <code>value-changed</code> event after each keystroke. This allows to bind it live with the server:</p>       
 
         <paper-input label="{{model.NameForPaperLiveReaction}}" value="{{model.NameForPaperLive$::value-changed}}" class="kitchensink-test-name-paper-input-dynamic"></paper-input>
     </template>

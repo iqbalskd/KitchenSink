@@ -46,5 +46,20 @@ namespace KitchenSink.Tests.Ui.SectionString
 
             inputElement.SendKeys(Keys.Enter);
         }
+
+        public IWebElement GetShadowRootByXpath(string xPath)
+        {
+            return ExpandShadowRoot(Driver.FindElement(By.XPath(xPath)));
+        }
+
+        public IWebElement GetInputFromShadowRootById(IWebElement shadowRoot, string id)
+        {
+            return shadowRoot.FindElement(By.Id(id));
+        }
+
+        public IWebElement GetLabelFromShadowRootById(IWebElement shadowRoot, string id)
+        {
+            return shadowRoot.FindElement(By.Id(id));
+        }
     }
 }
