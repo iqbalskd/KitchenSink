@@ -56,15 +56,13 @@ namespace KitchenSink.Tests.Test.SectionString
             // Make sure that paper element is loaded.
             WaitUntil(x => _textPage.PaperInput.Displayed);
 
-            byte paperInputOnUnfocusIndex = 1;
-            var shadowInput = _textPage.GetInputForPaperElement(paperInputOnUnfocusIndex);
-            var shadowInfoLabel = _textPage.GetLabelForPaperElement(paperInputOnUnfocusIndex);
+            var shadowInput = _textPage.GetInputForPaperElement(_textPage.PaperInput);
 
             _textPage.FillInput(shadowInput, "Krystian");
-            Assert.IsTrue(WaitForText(shadowInfoLabel, "Hi, Krystian!", 5));
+            Assert.IsTrue(WaitForText(_textPage.PaperInputInfoLabel, "Hi, Krystian!", 5));
             _textPage.ClearInput(shadowInput);
             WaitUntil(x => shadowInput.Text == string.Empty);
-            Assert.AreEqual("What's your name?", shadowInfoLabel.Text);
+            Assert.AreEqual("What's your name?", _textPage.PaperInputInfoLabel.Text);
         }
 
         [Test]
@@ -73,15 +71,13 @@ namespace KitchenSink.Tests.Test.SectionString
             // Make sure that paper element is loaded.
             WaitUntil(x => _textPage.PaperInputDynamic.Displayed);
 
-            byte paperInputOnTypingIndex = 2;
-            var shadowInput = _textPage.GetInputForPaperElement(paperInputOnTypingIndex);
-            var shadowInfoLabel = _textPage.GetLabelForPaperElement(paperInputOnTypingIndex);
+            var shadowInput = _textPage.GetInputForPaperElement(_textPage.PaperInputDynamic);
 
             _textPage.FillInput(shadowInput, "K");
-            Assert.IsTrue(WaitForText(shadowInfoLabel, "Hi, K!", 5));
+            Assert.IsTrue(WaitForText(_textPage.PaperInputDynamicInfoLabel, "Hi, K!", 5));
             _textPage.ClearInput(shadowInput);
             WaitUntil(x => shadowInput.Text == string.Empty);
-            Assert.AreEqual("What's your name?", shadowInfoLabel.Text);
+            Assert.AreEqual("What's your name?", _textPage.PaperInputDynamicInfoLabel.Text);
         }
     }
 }

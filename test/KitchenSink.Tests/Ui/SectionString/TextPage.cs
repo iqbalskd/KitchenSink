@@ -22,11 +22,16 @@ namespace KitchenSink.Tests.Ui.SectionString
         [FindsBy(How = How.CssSelector, Using = ".kitchensink-test-name-label-dynamic")]
         public IWebElement InputInfoLabelDynamic { get; set; }
 
-        [FindsBy(How = How.CssSelector, Using = ".kitchensink-test-name-paper-input")]
-        public IWebElement PaperInput { get; set; }
+        public IWebElement PaperInput => Driver.FindElement(
+            By.XPath("//paper-input[contains(@class, \"kitchensink-test-name-paper-input\")]"));
 
-        [FindsBy(How = How.CssSelector, Using = ".kitchensink-test-name-paper-input-dynamic")]
-        public IWebElement PaperInputDynamic { get; set; }
+        public IWebElement PaperInputDynamic => Driver.FindElement(
+            By.XPath("//paper-input[contains(@class, \"kitchensink-test-name-paper-input-dynamic\")]"));
+
+        public IWebElement PaperInputInfoLabel => ExpandShadowRoot(PaperInput).FindElement(By.Id("paper-input-label-1"));
+
+        public IWebElement PaperInputDynamicInfoLabel => ExpandShadowRoot(PaperInputDynamic).FindElement(By.Id("paper-input-label-2"));
+
 
         public void FillInput(IWebElement inputElement, string input)
         {
@@ -47,22 +52,17 @@ namespace KitchenSink.Tests.Ui.SectionString
             inputElement.SendKeys(Keys.Enter);
         }
 
-        public IWebElement GetInputForPaperElement(byte elementIndex)
+        public IWebElement GetInputForPaperElement(IWebElement paperElement)
         {
-            var shadowRoot = ExpandShadowRoot(Driver.FindElement(By.XPath($"//paper-input[{elementIndex}]")));
+            var shadowRoot = ExpandShadowRoot(paperElement);
             return shadowRoot.FindElement(By.Id("input"));
         }
 
-        public IWebElement GetLabelForPaperElement(byte elementIndex)
+        public IWebElement GetLabelForPaperElement(IWebElement paperElement)
         {
-            var shadowRoot = ExpandShadowRoot(Driver.FindElement(By.XPath($"//paper-input[{elementIndex}]")));
-            return shadowRoot.FindElement(By.Id($"paper-input-label-{elementIndex}"));
-        }
-
-        public enum PaperInputs
-        {
-            PaperInputWithChangeTrigger = 1,
-            PaperInputWithKeystrokeTrigger
+            var shadowRoot = ExpandShadowRoot(paperElement);
+            var content = ExpandShadowRoot(shadowRoot);
+            return content.FindElement(By.XPath("//label"));
         }
     }
 }
