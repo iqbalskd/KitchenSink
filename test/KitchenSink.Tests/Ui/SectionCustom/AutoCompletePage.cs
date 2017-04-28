@@ -12,16 +12,16 @@ namespace KitchenSink.Tests.Ui.SectionCustom
             PageFactory.InitElements(Driver, this);
         }
 
-        [FindsBy(How = How.XPath, Using = "//div[@title = 'products']//input")]
+        [FindsBy(How = How.Id, Using = "kitchensink-autocomplete-products-input")]
         public IWebElement ProductsInput { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//div[@title = 'places']//input")]
+        [FindsBy(How = How.Id, Using = "kitchensink-autocomplete-places-input")]
         public IWebElement PlaceInput { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//div[@title = 'products']//ul//li")]
+        [FindsBy(How = How.ClassName, Using = "kitchensink-test-autocomplete-products-item")]
         public IList<IWebElement> ProductsAutoComplete { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//div[@title = 'places']//ul//li")]
+        [FindsBy(How = How.ClassName, Using = "kitchensink-test-autocomplete-places-item")]
         public IList<IWebElement> PlacesAutoComplete { get; set; }
 
         [FindsBy(How = How.Id, Using = "kitchensink-autocomplete-capital")]
@@ -32,7 +32,7 @@ namespace KitchenSink.Tests.Ui.SectionCustom
 
         public void ChoosePlace(string place)
         {
-           ClickOn(PlacesAutoComplete.First(x => x.Text == place));
+            ClickOn(PlacesAutoComplete.First(x => x.Text == place));
         }
 
         public void ChooseProducts(string product)
