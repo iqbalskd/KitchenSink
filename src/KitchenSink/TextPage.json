@@ -3,9 +3,11 @@
 
   "Name$": "",
   "NameLive$": "",
+  "NameForPaper$": "",
+  "NameForPaperLive$": "",
 
   "NameReaction": "",
-  "$NameReaction": { "Bind": "CalculatedNameReaction" },
   "NameLiveReaction": "",
-  "$NameLiveReaction": { "Bind": "CalculatedNameLiveReaction" }
+  "NameForPaperReaction": "",
+  "NameForPaperLiveReaction": ""
 }
