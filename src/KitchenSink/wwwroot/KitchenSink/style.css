@@ -206,6 +206,13 @@
     padding: 0px;
 }
 
+.kitchensink-pagination {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .error-label {
     color: red;
     font-size: 8pt;
