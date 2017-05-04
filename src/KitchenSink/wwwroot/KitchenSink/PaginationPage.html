@@ -9,18 +9,18 @@
         }
     </style>
     <template is="dom-bind">
-        <juicy-select class="kitchensink-juicyselect dropdown kitchensink-test-juicy-select"
+        <juicy-select slot="kitchensink/pagination-amount-per-page-select" class="kitchensink-juicyselect dropdown kitchensink-test-juicy-select"
                       value="{{model.EntriesPerPage$::change}}"
                       options="{{model.PageEntries}}"
                       text-property="Amount"
                       value-property="Amount">
         </juicy-select>
-        <ul>
+        <ul slot="kitchensink/pagination-entries">
             <template is="dom-repeat" items="{{model.Library}}" as="book">
                 <li class="kitchensink-pagination-entry kitchensink-test-pagination-result-li">{{book.Title}} - {{book.Author}}</li>
             </template>
         </ul>
-        <nav>
+        <nav slot="kitchensink/pagination-navigation">
             <ul class="pagination kitchensink-test-pagination">
                 <li>
                     <span id="kitchensink-pagination-first" tabindex="0" value="{{model.FirstPageTrigger$::click}}" on-click="onFirstPageClick" href="">&lt;&lt;</span>
@@ -41,7 +41,7 @@
                 </li>
             </ul>
         </nav>
-        <p class="kitchensink-test-pagination-label">page {{model.CurrentPage}} of {{model.TotalPages}}</p>
+        <p slot="kitchensink/pagination-page-number" class="kitchensink-test-pagination-label">page {{model.CurrentPage}} of {{model.TotalPages}}</p>
     </template>
     <script>
         (function () {
