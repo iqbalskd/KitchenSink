@@ -6,7 +6,7 @@
 
         <p slot="kitchensink/progressBar-read-more"> Read more about <code>Scheduling.ScheduleTask</code> and <code>Session.ScheduleTask</code> on starcounter.io - <a href="http://starcounter.io/guides/transactions/running-background-jobs/">Running background jobs</a>. </p>
        
-         <div slot="kitchensink/progressBar-progress-bar" class="kitchensink-progress-bar__container">
+        <div slot="kitchensink/progressBar-progress-bar" class="kitchensink-progress-bar__container">
             <span class="kitchensink-progress-bar__percentages"> {{model.Progress}}% </span>
             <div class="kitchensink-progress-bar__fill" style="width:{{model.Progress}}%"></div>
         </div>
@@ -16,5 +16,7 @@
                 <span>{{model.FileDownloadText}}</span>
             </template>
         </p>
+    </template>
+    <template is="declarative-shadow-dom">
     </template>
 </template>
