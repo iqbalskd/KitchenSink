@@ -2,8 +2,10 @@
 
 <template>
   <template is="dom-bind">
-    <p class="lead">JSON's primitive value type <code>boolean</code> can be mapped to a toggle button element.</p>
-    <div class="kitchensink-test-tooglebutton-label">{{model.AcceptTermsAndConditionsReaction}}</div>
-    <paper-toggle-button class="kitchensink-test-tooglebutton" checked="{{model.AcceptTermsAndConditions$::change}}"></paper-toggle-button>
+      <p slot="kitchensink/toggleButton-description" class="lead">JSON's primitive value type <code>boolean</code> can be mapped to a toggle button element.</p>
+
+      <div slot="kitchensink/toggleButton-label" class="kitchensink-test-tooglebutton-label">{{model.AcceptTermsAndConditionsReaction}}</div>
+
+    <paper-toggle-button slot="kitchensink/toggleButton-toggle-button" class="kitchensink-test-tooglebutton" checked="{{model.AcceptTermsAndConditions$::change}}"></paper-toggle-button>
   </template>
 </template>
