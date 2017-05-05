@@ -15,7 +15,8 @@
   "EntriesPerPage$": 5,
   "PageEntries": [
     {
-      "Amount": 0
+      "Amount": 0,
+      "Text":  "" 
     }
   ],
 
