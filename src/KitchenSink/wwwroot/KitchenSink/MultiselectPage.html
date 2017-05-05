@@ -10,12 +10,6 @@
                 <select class="form-control" multiple></select>
             </juicy-select>
         </p>
-        <p slot="kitchensink/multiselect-favorite-country-select">
-            <span>Select your favorite country:</span>
-            <juicy-select class="kitchensink-juicyselect" caption-text="No favorite country" value="{{model.FavoriteCountry$}}" options="{{model.Countries}}" selected-property="Selected$" text-property="Name" value-property="Name">
-                <select class="form-control"></select>
-            </juicy-select>
-        </p>
         <p slot="kitchensink/multiselect-visited-label">
             You have visited:
             <template is="dom-repeat" items="{{model.Countries}}">
@@ -24,6 +18,11 @@
                 </template>
             </template>
         </p>
+            <span slot="kitchensink/multiselect-favorite-country-select-label">Select your favorite country:</span>
+            <juicy-select slot="kitchensink/multiselect-favorite-country-select" class="kitchensink-juicyselect" caption-text="No favorite country" value="{{model.FavoriteCountry$}}" options="{{model.Countries}}" selected-property="Selected$" text-property="Name" value-property="Name">
+                <select class="form-control"></select>
+            </juicy-select>
+
         <p slot="kitchensink/multiselect-favorite-label">
             Your favorite country is: <span>{{model.FavoriteCountry$}}</span>
         </p>

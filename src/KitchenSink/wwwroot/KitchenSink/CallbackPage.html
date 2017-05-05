@@ -8,12 +8,12 @@
 
         <h4 slot="kitchensink/callback-responsive-label">Responsive save button</h4>
         <button slot="kitchensink/callback-responsive-button" type="button" class="btn btn-sm btn-default" value="{{model.SaveTrigger$::click}}" disabled="{{model.SaveTrigger$}}" onmouseup="++this.value;">Save changes (1s)</button>
-            <button slot="kitchensink/callback-responsive-button-spin" type="button" class="btn btn-sm btn-default" value="{{model.SaveAndSpinTrigger$::click}}" disabled="{{model.SaveAndSpinTrigger$}}" onmouseup="++this.value;">
-                <template is="dom-if" if="{{model.SaveAndSpinTrigger$}}">
-                    <i class="kitchen-sink-spinner glyphicon glyphicon-refresh"></i>
-                </template>
-                Save changes with loading icon (1s)
-            </button>
+        <button slot="kitchensink/callback-responsive-button-spin" type="button" class="btn btn-sm btn-default" value="{{model.SaveAndSpinTrigger$::click}}" disabled="{{model.SaveAndSpinTrigger$}}" onmouseup="++this.value;">
+            <template is="dom-if" if="{{model.SaveAndSpinTrigger$}}">
+                <i class="kitchen-sink-spinner glyphicon glyphicon-refresh"></i>
+            </template>
+            Save changes with loading icon (1s)
+        </button>
 
         <h4 slot="kitchensink/callback-save-server-heading">Save button with server side message</h4>
         <div slot="kitchensink/callback-save-server-message">
@@ -27,7 +27,7 @@
         <button slot="kitchensink/callback-save-server-button" type="button" class="btn btn-sm btn-default" value="{{model.SaveAndMessageTrigger$::click}}" disabled="{{model.SaveAndMessageTrigger$}}" onmouseup="++this.value;">Randomly save or fail changes (1s)</button>
         <h4 slot="kitchensink/callback-save-client-heading">Save button with client side message</h4>
         <small slot="kitchensink/callback-save-client-note">
-            <b>Note:</b> client side <code>template.observers</code> work only in browsers with native <code>&lt;template&gt;</code> tag implementation. 
+            <b>Note:</b> client side <code>template.observers</code> work only in browsers with native <code>&lt;template&gt;</code> tag implementation.
         </small>
         <div slot="kitchensink/callback-save-client-message">
             <template is="dom-if" if="{{local.InfoMessage$}}">
@@ -40,9 +40,9 @@
                 <p class="alert alert-danger">{{local.ErrorMessage$}}</p>
             </template>
         </div>
-       
-            <button slot="kitchensink/callback-save-client-button" type="button" class="btn btn-sm btn-default" value="{{model.SaveAndClientMessageTrigger$::click}}" disabled="{{model.SaveAndClientMessageTrigger$}}" onmouseup="++this.value;">Randomly save or fail changes (1s)</button>
-        
+
+        <button slot="kitchensink/callback-save-client-button" type="button" class="btn btn-sm btn-default" value="{{model.SaveAndClientMessageTrigger$::click}}" disabled="{{model.SaveAndClientMessageTrigger$}}" onmouseup="++this.value;">Randomly save or fail changes (1s)</button>
+
         <h4 slot="kitchensink/callback-table-heading">Same things inside table</h4>
         <p slot="kitchensink/callback-table-note">
             <small><b>Note:</b> <code>dom-repeat</code> inside <code>table</code> <a href="https://github.com/Polymer/polymer/issues/1567" target="_blank">does not work in Internet Explorer</a>.</small>
@@ -195,10 +195,10 @@
         <slot name="kitchensink/callback-heading"></slot>
         <slot name="kitchensink/callback-description"></slot>
         <slot name="kitchensink/callback-responsive-label"></slot>
-        <p>
+        <div>
             <slot name="kitchensink/callback-responsive-button"></slot>
             <slot name="kitchensink/callback-responsive-button-spin"></slot>
-        </p>
+        </div>
         <slot name="kitchensink/callback-save-server-heading"></slot>
         <slot name="kitchensink/callback-save-server-message"></slot>
         <slot name="kitchensink/callback-save-server-button"></slot>
