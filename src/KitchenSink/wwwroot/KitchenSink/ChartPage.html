@@ -27,15 +27,15 @@
                 }
             },
 
-            _temperaturesChanged: function() {
-                this.updateChartData();              
-            },
-
-            _labelsChanged: function() {
+            _temperaturesChanged: function () {
                 this.updateChartData();
             },
 
-            updateChartData: function() {
+            _labelsChanged: function () {
+                this.updateChartData();
+            },
+
+            updateChartData: function () {
                 this.chartData = {
                     labels: this.labels,
                     datasets: [
