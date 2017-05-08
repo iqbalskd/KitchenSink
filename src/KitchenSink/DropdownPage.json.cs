@@ -39,7 +39,7 @@ namespace KitchenSink
             this.SelectedPet = "dogs";
 
             this.Products.Data = Db.SQL("SELECT p FROM KitchenSink.SoftwareProduct p ORDER BY p.Name");
-            this.SelectedProduct.Data = Db.SQL("SELECT p FROM KitchenSink.SoftwareProduct p ORDER BY p.Name DESC").First;
+            this.SelectedProduct.Data = Db.SQL("SELECT p FROM KitchenSink.SoftwareProduct p ORDER BY p.Name").First;
         }
 
         public string CalculatedPetReaction

@@ -25,7 +25,6 @@
         <br />
 
         <select class="kitchensink-select kitchensink-test-product-select" value="{{model.SelectedProductKey$::change}}">
-            <option></option>
             <template is="dom-repeat" items="{{model.Products}}">
                 <option value="{{item.Key}}">{{item.Name}}</option>
             </template>
@@ -34,8 +33,7 @@
         <small>You can use <code>juicy-select</code> to workaround issue with value binding.</small>
 
         <br />
-
-        <juicy-select class="kitchensink-juicyselect kitchensink-test-juicy-select" caption-text=" " value="{{model.SelectedProductKey$}}" options="{{model.Products}}" text-property="Name" value-property="Key"></juicy-select>
+        <juicy-select slot="kitchensink/dropdown-objects-juicy-select" class="kitchensink-juicyselect kitchensink-test-juicy-select" caption-text="" value="{{model.SelectedProductKey$}}" options="{{model.Products}}" text-property="Name" value-property="Key"></juicy-select>
 
         <template is="dom-if" if="{{model.SelectedProduct.Name}}">
             <p class="kitchensink-test-juicy-select-label">You have selected: <strong>{{model.SelectedProduct.Name}}</strong></p>
