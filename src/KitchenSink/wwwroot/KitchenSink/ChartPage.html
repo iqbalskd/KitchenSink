@@ -3,29 +3,56 @@
 <template>
     <template is="dom-bind">
         <p slot="kitchensink/chartpage-description" class="lead">JSON's <code>array</code> can be used to create a chart with a helper custom element, e.g. <a href="http://robdodson.github.io/chart-elements">chart-elements</a>.</p>
+        
+        <kitchensink-chart slot="kitchensink/chartpage-chart" temperatures="{{model.Temperatures}}" labels="{{model.Labels}}"></kitchensink-chart>
+    </template>
+</template>
 
-        <chart-line slot="kitchensink/chartpage-chart" id="chrt"></chart-line>
+<dom-module id="kitchensink-chart">
+    <template>
+        <h1>hello</h1>
+        <chart-line id="chrt" data="[[chartData]]"></chart-line>
     </template>
     <script>
-        var template = document.currentScript.previousElementSibling;
-        template.addEventListener('dom-change', function () {
-            var chart = document.getElementById("chrt");
+        Polymer({
+            is: "kitchensink-chart",
+            properties: {
+                temperatures: {
+                    type: Array,
+                    observer: '_temperaturesChanged'
+                },
 
-            chart.data = {
-                labels: template.model.Labels,
-                datasets: [
-                    {
-                        label: "My First dataset",
-                        fillColor: "rgba(220,220,220,0.2)",
-                        strokeColor: "rgba(220,220,220,1)",
-                        pointColor: "rgba(220,220,220,1)",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(220,220,220,1)",
-                        data: template.model.Temperatures
-                    }
-                ]
-            };
+                labels: {
+                    type: Array,
+                    observer: '_labelsChanged'
+                }
+            },
+
+            _temperaturesChanged: function() {
+                this.updateChartData();              
+            },
+
+            _labelsChanged: function() {
+                this.updateChartData();
+            },
+
+            updateChartData: function() {
+                this.chartData = {
+                    labels: this.labels,
+                    datasets: [
+                        {
+                            label: "My First dataset",
+                            fillColor: "rgba(220,220,220,0.2)",
+                            strokeColor: "rgba(220,220,220,1)",
+                            pointColor: "rgba(220,220,220,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(220,220,220,1)",
+                            data: this.temperatures
+                        }
+                    ]
+                };
+            }
         });
     </script>
-</template>
+</dom-module>
