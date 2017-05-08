@@ -2,43 +2,64 @@
 
 <template>
     <template is="dom-bind">
-        <h1>Primitive array</h1>
+        <h1 slot="kitchensink/dropdown-header">Primitive array</h1>
 
-        <p class="lead">A combination of JSON's primitive value types <code>array</code>, <code>object</code> and <code>number</code> can be mapped to an HTML <code>select</code> element.</p>
+        <p slot="kitchensink/dropdown-pets-description" class="lead">A combination of JSON's primitive value types <code>array</code>, <code>object</code> and <code>number</code> can be mapped to an HTML <code>select</code> element.</p>
 
-        <select class="kitchensink-select kitchensink-test-pets-select" value="{{model.SelectedPet$::change}}">
+        <select slot="kitchensink/dropdown-pets-dropdown" class="kitchensink-select kitchensink-test-pets-select" value="{{model.SelectedPet$::change}}">
             <template is="dom-repeat" items="{{model.Pets}}">
                 <option value="{{item.Label}}">{{item.Label}}</option>
             </template>
         </select>
 
-        <div class="kitchensink-test-pet-like-label">{{model.PetReaction}}</div>
+        <div slot="kitchensink/dropdown-pets-reaction" class="kitchensink-test-pet-like-label">{{model.PetReaction}}</div>
 
-        <br />
+        <p slot="kitchensink/dropdown-objects-header" class="lead">Objects array</p>
 
-        <p class="lead">Objects array</p>
+        <p slot="kitchensink/dropdown-objects-description" class="lead">A combination of object <code>array</code> and bound JSON string property can be mapped to an HTML <code>select</code> element.</p>
 
-        <p class="lead">A combination of object <code>array</code> and bound JSON string property can be mapped to an HTML <code>select</code> element.</p>
+        <small slot="kitchensink/dropdown-objects-value-description">Polymer applies <code>value</code> binding before options generated. That is why there is no value.</small>
 
-        <small>Polymer applies <code>value</code> binding before options generated. That is why there is no value.</small>
-
-        <br />
-
-        <select class="kitchensink-select kitchensink-test-product-select" value="{{model.SelectedProductKey$::change}}">
+        <select slot="kitchensink/dropdown-objects-select" class="kitchensink-select kitchensink-test-product-select" value="{{model.SelectedProductKey$::change}}">
             <option></option>
             <template is="dom-repeat" items="{{model.Products}}">
                 <option value="{{item.Key}}">{{item.Name}}</option>
             </template>
         </select>
 
-        <small>You can use <code>juicy-select</code> to workaround issue with value binding.</small>
+        <small slot="kitchensink/dropdown-objects-juicy-select-description">You can use <code>juicy-select</code> to workaround issue with value binding.</small>
 
-        <br />
+        <juicy-select slot="kitchensink/dropdown-objects-juicy-select" class="kitchensink-juicyselect kitchensink-test-juicy-select" caption-text=" " value="{{model.SelectedProductKey$}}" options="{{model.Products}}" text-property="Name" value-property="Key"></juicy-select>
+        
+        <div slot="kitchensink/dropdown-objects-select-label">
+            <template is="dom-if" if="{{model.SelectedProduct.Name}}">
+                <p class="kitchensink-test-juicy-select-label">You have selected: <strong>{{model.SelectedProduct.Name}}</strong></p>
+            </template>
+        </div>
+    </template>
+    <template is="declarative-shadow-dom">
+        <style>
+            .kitchensink-dropdown-margin {
+                margin-bottom: 20px;
+            }
+        </style>
 
-        <juicy-select class="kitchensink-juicyselect kitchensink-test-juicy-select" caption-text=" " value="{{model.SelectedProductKey$}}" options="{{model.Products}}" text-property="Name" value-property="Key"></juicy-select>
-
-        <template is="dom-if" if="{{model.SelectedProduct.Name}}">
-            <p class="kitchensink-test-juicy-select-label">You have selected: <strong>{{model.SelectedProduct.Name}}</strong></p>
-        </template>
+        <slot name="kitchensink/dropdown-header"></slot>
+        <slot name="kitchensink/dropdown-pets-description"></slot>
+        <slot name="kitchensink/dropdown-pets-dropdown"></slot>
+        <div class="kitchensink-dropdown-margin">
+            <slot name="kitchensink/dropdown-pets-reaction"></slot>
+        </div>
+        <slot name="kitchensink/dropdown-objects-header"></slot>
+        <slot name="kitchensink/dropdown-objects-description"></slot>
+        <slot name="kitchensink/dropdown-objects-value-description"></slot>
+        <div class="kitchensink-dropdown-margin">
+            <slot name="kitchensink/dropdown-objects-select"></slot>
+        </div>
+        <slot name="kitchensink/dropdown-objects-juicy-select-description" class="kitchensink-dropdown-margin"></slot>
+        <div class="kitchensink-dropdown-margin">
+            <slot name="kitchensink/dropdown-objects-juicy-select"></slot>
+        </div>
+        <slot name="kitchensink/dropdown-objects-select-label"></slot>
     </template>
 </template>

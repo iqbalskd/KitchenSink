@@ -36,11 +36,6 @@
     border-bottom: lightgray 1px solid;
 }
 
-.kitchensink-nested-child {
-    padding: 10px;
-    border: 1px solid #eeeeee;
-}
-
 .kitchensink-x-breadcrumb {
     margin-bottom: 20px;
 }

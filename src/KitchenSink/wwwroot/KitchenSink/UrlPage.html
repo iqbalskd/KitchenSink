@@ -1,9 +1,15 @@
 ﻿<template>
-  <template is="dom-bind">
-    <p class="lead">JSON's primitive value type <code>string</code> can be mapped directly to HTML <code>a href=""</code>.</p>
+    <template is="dom-bind">
+        <p slot="kitchensink/url-description" class="lead">JSON's primitive value type <code>string</code> can be mapped directly to HTML <code>a href=""</code>.</p>
 
-    <p>
-      <a href="{{model.Url}}">{{model.Label}}</a>
-    </p>
-  </template>
+        <p>
+            <a slot="kitchensink/url-link" href="{{model.Url}}">{{model.Label}}</a>
+        </p>
+    </template>
+    <template is="declarative-shadow-dom">
+        <slot name="kitchensink/url-description"></slot>
+        <p>
+            <slot name="kitchensink/url-link"></slot>
+        </p>
+    </template>
 </template>
