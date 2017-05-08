@@ -18,17 +18,14 @@
 
         <p slot="kitchensink/dropdown-objects-description" class="lead">A combination of object <code>array</code> and bound JSON string property can be mapped to an HTML <code>select</code> element.</p>
 
-        <small slot="kitchensink/dropdown-objects-value-description">Polymer applies <code>value</code> binding before options generated. That is why there is no value.</small>
-
         <select slot="kitchensink/dropdown-objects-select" class="kitchensink-select kitchensink-test-product-select" value="{{model.SelectedProductKey$::change}}">
             <template is="dom-repeat" items="{{model.Products}}">
                 <option value="{{item.Key}}">{{item.Name}}</option>
             </template>
         </select>
 
-        <small slot="kitchensink/dropdown-objects-juicy-select-description">You can use <code>juicy-select</code> to workaround issue with value binding.</small>
+        <small slot="kitchensink/dropdown-objects-juicy-select-description">You can also use custom element like <code>juicy-select</code>.</small>
 
-        <juicy-select slot="kitchensink/dropdown-objects-juicy-select" class="kitchensink-juicyselect kitchensink-test-juicy-select" caption-text=" " value="{{model.SelectedProductKey$}}" options="{{model.Products}}" text-property="Name" value-property="Key"></juicy-select>
         <juicy-select slot="kitchensink/dropdown-objects-juicy-select" class="kitchensink-juicyselect kitchensink-test-juicy-select" caption-text="" value="{{model.SelectedProductKey$}}" options="{{model.Products}}" text-property="Name" value-property="Key"></juicy-select>
         
         <div slot="kitchensink/dropdown-objects-select-label">
