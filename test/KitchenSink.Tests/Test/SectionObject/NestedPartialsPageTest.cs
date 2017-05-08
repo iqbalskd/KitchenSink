@@ -2,6 +2,7 @@
 using KitchenSink.Tests.Ui.SectionObject;
 using KitchenSink.Tests.Utilities;
 using NUnit.Framework;
+using OpenQA.Selenium;
 
 namespace KitchenSink.Tests.Test.SectionObject
 {
@@ -28,13 +29,14 @@ namespace KitchenSink.Tests.Test.SectionObject
         [Test]
         public void NestedPartialsPage_AddNewChild()
         {
-            WaitUntil(x => _nestedPartialsPage.ChildDivs.Count > 0);
-            var divsBefore = _nestedPartialsPage.ChildDivs.Count;
-            _nestedPartialsPage.AddChild();
-            WaitUntil(x => _nestedPartialsPage.ChildDivs.Count > divsBefore);
-            var divsAfter = _nestedPartialsPage.ChildDivs.Count;
+            WaitUntil(x => _nestedPartialsPage.ChildCompositions.Count > 0);
 
-            Assert.Greater(divsAfter, divsBefore);
+            var compositionsBefore = _nestedPartialsPage.ChildCompositions.Count;
+            _nestedPartialsPage.AddChild();
+            WaitUntil(x => _nestedPartialsPage.ChildCompositions.Count > compositionsBefore);
+            var compositionsAfter = _nestedPartialsPage.ChildCompositions.Count;
+
+            Assert.Greater(compositionsAfter, compositionsBefore);
         }
     }
 }
