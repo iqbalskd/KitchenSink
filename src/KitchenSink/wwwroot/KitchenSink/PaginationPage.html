@@ -9,12 +9,12 @@
         }
     </style>
     <template is="dom-bind">
-        <ul>
+        <ul slot="kitchensink/pagination-entries">
             <template is="dom-repeat" items="{{model.Library}}" as="book">
                 <li class="kitchensink-pagination-entry kitchensink-test-pagination-result-li">{{book.Title}} - {{book.Author}}</li>
             </template>
         </ul>
-        <nav>
+        <nav slot="kitchensink/pagination-navigation">
             <ul class="pagination kitchensink-test-pagination">
                 <li>
                     <span id="kitchensink-pagination-first" tabindex="0" value="{{model.FirstPageTrigger$::click}}" on-click="onFirstPageClick" href="">First</span>
@@ -35,15 +35,13 @@
                 </li>
             </ul>
         </nav>
-        <div class="kitchensink-pagination">        
-            <p class="kitchensink-test-pagination-label">page {{model.CurrentPage}} of {{model.TotalPages}}</p>
-            <juicy-select class="kitchensink-juicyselect dropdown kitchensink-test-juicy-select"
-                          value="{{model.EntriesPerPage$::change}}"
-                          options="{{model.PageEntries}}"
-                          text-property="Text"
-                          value-property="Amount">
-            </juicy-select>
-        </div>
+        <p slot="kitchensink/pagination-page-number" class="kitchensink-test-pagination-label">page {{model.CurrentPage}} of {{model.TotalPages}}</p>
+        <juicy-select slot="kitchensink/pagination-juicy-select-items-per-page" class="kitchensink-juicyselect dropdown kitchensink-test-juicy-select"
+                      value="{{model.EntriesPerPage$::change}}"
+                      options="{{model.PageEntries}}"
+                      text-property="Text"
+                      value-property="Amount">
+        </juicy-select>
     </template>
     <script>
         (function () {

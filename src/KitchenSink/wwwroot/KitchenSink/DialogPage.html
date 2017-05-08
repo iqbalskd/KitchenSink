@@ -2,13 +2,13 @@
 
 <template>
     <template is="dom-bind">
-        <p class="lead">Modal dialog box example</p>
-        <p>
-            <button class="btn btn-sm btn-default" value="{{model.OpenTrigger$::click}}" onmousedown="++this.value">Open dialog box</button>
-        </p>
-        <p class$="{{model.MessageCss}}">{{model.Message}}</p>
+        <p slot="kitchensink/dialog-description" class="lead">Modal dialog box example</p>
 
-        <paper-dialog id="actions" opened="[[model.Opened]]" modal="true">
+        <button slot="kitchensink/dialog-button" class="btn btn-sm btn-default" value="{{model.OpenTrigger$::click}}" onmousedown="++this.value">Open dialog box</button>
+
+        <p slot="kitchensink/dialog-message" class$="{{model.MessageCss}}">{{model.Message}}</p>
+
+        <paper-dialog slot="kitchensink/dialog-paper-dialog" id="actions" opened="[[model.Opened]]" modal="true">
             <div>
                 <h2>Confirmation</h2>
                 <p>
@@ -21,5 +21,13 @@
                 <button class="btn btn-sm btn-primary" dialog-confirm autofocus value="{{model.ConfirmTrigger$::click}}" onmousedown="++this.value;">Accept</button>
             </div>
         </paper-dialog>
+    </template>
+    <template is="declarative-shadow-dom">
+        <slot name="kitchensink/dialog-description"></slot>
+        <p>
+            <slot name="kitchensink/dialog-button"></slot>
+        </p>
+        <slot name="kitchensink/dialog-message"></slot>
+        <slot name="kitchensink/dialog-paper-dialog"></slot>
     </template>
 </template>
