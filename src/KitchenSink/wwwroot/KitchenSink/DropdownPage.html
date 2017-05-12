@@ -17,14 +17,16 @@
         <p slot="kitchensink/dropdown-objects-header" class="lead">Objects array</p>
 
         <p slot="kitchensink/dropdown-objects-description" class="lead">A combination of object <code>array</code> and bound JSON string property can be mapped to an HTML <code>select</code> element.</p>
-
+   
+        <small slot="kitchensink/dropdown-objects-select-description">The HTML <code>select</code> element can not contain a value which does not exists in it's options collection, because the <code>value</code> binding is executed before options are rendered by the dom-repeat.  This leads to the loss of the initial value.</small>
+        
         <select slot="kitchensink/dropdown-objects-select" class="kitchensink-select kitchensink-test-product-select" value="{{model.SelectedProductKey$::change}}">
             <template is="dom-repeat" items="{{model.Products}}">
                 <option value="{{item.Key}}">{{item.Name}}</option>
             </template>
         </select>
 
-        <small slot="kitchensink/dropdown-objects-juicy-select-description">You can also use custom element like <code>juicy-select</code>.</small>
+        <small slot="kitchensink/dropdown-objects-juicy-select-description">You can use custom element like <code>juicy-select</code> to workaround this issue.</small>
 
         <juicy-select slot="kitchensink/dropdown-objects-juicy-select" class="kitchensink-juicyselect kitchensink-test-juicy-select" caption-text="" value="{{model.SelectedProductKey$}}" options="{{model.Products}}" text-property="Name" value-property="Key"></juicy-select>
         
@@ -50,6 +52,7 @@
         <slot name="kitchensink/dropdown-objects-header"></slot>
         <slot name="kitchensink/dropdown-objects-description"></slot>
         <slot name="kitchensink/dropdown-objects-value-description"></slot>
+        <slot name="kitchensink/dropdown-objects-select-description" class="kitchensink-dropdown-margin"></slot>
         <div class="kitchensink-dropdown-margin">
             <slot name="kitchensink/dropdown-objects-select"></slot>
         </div>
