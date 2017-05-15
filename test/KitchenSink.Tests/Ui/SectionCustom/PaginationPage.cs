@@ -15,7 +15,7 @@ namespace KitchenSink.Tests.Ui.SectionCustom
         [FindsBy(How = How.CssSelector, Using = ".kitchensink-test-juicy-select select")]
         public IWebElement DropDown { get; set; }
 
-        [FindsBy(How = How.CssSelector, Using = ".kitchensink-test-pagination-result-li")]
+        [FindsBy(How = How.CssSelector, Using = ".kitchensink-test-pagination-result-table-row")]
         public IList<IWebElement> PaginationResult { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = ".kitchensink-test-pagination li")]
