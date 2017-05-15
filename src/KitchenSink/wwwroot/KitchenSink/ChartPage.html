@@ -18,21 +18,13 @@
             properties: {
                 temperatures: {
                     type: Array,
-                    observer: '_temperaturesChanged'
+                    observer: 'updateChartData'
                 },
 
                 labels: {
                     type: Array,
-                    observer: '_labelsChanged'
+                    observer: 'updateChartData'
                 }
-            },
-
-            _temperaturesChanged: function () {
-                this.updateChartData();
-            },
-
-            _labelsChanged: function () {
-                this.updateChartData();
             },
 
             updateChartData: function () {
