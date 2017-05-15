@@ -2,14 +2,17 @@
 <link rel="import" href="/sys/juicy-select/juicy-select.html">
 
 <template>
-    <style>
-        juicy-select select {
-            width: 250px;
-            margin-bottom: 30px;
-        }
-    </style>
     <template is="dom-bind">
         <p slot="kitchensink/html-header" class="lead">Pagination can be implemented in the code-behind by using <code>FETCH</code> to determine how many entries there should be on every page and <code>OFFSET</code> to retrieve the right entries</p>
+        <div class="kitchensink-pagination-page-controls">
+            <juicy-select slot="kitchensink/pagination-juicy-select-items-per-page" class="kitchensink-juicyselect dropdown kitchensink-test-juicy-select"
+                          value="{{model.EntriesPerPage$::change}}"
+                          options="{{model.PageEntries}}"
+                          text-property="Text"
+                          value-property="Amount">
+            </juicy-select>
+            <p slot="kitchensink/pagination-page-number" class="kitchensink-test-pagination-label">page {{model.CurrentPage}} of {{model.TotalPages}}</p>
+        </div>
         <ul slot="kitchensink/pagination-entries">
             <template is="dom-repeat" items="{{model.Library}}" as="book">
                 <li class="kitchensink-pagination-entry kitchensink-test-pagination-result-li">{{book.Title}} - {{book.Author}}</li>
@@ -36,13 +39,6 @@
                 </li>
             </ul>
         </nav>
-        <p slot="kitchensink/pagination-page-number" class="kitchensink-test-pagination-label">page {{model.CurrentPage}} of {{model.TotalPages}}</p>
-        <juicy-select slot="kitchensink/pagination-juicy-select-items-per-page" class="kitchensink-juicyselect dropdown kitchensink-test-juicy-select"
-                      value="{{model.EntriesPerPage$::change}}"
-                      options="{{model.PageEntries}}"
-                      text-property="Text"
-                      value-property="Amount">
-        </juicy-select>
     </template>
     <script>
         (function () {

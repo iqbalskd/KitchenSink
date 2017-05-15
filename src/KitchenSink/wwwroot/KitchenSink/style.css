@@ -212,3 +212,11 @@
     color: red;
     font-size: 8pt;
 }
+
+.kitchensink-pagination-page-controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 350px;
+    margin-bottom: 15px;
+}
