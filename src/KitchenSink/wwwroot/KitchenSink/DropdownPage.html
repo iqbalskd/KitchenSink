@@ -18,7 +18,7 @@
 
         <p slot="kitchensink/dropdown-objects-description" class="lead">A combination of object <code>array</code> and bound JSON string property can be mapped to an HTML <code>select</code> element.</p>
    
-        <small slot="kitchensink/dropdown-objects-select-description">The HTML <code>select</code> element can not contain a value which does not exists in it's options collection, because the <code>value</code> binding is executed before options are rendered by the dom-repeat.  This leads to the loss of the initial value.</small>
+        <small slot="kitchensink/dropdown-objects-select-description">Polymer 1.x executes the <code>value</code> binding in the <code>select</code> element before evaluating <code>dom-repeat</code>. This makes it impossible to preselect an <code>option</code> element, which is illustrated below ("Starcounter Database" should be preselected).</small>
         
         <select slot="kitchensink/dropdown-objects-select" class="kitchensink-select kitchensink-test-product-select" value="{{model.SelectedProductKey$::change}}">
             <template is="dom-repeat" items="{{model.Products}}">
@@ -26,7 +26,7 @@
             </template>
         </select>
 
-        <small slot="kitchensink/dropdown-objects-juicy-select-description">You can use custom element <code>juicy-select</code> to workaround this issue.</small>
+        <small slot="kitchensink/dropdown-objects-juicy-select-description">You can use custom element <code>juicy-select</code> to workaround the above issue.</small>
 
         <juicy-select slot="kitchensink/dropdown-objects-juicy-select" class="kitchensink-juicyselect kitchensink-test-juicy-select" caption-text="" value="{{model.SelectedProductKey$}}" options="{{model.Products}}" text-property="Name" value-property="Key"></juicy-select>
         
