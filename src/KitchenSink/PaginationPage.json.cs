@@ -45,6 +45,7 @@ namespace KitchenSink
             {
                 CurrentOffset = CurrentOffset + EntriesPerPage;
             }
+
             GetNewPage();
         }
 
@@ -67,6 +68,7 @@ namespace KitchenSink
             {
                 CurrentOffset = TotalEntries - remainder;
             }
+
             GetNewPage();
         }
 
@@ -132,6 +134,7 @@ namespace KitchenSink
                     }
                 }
             }
+
             DisableLast = CurrentPage == TotalPages;
             DisableFirst = CurrentPage == 1;
         }
