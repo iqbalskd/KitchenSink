@@ -9,6 +9,7 @@
         }
     </style>
     <template is="dom-bind">
+        <p slot="kitchensink/html-header" class="lead">Pagination can be implemented in the code-behind by using <code>FETCH</code> to determine how many entries there should be on every page and <code>OFFSET</code> to retrieve the right entries</p>
         <ul slot="kitchensink/pagination-entries">
             <template is="dom-repeat" items="{{model.Library}}" as="book">
                 <li class="kitchensink-pagination-entry kitchensink-test-pagination-result-li">{{book.Title}} - {{book.Author}}</li>
