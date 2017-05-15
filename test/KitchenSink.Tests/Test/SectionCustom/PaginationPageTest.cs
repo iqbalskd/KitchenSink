@@ -54,15 +54,15 @@ namespace KitchenSink.Tests.Test.SectionCustom
             Assert.IsTrue(WaitForText(_paginationPage.PaginationInfoLabel, "page 1 of 7", 5));
             Assert.AreEqual(15, _paginationPage.PaginationResult.Count);
             _paginationPage.GoToPage("Last");
-            Assert.AreEqual("Arbitrary Book 99 - Arbitrary Author", _paginationPage.PaginationResult.
+            Assert.AreEqual("Arbitrary Book 99 Arbitrary Author", _paginationPage.PaginationResult.
                 Where(x => x.Text.Contains("99")).
                 Select(x => x.Text).First());
             _paginationPage.GoToPage("3");
-            Assert.AreEqual("Arbitrary Book 40 - Arbitrary Author", _paginationPage.PaginationResult.
+            Assert.AreEqual("Arbitrary Book 40 Arbitrary Author", _paginationPage.PaginationResult.
                 Where(x => x.Text.Contains("40")).
                 Select(x => x.Text).First());
             _paginationPage.GoToPage("First");
-            Assert.AreEqual("Arbitrary Book 1 - Arbitrary Author", _paginationPage.PaginationResult.
+            Assert.AreEqual("Arbitrary Book 1 Arbitrary Author", _paginationPage.PaginationResult.
                 Where(x => x.Text.Contains("1")).
                 Select(x => x.Text).First());
         }

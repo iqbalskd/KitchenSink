@@ -212,3 +212,13 @@
     color: red;
     font-size: 8pt;
 }
+
+.kitchensink-pagination-span,
+.kitchensink-pagination-change {
+    cursor: pointer;
+}
+
+.kitchensink-pagination-select {
+    width: 200px;
+    margin-bottom: 10px;
+}

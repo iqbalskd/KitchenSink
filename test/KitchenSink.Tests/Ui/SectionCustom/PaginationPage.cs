@@ -12,10 +12,10 @@ namespace KitchenSink.Tests.Ui.SectionCustom
             PageFactory.InitElements(Driver, this);
         }
 
-        [FindsBy(How = How.CssSelector, Using = ".kitchensink-test-juicy-select select")]
+        [FindsBy(How = How.CssSelector, Using = ".kitchensink-pagination-select")]
         public IWebElement DropDown { get; set; }
 
-        [FindsBy(How = How.CssSelector, Using = ".kitchensink-test-pagination-result-li")]
+        [FindsBy(How = How.CssSelector, Using = ".kitchensink-test-pagination-result-table-row")]
         public IList<IWebElement> PaginationResult { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = ".kitchensink-test-pagination li")]
