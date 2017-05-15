@@ -1,6 +1,6 @@
 {
   "name": "chart-elements",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "authors": [
     "Rob Dodson"
   ],
@@ -19,19 +19,20 @@
   ],
   "dependencies": {
     "Chart.js": "chartjs#^1.0.2",
-    "polymer": "Polymer/polymer#^1.1.0"
+    "polymer": "Polymer/polymer#^1.1.0",
+    "iron-resizable-behavior": "PolymerElements/iron-resizable-behavior#~1.0.2"
   },
   "devDependencies": {
-    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0"
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "Polymer/web-component-tester#^3.4.2"
   },
-  "_release": "2.0.0",
+  "_release": "2.0.2",
   "_resolution": {
     "type": "version",
-    "tag": "v2.0.0",
-    "commit": "ed5cc32adca70af9755fad78a51c6b163c21db49"
+    "tag": "v2.0.2",
+    "commit": "0c20ae397dc2c5c34c920df8bdc8cf9e3faf489a"
   },
-  "_source": "git://github.com/robdodson/chart-elements.git",
+  "_source": "https://github.com/robdodson/chart-elements.git",
   "_target": "~2.0.0",
-  "_originalSource": "robdodson/chart-elements",
-  "_direct": true
+  "_originalSource": "robdodson/chart-elements"
 }
