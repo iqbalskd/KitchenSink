@@ -217,3 +217,8 @@
 .kitchensink-pagination-change {
     cursor: pointer;
 }
+
+.kitchensink-pagination-select {
+    width: 200px;
+    margin-bottom: 10px;
+}

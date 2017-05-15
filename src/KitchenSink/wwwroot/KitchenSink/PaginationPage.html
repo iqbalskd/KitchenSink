@@ -1,15 +1,15 @@
 ﻿<link rel="import" href="/sys/polymer/polymer.html">
-<link rel="import" href="/sys/juicy-select/juicy-select.html">
 
 <template>
     <template is="dom-bind">
         <p slot="kitchensink/html-header" class="lead">Pagination can be implemented in the code-behind by using <code>FETCH</code> to determine how many entries there should be on every page and <code>OFFSET</code> to retrieve the right entries</p>
-        <juicy-select slot="kitchensink/pagination-juicy-select-items-per-page" class="kitchensink-juicyselect dropdown kitchensink-test-juicy-select"
-                        value="{{model.EntriesPerPage$::change}}"
-                        options="{{model.PageEntries}}"
-                        text-property="Text"
-                        value-property="Amount">
-        </juicy-select>
+        <select slot="kitchensink/pagination-juicy-select-items-per-page" 
+                value="{{model.EntriesPerPage$::change}}"
+                class="kitchensink-pagination-select">
+            <template is="dom-repeat" items="{{model.PageEntries}}">
+                <option value="{{item.Amount}}">{{item.Text}}</option>
+            </template>
+        </select>
         <table class="table">
             <thead>
                 <tr>
