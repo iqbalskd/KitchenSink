@@ -17,10 +17,10 @@ namespace KitchenSink
         {
             base.OnData();
 
+            SetPageEntries();
             GetNewPage();
             SetTotalPages();
             CreateNavButtons();
-            SetPageEntries();
         }
 
         public long TotalEntries = Db.SQL<long>("SELECT COUNT(e) FROM KitchenSink.Book e").FirstOrDefault();
@@ -87,6 +87,7 @@ namespace KitchenSink
                 page.Amount = entry;
                 page.Text = $"Show {entry} items per page";
             }
+            this.EntriesPerPage = this.PageEntries.First().Amount;
         }
 
         private void SetTotalPages()
