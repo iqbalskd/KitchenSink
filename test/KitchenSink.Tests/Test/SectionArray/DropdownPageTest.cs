@@ -19,6 +19,8 @@ namespace KitchenSink.Tests.Test.SectionArray
         {
         }
 
+        private const string PolymerLibraryString = "Polymer JavaScript library";
+        private const string StarcounterDatabaseString = "Starcounter Database";
 
         [SetUp]
         public void SetUp()
@@ -35,7 +37,6 @@ namespace KitchenSink.Tests.Test.SectionArray
             Assert.IsTrue(WaitForText(_dropDownPage.PetLikeLabel, "You like dogs", 5));
             _dropDownPage.SelectPet("cats");
             Assert.IsTrue(WaitForText(_dropDownPage.PetLikeLabel, "You like cats", 5));
-
             _dropDownPage.SelectPet("rabbit");
             Assert.IsTrue(WaitForText(_dropDownPage.PetLikeLabel, "You like rabbit", 5));
         }
@@ -44,13 +45,13 @@ namespace KitchenSink.Tests.Test.SectionArray
         public void DropdownPage_JuicyDropdown_SelectProduct()
         {
             WaitUntil(x => _dropDownPage.JuicySelect.Displayed);
-            Assert.AreEqual(string.Empty, new SelectElement(_dropDownPage.ProductSelect).SelectedOption.Text);
+            Assert.AreEqual(PolymerLibraryString, new SelectElement(_dropDownPage.ProductSelect).SelectedOption.Text);
 
-            _dropDownPage.SelectJuicySelect("Polymer JavaScript library");
+            _dropDownPage.SelectJuicySelect(PolymerLibraryString);
             Assert.IsTrue(WaitForText(_dropDownPage.JuicySelectLabel, "You have selected: Polymer JavaScript library", 5));
             Assert.IsTrue(WaitForText(new SelectElement(_dropDownPage.ProductSelect).SelectedOption, "Polymer JavaScript library", 5));
 
-            _dropDownPage.SelectJuicySelect("Starcounter Database");
+            _dropDownPage.SelectJuicySelect(StarcounterDatabaseString);
             Assert.IsTrue(WaitForText(_dropDownPage.JuicySelectLabel, "You have selected: Starcounter Database", 5));
             Assert.IsTrue(WaitForText(new SelectElement(_dropDownPage.ProductSelect).SelectedOption, "Starcounter Database", 5));
         }
@@ -59,11 +60,11 @@ namespace KitchenSink.Tests.Test.SectionArray
         public void DropdownPage_Dropdown_SelectProduct()
         {
             WaitUntil(x => _dropDownPage.ProductSelect.Displayed);
-            _dropDownPage.SelectProduct("Starcounter Database");
+            _dropDownPage.SelectProduct(StarcounterDatabaseString);
             Assert.IsTrue(WaitForText(_dropDownPage.JuicySelectLabel, "You have selected: Starcounter Database", 5));
             Assert.IsTrue(WaitForText(new SelectElement(_dropDownPage.JuicySelect).SelectedOption, "Starcounter Database", 5));
 
-            _dropDownPage.SelectProduct("Polymer JavaScript library");
+            _dropDownPage.SelectProduct(PolymerLibraryString);
             Assert.IsTrue(WaitForText(_dropDownPage.JuicySelectLabel, "You have selected: Polymer JavaScript library", 5));
             Assert.IsTrue(WaitForText(new SelectElement(_dropDownPage.JuicySelect).SelectedOption, "Polymer JavaScript library", 5));
         }
