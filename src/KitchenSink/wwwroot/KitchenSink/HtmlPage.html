@@ -1,7 +1,9 @@
 ﻿<link rel="import" href="/sys/juicy-html/juicy-html.html" />
 <template>
     <template is="dom-bind">
-        <p slot="kitchensink/html-header" class="lead">JSON's primitive value type <code>string</code> can be rendered as HTML using a helper custom element, such as <a href="http://github.com/juicy/juicy-html">juicy-html</a>.</p>
+        <h1 slot="kitchensink/html-heading" class="kitchensink-heading-1">HTML</h1>
+
+        <p slot="kitchensink/html-description" class="lead">JSON's primitive value type <code>string</code> can be rendered as HTML using a helper custom element, such as <a href="http://github.com/juicy/juicy-html">juicy-html</a>.</p>
 
         <div slot="kitchensink/html-juicy-html">
             <template is="juicy-html" content$="{{model.Bio}}">

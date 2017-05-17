@@ -2,7 +2,7 @@
 
 <template>
     <template is="dom-bind">
-        <h1 slot="kitchensink/dropdown-header">Primitive array</h1>
+        <h1 slot="kitchensink/dropdown-heading" class="kitchensink-heading-1">Dropdown</h1>
 
         <p slot="kitchensink/dropdown-pets-description" class="lead">A combination of JSON's primitive value types <code>array</code>, <code>object</code> and <code>number</code> can be mapped to an HTML <code>select</code> element.</p>
 
@@ -43,7 +43,7 @@
             }
         </style>
 
-        <slot name="kitchensink/dropdown-header"></slot>
+        <slot name="kitchensink/dropdown-heading"></slot>
         <slot name="kitchensink/dropdown-pets-description"></slot>
         <slot name="kitchensink/dropdown-pets-dropdown"></slot>
         <div class="kitchensink-dropdown-margin">

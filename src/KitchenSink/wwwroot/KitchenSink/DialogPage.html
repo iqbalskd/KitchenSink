@@ -2,6 +2,8 @@
 
 <template>
     <template is="dom-bind">
+        <h1 slot="kitchensink/dialog-heading" class="kitchensink-heading-1">Dialog box</h1>
+
         <p slot="kitchensink/dialog-description" class="lead">Modal dialog box example</p>
 
         <button slot="kitchensink/dialog-button" class="btn btn-sm btn-default" value="{{model.OpenTrigger$::click}}" onmousedown="++this.value">Open dialog box</button>
@@ -23,6 +25,7 @@
         </paper-dialog>
     </template>
     <template is="declarative-shadow-dom">
+        <slot name="kitchensink/dialog-heading"></slot>
         <slot name="kitchensink/dialog-description"></slot>
         <p>
             <slot name="kitchensink/dialog-button"></slot>
