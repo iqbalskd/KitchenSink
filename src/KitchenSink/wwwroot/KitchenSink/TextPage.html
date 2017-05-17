@@ -6,7 +6,7 @@
 
         <p slot="kitchensink/text-description" class="lead">JSON's primitive value type <code>string</code> can be mapped directly to HTML form <code>input type="text"</code>.</p>
 
-        <h5 slot="kitchensink/text-listening-heading">Listening to changes</h5>
+        <h2 slot="kitchensink/text-listening-heading" class="kitchensink-heading-2">Listening to changes</h2>
 
         <p slot="kitchensink/text-listening-description">Bind to <code>::change</code> listener to send the new value to the server when the field is unfocused. Read more about the target change events in the <a href="https://www.polymer-project.org/1.0/docs/devguide/data-binding.html#two-way-native">Polymer docs</a>.</p>
 
@@ -14,7 +14,7 @@
 
         <input slot="kitchensink/text-listening-input" type="text" value="{{model.Name$::change}}" placeholder="Name" class="form-control kitchensink-test-name-input">
 
-        <h5 slot="kitchensink/text-typing-listening-heading">Listening to changes while typing</h5>
+        <h2 slot="kitchensink/text-typing-listening-heading" class="kitchensink-heading-2">Listening to changes while typing</h2>
 
         <p slot="kitchensink/text-typing-listening-description">Need to update the server after each keystroke? Bind to <code>::input</code>:</p>
 
