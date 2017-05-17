@@ -39,25 +39,14 @@ namespace KitchenSink
             this.SelectedPet = "dogs";
 
             this.Products.Data = Db.SQL("SELECT p FROM KitchenSink.SoftwareProduct p ORDER BY p.Name");
-            this.SelectedProduct.Data = Db.SQL("SELECT p FROM KitchenSink.SoftwareProduct p ORDER BY p.Name DESC").First;
+            this.SelectedProduct.Data = Db.SQL("SELECT p FROM KitchenSink.SoftwareProduct p WHERE p.Name = ?", "Starcounter Database").First;
         }
 
-        public string CalculatedPetReaction
-        {
-            get { return "You like " + SelectedPet; }
-        }
+        public string CalculatedPetReaction => $"You like { SelectedPet}";
 
         public string SelectedProductKeyBind
         {
-            get
-            {
-                if (this.SelectedProduct == null)
-                {
-                    return null;
-                }
-
-                return this.SelectedProduct.Key;
-            }
+            get => SelectedProduct?.Key;
             set
             {
                 if (string.IsNullOrEmpty(value))
