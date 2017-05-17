@@ -60,7 +60,7 @@ namespace KitchenSink.Tests.Ui
         [FindsBy(How = How.XPath, Using = "//a[text() = 'File upload']")]
         public IWebElement FileUploadPageLink { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//a[text() = 'Togglebutton']")]
+        [FindsBy(How = How.XPath, Using = "//a[text() = 'Toggle']")]
         public IWebElement ToggleButtonPageLink { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//a[text() = 'Datagrid']")]
