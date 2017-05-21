@@ -2,16 +2,16 @@
 
 <template>
     <template is="dom-bind">
-        <h1 slot="kitchensink/fileUpload-heading" class="kitchensink-heading-1">File upload</h1>
+        <h1 slot="kitchensink/fileupload-heading" class="kitchensink-heading-1">File upload</h1>
 
-        <p slot="kitchensink/fileUpload-description">Upload big files with <a href="https://github.com/Starcounter/starcounter-upload/"><code>starcounter-upload</code></a> over WebSocket</p>
+        <p slot="kitchensink/fileupload-description">Upload big files with <a href="https://github.com/Starcounter/starcounter-upload/"><code>starcounter-upload</code></a> over WebSocket</p>
 
-        <small  slot="kitchensink/fileUpload-warning">
+        <small  slot="kitchensink/fileupload-warning">
             <b>Warning:</b> this example requires <code>Polymer 1.3.1</code> which comes with <code>Starcounter 2.1.1367</code> or higher.
         </small>
 
-        <h2 slot="kitchensink/fileUpload-upload-file-header" class="kitchensink-heading-2">Uploaded files</h2>
-        <div slot="kitchensink/fileUpload-files-table">
+        <h2 slot="kitchensink/fileupload-upload-file-header" class="kitchensink-heading-2">Uploaded files</h2>
+        <div slot="kitchensink/fileupload-files-table">
             <template is="dom-if" if="{{model.Files.length}}">
                 <table class="table">
                     <thead>
@@ -40,14 +40,14 @@
                 </div>
             </template>
         </div>
-        <div slot="kitchensink/fileUpload-no-files-message">
+        <div slot="kitchensink/fileupload-no-files-message">
             <template is="dom-if" if="{{!model.Files.length}}">
                 <p>No files uploaded so far</p>
             </template>
         </div>
 
-        <h2 slot="kitchensink/fileUpload-uploading-header" class="kitchensink-heading-2">Uploading files</h2>
-        <div slot="kitchensink/fileUpload-uploading-table">
+        <h2 slot="kitchensink/fileupload-uploading-header" class="kitchensink-heading-2">Uploading files</h2>
+        <div slot="kitchensink/fileupload-uploading-table">
             <template is="dom-if" if="{{model.Tasks.length}}">
                 <table class="table">
                     <thead>
@@ -73,19 +73,19 @@
                 </table>
             </template>
         </div>
-        <div slot="kitchensink/fileUpload-ongoing-message">
+        <div slot="kitchensink/fileupload-ongoing-message">
             <template is="dom-if" if="{{!model.Tasks.length}}">
                 <p>No ongoing uploads so far</p>
             </template>
         </div>
 
-        <starcounter-upload  slot="kitchensink/fileUpload-upload" session-id="{{model.SessionId}}" upload-url="{{model.UploadUrl}}" tasks="{{tasks}}" multiple="true"></starcounter-upload>
+        <starcounter-upload  slot="kitchensink/fileupload-upload" session-id="{{model.SessionId}}" upload-url="{{model.UploadUrl}}" tasks="{{tasks}}" multiple="true"></starcounter-upload>
 
-        <button slot="kitchensink/fileUpload-select-button" type="button" class="btn btn-sm btn-primary" on-click="selectFile">Select file</button>
+        <button slot="kitchensink/fileupload-select-button" type="button" class="btn btn-sm btn-primary" on-click="selectFile">Select file</button>
 
-        <button slot="kitchensink/fileUpload-cancel-button" type="button" class="btn btn-sm btn-default" on-click="cancelUpload" disabled="{{!tasks.length}}">Cancel upload</button>
+        <button slot="kitchensink/fileupload-cancel-button" type="button" class="btn btn-sm btn-default" on-click="cancelUpload" disabled="{{!tasks.length}}">Cancel upload</button>
 
-        <div slot="kitchensink/fileUpload-tasks-collection">
+        <div slot="kitchensink/fileupload-tasks-collection">
             <template is="dom-if" if="{{tasks.length}}">
                 <div class="kitchensink-upload-tasks">
                     <div>

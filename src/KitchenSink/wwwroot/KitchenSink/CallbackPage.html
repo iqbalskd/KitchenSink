@@ -1,6 +1,6 @@
 ﻿<template>
     <template is="dom-bind">
-        <h1 slot="kitchensink/callback-heading" class="kitchensink-heading-1">Callback behavior</h1>
+        <h1 slot="kitchensink/callback-heading" class="kitchensink-heading-1">Async Response</h1>
 
         <p slot="kitchensink/callback-description">
             This page demonstrates how to achive old fassion <code>callback</code> behaviour using Starcounter.
@@ -26,9 +26,9 @@
         </div>
         <button slot="kitchensink/callback-save-server-button" type="button" class="btn btn-sm btn-default" value="{{model.SaveAndMessageTrigger$::click}}" disabled="{{model.SaveAndMessageTrigger$}}" onmouseup="++this.value;">Randomly save or fail changes (1s)</button>
         <h2 slot="kitchensink/callback-save-client-heading" class="kitchensink-heading-2">Save button with client side message</h2>
-        <small slot="kitchensink/callback-save-client-note">
+        <p slot="kitchensink/callback-save-client-note">
             <b>Note:</b> client side <code>template.observers</code> work only in browsers with native <code>&lt;template&gt;</code> tag implementation.
-        </small>
+        </p>
         <div slot="kitchensink/callback-save-client-message">
             <template is="dom-if" if="{{local.InfoMessage$}}">
                 <p class="alert alert-info">{{local.InfoMessage$}}</p>
