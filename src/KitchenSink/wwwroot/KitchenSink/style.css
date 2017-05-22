@@ -68,6 +68,10 @@
     height: 300px;
 }
 
+.kitchensink-buy-carrot {
+    pointer-events: none
+}
+
 .kitchensink-add-carrots {
     display: flex;
     align-items: baseline;

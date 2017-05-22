@@ -4,7 +4,7 @@ using OpenQA.Selenium.Support.PageObjects;
 namespace KitchenSink.Tests.Ui.SectionNumber
 {
     public class ButtonPage : BasePage
-    {     
+    {
         public ButtonPage(IWebDriver driver) : base(driver)
         {
             PageFactory.InitElements(Driver, this);
@@ -40,6 +40,12 @@ namespace KitchenSink.Tests.Ui.SectionNumber
         [FindsBy(How = How.CssSelector, Using = ".kitchensink-test-self-button-label")]
         public IWebElement TakeOneRegeneratingCarrotLabel { get; set; }
 
+        [FindsBy(How = How.CssSelector, Using = ".kitchesink-test-buy-carrot-button")]
+        public IWebElement ButtonBuyCarrot { get; set; }
+
+        [FindsBy(How = How.CssSelector, Using = ".kitchensink-test-buy-carrot-reaction-label")]
+        public IWebElement BuyCarrotLabel { get; set; }
+
         public void ClickButtonInlineScript()
         {
             ClickOn(ButtonInlineScript);
@@ -68,6 +74,11 @@ namespace KitchenSink.Tests.Ui.SectionNumber
         public void ClickButonTakeOneRegeneratingCarrot()
         {
             ClickOn(ButonTakeOneRegeneratingCarrot);
+        }
+
+        public void ClickButtonBuyCarrot()
+        {
+            ClickOn(ButtonBuyCarrot);
         }
     }
 }
