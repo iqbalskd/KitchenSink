@@ -53,7 +53,7 @@
         </div>
 
         <h2 slot="kitchensink/buttonpage-binding-issue-heading" class="kitchensink-heading-2">Button with children</h2>
-        <p slot="kitchensink/buttonpage-binding-issue-description">Because of the issue in Polymer 1.x, data binding for button with child element cause WebSocket error. To workaround this issue, You can set <code>pointer-events</code> property to <code>none</code> at buttons child element.</p>
+        <p slot="kitchensink/buttonpage-binding-issue-description">Because of an issue in Polymer 1, data bindings for buttons with child elements cause a WebSocket error. As a workaround, set the <code>pointer-events</code> property to <code>none</code> on the children of the button.</p>
         <p slot="kitchensink/buttonpage-binding-issue-click-label"><b>Click to buy a carrot!</b></p>
         <button slot="kitchensink/buttonpage-binding-issue-button" class="btn btn-sm btn-default kitchensink-toggle-button kitchesink-test-buy-carrot-button" value="{{model.BuyCarrotTrigger$::click}}" onmousedown="++this.value"><span class="glyphicon glyphicon-usd kitchensink-buy-carrot"></span></button>
         <span slot="kitchensink/buttonpage-binding-issue-label" class="kitchensink-test-buy-carrot-reaction-label">{{model.OnBuyReaction}}</span>
