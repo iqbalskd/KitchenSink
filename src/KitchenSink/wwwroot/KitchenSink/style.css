@@ -12,8 +12,6 @@
 }
 
 .kitchensink-menu__heading {
-  text-align: center;
-  width: 70%;
   font-size: 100%;
 }
 
@@ -23,9 +21,11 @@
 
 .kitchensink-menu__list {
   padding: 0;
-  text-align: center;
-  width: 70%;
   list-style: none;
+}
+
+.kitchensink-select {
+    width: 50%;
 }
 
 .kitchensink-heading-1 {
