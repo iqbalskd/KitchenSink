@@ -57,7 +57,7 @@ namespace KitchenSink.Tests.Ui
         [FindsBy(How = How.XPath, Using = "//a[text() = 'Autocomplete']")]
         public IWebElement AutoCompletePageLink { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//a[text() = 'File upload']")]
+        [FindsBy(How = How.XPath, Using = "//a[text() = 'File Upload']")]
         public IWebElement FileUploadPageLink { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//a[text() = 'Toggle Button']")]
