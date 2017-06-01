@@ -2,9 +2,9 @@
 
 <template>
     <template is="dom-bind">
-        <h1 slot="kitchensink/dropdown-header">Primitive array</h1>
-
-        <p slot="kitchensink/dropdown-pets-description" class="lead">A combination of JSON's primitive value types <code>array</code>, <code>object</code> and <code>number</code> can be mapped to an HTML <code>select</code> element.</p>
+        <h1 slot="kitchensink/dropdown-heading" class="kitchensink-heading-1">Dropdown</h1>
+        <h2 slot="kitchensink/dropdown-primitive-array-heading" class="kitchensink-heading-2">Primitive array</h2>
+        <p slot="kitchensink/dropdown-pets-description">A combination of JSON's primitive value types <code>array</code>, <code>object</code> and <code>number</code> can be mapped to an HTML <code>select</code> element.</p>
 
         <select slot="kitchensink/dropdown-pets-dropdown" class="kitchensink-select kitchensink-test-pets-select" value="{{model.SelectedPet$::change}}">
             <template is="dom-repeat" items="{{model.Pets}}">
@@ -14,9 +14,9 @@
 
         <div slot="kitchensink/dropdown-pets-reaction" class="kitchensink-test-pet-like-label">{{model.PetReaction}}</div>
 
-        <p slot="kitchensink/dropdown-objects-header" class="lead">Objects array</p>
+        <h2 slot="kitchensink/dropdown-objects-heading" class="kitchensink-heading-2">Objects array</h2>
 
-        <p slot="kitchensink/dropdown-objects-description" class="lead">A combination of object <code>array</code> and bound JSON string property can be mapped to an HTML <code>select</code> element.</p>
+        <p slot="kitchensink/dropdown-objects-description">A combination of object <code>array</code> and bound JSON string property can be mapped to an HTML <code>select</code> element.</p>
    
         <small slot="kitchensink/dropdown-objects-select-description">Polymer 1.x executes the <code>value</code> binding in the <code>select</code> element before evaluating <code>dom-repeat</code>. This makes it impossible to preselect an <code>option</code> element, which is illustrated below ("Starcounter Database" should be preselected).</small>
         
@@ -43,13 +43,14 @@
             }
         </style>
 
-        <slot name="kitchensink/dropdown-header"></slot>
+        <slot name="kitchensink/dropdown-heading"></slot>
+        <slot name="kitchensink/dropdown-primitive-array-heading"></slot>
         <slot name="kitchensink/dropdown-pets-description"></slot>
         <slot name="kitchensink/dropdown-pets-dropdown"></slot>
         <div class="kitchensink-dropdown-margin">
             <slot name="kitchensink/dropdown-pets-reaction"></slot>
         </div>
-        <slot name="kitchensink/dropdown-objects-header"></slot>
+        <slot name="kitchensink/dropdown-objects-heading"></slot>
         <slot name="kitchensink/dropdown-objects-description"></slot>
         <slot name="kitchensink/dropdown-objects-value-description"></slot>
         <slot name="kitchensink/dropdown-objects-select-description" class="kitchensink-dropdown-margin"></slot>

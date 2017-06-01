@@ -24,7 +24,7 @@ namespace KitchenSink.Tests.Ui
         [FindsBy(How = How.XPath, Using = "//a[text() = 'Dropdown']")]
         public IWebElement DropdownPageLink { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//a[text() = 'Nested partials']")]
+        [FindsBy(How = How.XPath, Using = "//a[text() = 'Nested Views']")]
         public IWebElement NestedPartialsPageLink { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//a[text() = 'Table']")]
@@ -39,7 +39,7 @@ namespace KitchenSink.Tests.Ui
         [FindsBy(How = How.XPath, Using = "//a[text() = 'Checkbox']")]
         public IWebElement CheckboxPageLink { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//a[text() = 'Text']")]
+        [FindsBy(How = How.XPath, Using = "//a[text() = 'Text Input']")]
         public IWebElement TextPageLink { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//a[text() = 'Textarea']")]
@@ -57,10 +57,10 @@ namespace KitchenSink.Tests.Ui
         [FindsBy(How = How.XPath, Using = "//a[text() = 'Autocomplete']")]
         public IWebElement AutoCompletePageLink { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//a[text() = 'File upload']")]
+        [FindsBy(How = How.XPath, Using = "//a[text() = 'File Upload']")]
         public IWebElement FileUploadPageLink { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//a[text() = 'Togglebutton']")]
+        [FindsBy(How = How.XPath, Using = "//a[text() = 'Toggle Button']")]
         public IWebElement ToggleButtonPageLink { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//a[text() = 'Datagrid']")]
@@ -72,7 +72,7 @@ namespace KitchenSink.Tests.Ui
         [FindsBy(How = How.XPath, Using = "//a[text() = 'Multiselect']")]
         public IWebElement MultiselectPageLink { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//a[text() = 'Radio']")]
+        [FindsBy(How = How.XPath, Using = "//a[text() = 'Radio Button']")]
         public IWebElement RadioPageLink { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//a[text() = 'Radiolist']")]

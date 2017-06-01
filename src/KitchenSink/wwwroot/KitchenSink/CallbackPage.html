@@ -1,12 +1,12 @@
 ﻿<template>
     <template is="dom-bind">
-        <h1 slot="kitchensink/callback-heading">Callback example</h1>
+        <h1 slot="kitchensink/callback-heading" class="kitchensink-heading-1">Async Response</h1>
 
         <p slot="kitchensink/callback-description">
             This page demonstrates how to achive old fassion <code>callback</code> behaviour using Starcounter.
         </p>
 
-        <h4 slot="kitchensink/callback-responsive-label">Responsive save button</h4>
+        <h2 slot="kitchensink/callback-responsive-label" class="kitchensink-heading-2">Responsive save button</h2>
         <button slot="kitchensink/callback-responsive-button" type="button" class="btn btn-sm btn-default" value="{{model.SaveTrigger$::click}}" disabled="{{model.SaveTrigger$}}" onmouseup="++this.value;">Save changes (1s)</button>
         <button slot="kitchensink/callback-responsive-button-spin" type="button" class="btn btn-sm btn-default" value="{{model.SaveAndSpinTrigger$::click}}" disabled="{{model.SaveAndSpinTrigger$}}" onmouseup="++this.value;">
             <template is="dom-if" if="{{model.SaveAndSpinTrigger$}}">
@@ -15,7 +15,7 @@
             Save changes with loading icon (1s)
         </button>
 
-        <h4 slot="kitchensink/callback-save-server-heading">Save button with server side message</h4>
+        <h2 slot="kitchensink/callback-save-server-heading" class="kitchensink-heading-2">Save button with server side message</h2>
         <div slot="kitchensink/callback-save-server-message">
             <template is="dom-if" if="{{model.SuccessMessage$}}">
                 <p class="alert alert-success">{{model.SuccessMessage$}}</p>
@@ -25,10 +25,10 @@
             </template>
         </div>
         <button slot="kitchensink/callback-save-server-button" type="button" class="btn btn-sm btn-default" value="{{model.SaveAndMessageTrigger$::click}}" disabled="{{model.SaveAndMessageTrigger$}}" onmouseup="++this.value;">Randomly save or fail changes (1s)</button>
-        <h4 slot="kitchensink/callback-save-client-heading">Save button with client side message</h4>
-        <small slot="kitchensink/callback-save-client-note">
+        <h2 slot="kitchensink/callback-save-client-heading" class="kitchensink-heading-2">Save button with client side message</h2>
+        <p slot="kitchensink/callback-save-client-note">
             <b>Note:</b> client side <code>template.observers</code> work only in browsers with native <code>&lt;template&gt;</code> tag implementation.
-        </small>
+        </p>
         <div slot="kitchensink/callback-save-client-message">
             <template is="dom-if" if="{{local.InfoMessage$}}">
                 <p class="alert alert-info">{{local.InfoMessage$}}</p>
@@ -43,7 +43,7 @@
 
         <button slot="kitchensink/callback-save-client-button" type="button" class="btn btn-sm btn-default" value="{{model.SaveAndClientMessageTrigger$::click}}" disabled="{{model.SaveAndClientMessageTrigger$}}" onmouseup="++this.value;">Randomly save or fail changes (1s)</button>
 
-        <h4 slot="kitchensink/callback-table-heading">Same things inside table</h4>
+        <h2 slot="kitchensink/callback-table-heading" class="kitchensink-heading-2">Same things inside table</h2>
         <p slot="kitchensink/callback-table-note">
             <small><b>Note:</b> <code>dom-repeat</code> inside <code>table</code> <a href="https://github.com/Polymer/polymer/issues/1567" target="_blank">does not work in Internet Explorer</a>.</small>
         </p>

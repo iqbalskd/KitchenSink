@@ -2,7 +2,8 @@
 
 <template>
     <template is="dom-bind">
-        <p slot="kitchensink/flashMessage-header" class="lead"> Flash Message </p>
+        <h1 slot="kitchensink/flashMessage-heading" class="kitchensink-heading-1">Flash Message</h1>
+        
         <p slot="kitchensink/flashMessage-description">By pressing the buttons below, you will trigger a message to be displayed for 3 seconds. It is possible to trigger a message both from the server side, and the client side!</p>
         <p slot="kitchensink/flashMessage-dom-if-description">By using <code>&lt;template is="dom-if"&gt;</code> it is possible to hide or show an element in the HTML depending on the result of the if-statement.</p>
 
@@ -38,7 +39,7 @@
         })();
     </script>
     <template is="declarative-shadow-dom">
-        <slot name="kitchensink/flashMessage-header"></slot>
+        <slot name="kitchensink/flashMessage-heading"></slot>
         <slot name="kitchensink/flashMessage-description"></slot>
         <slot name="kitchensink/flashMessage-dom-if-description"></slot>
         <slot name="kitchensink/flashMessage-schedule-task-description"></slot>

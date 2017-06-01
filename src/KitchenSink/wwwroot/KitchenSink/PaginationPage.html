@@ -3,7 +3,9 @@
 
 <template>
     <template is="dom-bind">
-        <p slot="kitchensink/html-header" class="lead">Pagination can be implemented in the code-behind by using <code>FETCH</code> to determine how many entries there should be on every page and <code>OFFSET</code> to retrieve the right entries</p>
+        <h1 slot="kitchensink/pagination-heading" class="kitchensink-heading-1">Pagination</h1>
+        
+        <p slot="kitchensink/pagination-description">Pagination can be implemented in the code-behind by using <code>FETCH</code> to determine how many entries there should be on every page and <code>OFFSET</code> to retrieve the right entries</p>
         <juicy-select slot="kitchensink/pagination-juicy-select-items-per-page" class="kitchensink-juicyselect dropdown kitchensink-test-juicy-select"
                         value="{{model.EntriesPerPage$::change}}"
                         options="{{model.PageEntries}}"
