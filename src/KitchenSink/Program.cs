@@ -156,6 +156,9 @@ namespace KitchenSink
             Handle.GET("/KitchenSink/partial/flashmessage", () => new FlashMessagePage());
             Handle.GET("/Kitchensink/flashmessage", () => WrapPage<FlashMessagePage>("/KitchenSink/partial/flashmessage"));
 
+            Handle.GET("/KitchenSink/partial/clientlocalstate", () => new ClientLocalStatePage());
+            Handle.GET("/KitchenSink/clientlocalstate", () => WrapPage<ClientLocalStatePage>("/KitchenSink/partial/clientlocalstate"));
+
             Handle.GET("/KitchenSink/partial/cookie", (Request request) =>
             {
                 string name = "KitchenSink";

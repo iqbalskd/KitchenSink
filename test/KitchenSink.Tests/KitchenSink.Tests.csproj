@@ -67,6 +67,7 @@
     <Compile Include="Test\BaseTest.cs" />
     <Compile Include="Test\SectionBoolean\CheckboxPageTest.cs" />
     <Compile Include="Test\SectionBoolean\ToggleButtonPageTest.cs" />
+    <Compile Include="Test\SectionCustom\ClientLocalStatePageTest.cs" />
     <Compile Include="Test\SectionCustom\AutoCompletePageTest.cs" />
     <Compile Include="Test\SectionCustom\FileUploadPageTest.cs" />
     <Compile Include="Test\SectionCustom\PaginationPageTest.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Ui\SectionArray\RadiolistPage.cs" />
     <Compile Include="Ui\SectionArray\RadioPage.cs" />
     <Compile Include="Ui\BasePage.cs" />
+    <Compile Include="Ui\SectionCustom\ClientLocalStatePage.cs" />
     <Compile Include="Ui\SectionNumber\ButtonPage.cs" />
     <Compile Include="Ui\SectionBoolean\CheckboxPage.cs" />
     <Compile Include="Ui\SectionBoolean\ToggleButtonPage.cs" />

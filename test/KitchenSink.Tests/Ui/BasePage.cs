@@ -21,6 +21,9 @@ namespace KitchenSink.Tests.Ui
         [FindsBy(How = How.XPath, Using = "//a[text() = 'Datepicker']")]
         public IWebElement DatepickerPageLink { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//a[text() = 'Client Local State']")]
+        public IWebElement ClientLocalStateLink { get; set; }
+
         [FindsBy(How = How.XPath, Using = "//a[text() = 'Dropdown']")]
         public IWebElement DropdownPageLink { get; set; }
 

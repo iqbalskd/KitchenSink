@@ -29,13 +29,13 @@
     "polymer": "^1.1.0",
     "webcomponentsjs": "^0.7.18"
   },
-  "_release": "1d35418dc4",
+  "_release": "b2c995a65f",
   "_resolution": {
     "type": "branch",
-    "branch": "gh-pages",
-    "commit": "1d35418dc42884e42bc399cee4ef4e02ed3edd5a"
+    "branch": "master",
+    "commit": "b2c995a65ff035d6497976a93d7fd44bc7786987"
   },
   "_source": "git://github.com/Juicy/x-breadcrumb.git",
-  "_target": "gh-pages",
+  "_target": "master",
   "_originalSource": "Juicy/x-breadcrumb"
 }
