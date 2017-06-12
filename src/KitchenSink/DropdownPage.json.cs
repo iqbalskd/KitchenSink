@@ -46,7 +46,7 @@ namespace KitchenSink
 
         public string SelectedProductKeyBind
         {
-            get => SelectedProduct?.Key;
+            get { return SelectedProduct?.Key; }
             set
             {
                 if (string.IsNullOrEmpty(value))
