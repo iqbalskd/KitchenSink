@@ -285,7 +285,9 @@ namespace KitchenSink
 
             if (master == null)
             {
-                master = new MasterPage() { Session = Session.Current };
+                master = new MasterPage();
+                master.CurrentPage = new NavPage();
+                Session.Current.Data = master;
             }
 
             return master;
