@@ -263,17 +263,6 @@ namespace KitchenSink
             return master;
         }
 
-        private static int IndexOfNth(string str, char c, int n)
-        {
-            int index = -1;
-            while (n-- > 0)
-            {
-                index = str.IndexOf(c, index + 1);
-                if (index == -1) break;
-            }
-            return index;
-        }
-
         public static MasterPage GetMasterPageFromSession()
         {
             if (Session.Current == null)
