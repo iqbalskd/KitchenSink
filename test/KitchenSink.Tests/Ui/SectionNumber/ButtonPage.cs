@@ -76,9 +76,20 @@ namespace KitchenSink.Tests.Ui.SectionNumber
             ClickOn(ButonTakeOneRegeneratingCarrot);
         }
 
-        public void ClickButtonBuyCarrot()
+        public void ClickSpanInsideButtonBuyCarrot()
         {
-            ClickOn(ButtonBuyCarrot);
+            ((IJavaScriptExecutor)Driver)
+                .ExecuteScript(
+                "var span = document.querySelector('.kitchensink-buy-carrot');"
+                + "span.scrollIntoView();"
+                + "var rect = span.getBoundingClientRect();"
+                + "var hittableElem = document.elementFromPoint(rect.left + 1, rect.top + 1);"
+                + "var mousedown = document.createEvent('MouseEvents');"
+                + "mousedown.initEvent('mousedown', true, true);"
+                + "hittableElem.dispatchEvent(mousedown);"
+                + "var click = document.createEvent('MouseEvents');"
+                + "click.initEvent('click', true, true);"
+                + "hittableElem.dispatchEvent(click);");
         }
     }
 }

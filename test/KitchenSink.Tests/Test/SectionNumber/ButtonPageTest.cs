@@ -79,7 +79,7 @@ namespace KitchenSink.Tests.Test.SectionNumber
         {
             Assert.IsTrue(WaitForText(_buttonPage.BuyCarrotLabel,
                 "You don't have any carrots", 5));
-            _buttonPage.ClickButtonBuyCarrot();
+            _buttonPage.ClickSpanInsideButtonBuyCarrot();
             Assert.IsTrue(WaitForText(_buttonPage.BuyCarrotLabel,
                 "You bought a carrot!", 5));
         }
