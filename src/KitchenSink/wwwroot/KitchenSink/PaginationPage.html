@@ -54,7 +54,8 @@
     </template>
     <script>
         (function () {
-            var template = document.currentScript.previousElementSibling;
+            var script = document._currentScript || document.currentScript;
+            var template = script.previousElementSibling;
 
             triggerModelAction = function (prop) {
                 template.set("model." + prop, parseInt(template.get("model." + prop), 10) + 1);
