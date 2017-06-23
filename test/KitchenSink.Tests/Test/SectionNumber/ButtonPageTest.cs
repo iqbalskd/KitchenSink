@@ -1,4 +1,5 @@
-﻿using KitchenSink.Tests.Ui;
+﻿using System.Drawing.Design;
+using KitchenSink.Tests.Ui;
 using KitchenSink.Tests.Ui.SectionNumber;
 using KitchenSink.Tests.Utilities;
 using NUnit.Framework;
@@ -71,6 +72,16 @@ namespace KitchenSink.Tests.Test.SectionNumber
             _buttonPage.ClickButtonAddCarrots();
             Assert.IsTrue(WaitForText(_buttonPage.AddCarrotsLabel,
                 "You have 1 imaginary carrots", 5));
+        }
+
+        [Test]
+        public void ButtonPage_ButtonWithChildren()
+        {
+            Assert.IsTrue(WaitForText(_buttonPage.BuyCarrotLabel,
+                "You don't have any carrots", 5));
+            _buttonPage.ClickSpanInsideButtonBuyCarrot();
+            Assert.IsTrue(WaitForText(_buttonPage.BuyCarrotLabel,
+                "You bought a carrot!", 5));
         }
     }
 }

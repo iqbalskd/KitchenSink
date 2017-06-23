@@ -57,6 +57,12 @@
                 <p class="kitchensink-test-self-button-label">Currently Regenerating!</p>
             </template>
         </div>
+
+        <h2 slot="kitchensink/buttonpage-binding-issue-heading" class="kitchensink-heading-2">Button with children</h2>
+        <p slot="kitchensink/buttonpage-binding-issue-description">Because of an <a href="https://github.com/Polymer/polymer/issues/2497">issue in Polymer 1</a>, data bindings for buttons with child elements writes undefined value to the view-model property bound to the buttons, which leads to server disconnection. As a workaround, set the <code>pointer-events</code> property to <code>none</code> on the children of the button.</p>
+        <p slot="kitchensink/buttonpage-binding-issue-click-label"><b>Click to buy a carrot!</b></p>
+        <button slot="kitchensink/buttonpage-binding-issue-button" class="btn btn-sm btn-default kitchensink-toggle-button kitchesink-test-buy-carrot-button" value="{{model.BuyCarrotTrigger$::click}}" onmousedown="++this.value"><span class="glyphicon glyphicon-usd kitchensink-buy-carrot"></span></button>
+        <span slot="kitchensink/buttonpage-binding-issue-label" class="kitchensink-test-buy-carrot-reaction-label">{{model.OnBuyReaction}}</span>
     </template>
     <script>
         (function () {

@@ -29,6 +29,18 @@ namespace KitchenSink
             }
         }
 
+        void Handle(Input.BuyCarrotTrigger action)
+        {
+            if (action.Value == 0)
+            {
+                OnBuyReaction = Template.CarrotsReaction.DefaultValue;
+            }
+            else
+            {
+                OnBuyReaction = "You bought a carrot!";
+            }
+        }
+
         void Handle(Input.AddOneCarrotTrigger action)
         {
             if (action.Value == 0)
