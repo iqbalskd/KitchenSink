@@ -18,16 +18,17 @@
       return ['selector', 'wpm'];
     }
 
-    constructor() {
-      super();
-      this._selector = this.getAttribute('selector') || null;
-      this._wpm = Number(this.getAttribute('wpm') || 200);
-      this._connected = false;
-      if(this.attachShadow) {
-        this.attachShadow({ mode: 'open' });
-        this._root = this.shadowRoot;
+    constructor(self) {
+      // Make element pollyfilable with `document-register-element`
+      self = super(self);
+      self._selector = self.getAttribute('selector') || null;
+      self._wpm = Number(self.getAttribute('wpm') || 200);
+      self._connected = false;
+      if(self.attachShadow) {
+        self.attachShadow({ mode: 'open' });
+        self._root = self.shadowRoot;
       } else {
-        this._root = this;
+        self._root = self;
       }
     }
 
