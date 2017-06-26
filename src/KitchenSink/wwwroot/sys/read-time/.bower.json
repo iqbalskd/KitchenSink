@@ -1,0 +1,29 @@
+{
+  "name": "read-time",
+  "description": "Tells you how long it will take to read an article",
+  "authors": [
+    "Matthew Phillips <matthew@matthewphillips.info>"
+  ],
+  "license": "BSD-2-Clause",
+  "keywords": [
+    "web-components",
+    "custom-element",
+    "vanilla-js"
+  ],
+  "main": [
+    "read-time.js",
+    "read-time.css"
+  ],
+  "homepage": "https://github.com/thekidfrankensteinthrewinapond/read-time",
+  "version": "1.0.5",
+  "_release": "1.0.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.5",
+    "commit": "4691c7c4db8ae8785e5b6e42bf8f81b895b69fdf"
+  },
+  "_source": "https://github.com/thekidfrankensteinthrewinapond/read-time.git",
+  "_target": "^1.0.5",
+  "_originalSource": "read-time",
+  "_direct": true
+}
