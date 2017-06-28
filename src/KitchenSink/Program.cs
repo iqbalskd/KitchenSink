@@ -14,26 +14,6 @@ namespace KitchenSink
 
             DummyData.Create();
 
-            Handle.GET("/KitchenSink/master", () =>
-            {
-                Session session = Session.Current;
-                if (session != null && session.Data != null)
-                    return session.Data;
-
-                var master = new MasterPage();
-
-                if (session == null)
-                {
-                    session = new Session(SessionOptions.PatchVersioning);
-                }
-
-                var nav = new NavPage();
-                master.CurrentPage = nav;
-
-                master.Session = session;
-                return master;
-            });
-
             Handle.GET("/KitchenSink/json", () => { return new Json(); });
 
             Handle.GET("/KitchenSink/partial/mainpage", () => new MainPage());
@@ -265,7 +245,7 @@ namespace KitchenSink
 
         private static Json WrapPage<T>(string partialPath) where T : Json
         {
-            var master = (MasterPage) Self.GET("/KitchenSink/master");
+            var master = GetMasterPageFromSession();
             var nav = master.CurrentPage as NavPage;
 
             if (nav.CurrentPage != null && nav.CurrentPage.GetType().Equals(typeof(T)))
@@ -283,15 +263,23 @@ namespace KitchenSink
             return master;
         }
 
-        private static int IndexOfNth(string str, char c, int n)
+        public static MasterPage GetMasterPageFromSession()
         {
-            int index = -1;
-            while (n-- > 0)
+            if (Session.Current == null)
             {
-                index = str.IndexOf(c, index + 1);
-                if (index == -1) break;
+                Session.Current = new Session(SessionOptions.PatchVersioning);
             }
-            return index;
+
+            MasterPage master = Session.Current.Data as MasterPage;
+
+            if (master == null)
+            {
+                master = new MasterPage();
+                master.CurrentPage = new NavPage();
+                Session.Current.Data = master;
+            }
+
+            return master;
         }
     }
 }
