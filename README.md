@@ -14,6 +14,10 @@ Shows how to model different UI patterns in JSON:
 | Redirect  |   |   |   | Breadcrumb  | Pagination  |
 | Validation  |   |   |   |   | Flash Message  |
 
+## Requirements
+
+This repository uses features from C#7. Thus, to be able to build, **Visual Studio 2017** is required. An alternative is to download [Microsoft.Net.Compilers](https://www.nuget.org/packages/Microsoft.Net.Compilers/) for Visual Studio 2015.
+
 ## Developer instructions - Contributing
 
 For developer instructions, go to [CONTRIBUTING](CONTRIBUTING.md).
