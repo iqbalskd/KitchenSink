@@ -75,12 +75,6 @@ namespace KitchenSink.Tests.Ui
             return new AutoCompletePage(Driver);
         }
 
-        public ClientLocalStatePage GoToClientLocalStatePage()
-        {
-            ClickOn(ClientLocalStateLink);
-            return new ClientLocalStatePage(Driver);
-        }
-
         public PasswordPage GoToPasswordPage()
         {
             ClickOn(PasswordPageLink);
