@@ -14,7 +14,7 @@ Shows how to model different UI patterns in JSON:
 | Redirect  |   |   |   | Breadcrumb  | Pagination  |
 | Validation  |   |   |   |   | Flash Message  |
 
-## Developer instructions - Contrinbuting
+## Developer instructions - Contributing
 
 For developer instructions, go to [CONTRIBUTING](CONTRIBUTING.md).
 
