@@ -5,8 +5,8 @@ namespace KitchenSink
     [Database]
     public class GeoCoordinates
     {
-        public double Latitude;
-        public double Longitude;
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
     }
 
     partial class GeoPage : Json

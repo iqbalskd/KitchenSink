@@ -6,9 +6,9 @@ namespace KitchenSink
     [Database]
     public class Book
     {
-        public string Author;
-        public string Title;
-        public long Position;
+        public string Author { get; set; }
+        public string Title { get; set; }
+        public long Position { get; set; }
     }
 
     partial class PaginationPage : Json
