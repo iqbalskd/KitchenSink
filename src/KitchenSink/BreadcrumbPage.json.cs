@@ -7,8 +7,8 @@ namespace KitchenSink
     [Database]
     public class TreeItem
     {
-        public string Name;
-        public TreeItem Parent;
+        public string Name { get; set; }
+        public TreeItem Parent { get; set; }
 
         public QueryResultRows<TreeItem> Children
         {

@@ -5,7 +5,7 @@ namespace KitchenSink
     [Database]
     public class SoftwareProduct
     {
-        public string Name;
+        public string Name { get; set; }
         public string Key
         {
             get
