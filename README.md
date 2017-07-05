@@ -16,7 +16,7 @@ Shows how to model different UI patterns in JSON:
 
 ## Requirements
 
-This repository uses features from C#7. Thus, **Visual Studio 2017** is required to build. An alternative is to download [Microsoft.Net.Compilers](https://www.nuget.org/packages/Microsoft.Net.Compilers/) for Visual Studio 2015.
+This repository uses features from C# 7. Thus, **Visual Studio 2017** is required to build. An alternative is to download [Microsoft.Net.Compilers](https://www.nuget.org/packages/Microsoft.Net.Compilers/) for Visual Studio 2015.
 
 ## Developer instructions - Contributing
 
