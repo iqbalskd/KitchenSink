@@ -35,7 +35,7 @@
     "branch": "master",
     "commit": "b2c995a65ff035d6497976a93d7fd44bc7786987"
   },
-  "_source": "git://github.com/Juicy/x-breadcrumb.git",
+  "_source": "https://github.com/Juicy/x-breadcrumb.git",
   "_target": "master",
   "_originalSource": "Juicy/x-breadcrumb"
 }

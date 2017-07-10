@@ -14,7 +14,7 @@ Install the component using [Bower](http://bower.io/):
 $ bower install juicy-markdown --save
 ```
 
-Or [download as ZIP](https://github.com/Juicy/juicy-markdown/archive/polymer_1.0.zip).
+Or [download as ZIP](https://github.com/Juicy/juicy-markdown/archive/gh-pages.zip).
 
 ## Usage
 
@@ -45,7 +45,7 @@ Attribute | Options  | Default | Description
 
 ## See also
 
- - [`<juicy-markdown-tabbededitor>`](https://github.com/Juicy/juicy-markdown-editor) - simple Markdown editor
+ - [`<juicy-markdown-editor>`](https://github.com/Juicy/juicy-markdown-editor) - simple Markdown editor
  - [`<juicy-markdown-tabbededitor>`](https://github.com/Juicy/juicy-markdown-tabbededitor) - Markdown editor, with tabs like the one at GitHub.com
 
 ## Contributing
@@ -59,3 +59,7 @@ Attribute | Options  | Default | Description
 ## History
 
 For detailed changelog, check [Releases](https://github.com/Juicy/juicy-markdown/releases).
+
+## License
+
+MIT

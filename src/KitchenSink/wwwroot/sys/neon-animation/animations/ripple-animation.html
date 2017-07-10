@@ -10,7 +10,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../../polymer/polymer.html">
 <link rel="import" href="../neon-shared-element-animation-behavior.html">
-<link rel="import" href="../web-animations.html">
 
 <!--
 `<ripple-animation>` scales and transform an element such that it appears to ripple from either
@@ -70,13 +69,14 @@ Configuration:
       var scaleY = diameter / toRect.height;
       var scale = 'scale(' + scaleX + ',' + scaleY + ')';
 
-      this.setPrefixedProperty(shared.to, 'transformOrigin', '50% 50%');
-      shared.to.style.borderRadius = '50%';
-
       this._effect = new KeyframeEffect(shared.to, [
         {'transform': translate + ' scale(0)'},
         {'transform': translate + ' ' + scale}
       ], this.timingFromConfig(config));
+
+      this.setPrefixedProperty(shared.to, 'transformOrigin', '50% 50%');
+      shared.to.style.borderRadius = '50%';
+
       return this._effect;
     },
 

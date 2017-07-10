@@ -79,7 +79,7 @@
             </template>
         </div>
 
-        <starcounter-upload  slot="kitchensink/fileupload-upload" session-id="{{model.SessionId}}" upload-url="{{model.UploadUrl}}" tasks="{{tasks}}" multiple="true"></starcounter-upload>
+        <starcounter-upload slot="kitchensink/fileupload-upload" session-id="{{model.SessionId}}" upload-url="{{model.UploadUrl}}" tasks="{{tasks}}" multiple auto-upload></starcounter-upload>
 
         <button slot="kitchensink/fileupload-select-button" type="button" class="btn btn-sm btn-primary" on-click="selectFile">Select file</button>
 

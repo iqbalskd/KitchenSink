@@ -5,7 +5,7 @@ module.exports = function (grunt) {
                 files: ['bower.json', 'package.json', 'starcounter-upload.html'],
                 commit: true,
                 commitMessage: '%VERSION%',
-                commitFiles: ['bower.json', 'starcounter-upload.html'],
+                commitFiles: ['bower.json', 'package.json', 'starcounter-upload.html'],
                 createTag: true,
                 tagName: '%VERSION%',
                 tagMessage: 'Version %VERSION%',
