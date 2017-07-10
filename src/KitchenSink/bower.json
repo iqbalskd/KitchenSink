@@ -26,7 +26,7 @@
     "google-map": "GoogleWebComponents/google-map#~1.1.4",
     "juicy-select": "Juicy/juicy-select#master",
     "x-breadcrumb": "Juicy/x-breadcrumb#master",
-    "paper-dialog": "PolymerElements/paper-dialog#^1.0.4",
+    "paper-dialog": "PolymerElements/paper-dialog#^1.1.0",
     "paper-input": "PolymerElements/paper-input#^1.1.24",
     "paper-toggle-button": "PolymerElements/paper-toggle-button#^1.1.2",
     "starcounter-upload": "Starcounter/starcounter-upload#~0.0.1"
