@@ -3,6 +3,5 @@
 
   "Price$": 0.0,
 
-  "PriceReaction": "",
-  "$PriceReaction": { "Bind": "CalculatedPriceReaction" }
+  "PriceReaction": ""
 }

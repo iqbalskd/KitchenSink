@@ -20,6 +20,7 @@ namespace KitchenSink
         static DropdownPage()
         {
             DropdownPage.DefaultTemplate.SelectedProductKey.Bind = "SelectedProductKeyBind";
+            DefaultTemplate.PetReaction.Bind = "CalculatedPetReaction";
         }
 
         protected override void OnData()

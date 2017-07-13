@@ -5,6 +5,11 @@ namespace KitchenSink
 {
     partial class IntegerPage : Json
     {
+        static IntegerPage()
+        {
+            DefaultTemplate.AgeReaction.Bind = "CalculatedAgeReaction";
+        }
+
         public string CalculatedAgeReaction
         {
             get

@@ -33,6 +33,11 @@ namespace KitchenSink
     [DatagridPage_json.Pets]
     partial class DatagridPagePetsElementJson : Json
     {
+        static DatagridPagePetsElementJson()
+        {
+            DefaultTemplate.Sound.Bind = "CalculatedSound";
+        }
+
         public string CalculatedSound
         {
             get

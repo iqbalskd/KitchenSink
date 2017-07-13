@@ -11,6 +11,11 @@ namespace KitchenSink
             this.Price = 10;
         }
 
+        static DecimalPage()
+        {
+            DefaultTemplate.PriceReaction.Bind = "CalculatedPriceReaction";
+        }
+
         public string CalculatedPriceReaction
         {
             get { return "5% of tax is " + (Price/20); }
