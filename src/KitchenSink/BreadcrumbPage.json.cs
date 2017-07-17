@@ -75,6 +75,12 @@ namespace KitchenSink
     {
         public TreeItem GhostParent;
 
+        static BreadcrumbPageBreadcrumbsElement()
+        {
+            DefaultTemplate.Name.Bind = nameof(FormattedName);
+            DefaultTemplate.IsGhost.Bind = nameof(IsGhostParentSet);
+        }
+
         public string FormattedName
         {
             get

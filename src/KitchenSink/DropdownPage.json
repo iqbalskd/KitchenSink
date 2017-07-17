@@ -7,7 +7,6 @@
   "SelectedPet$": "",
 
   "PetReaction": "",
-  "$PetReaction": { "Bind": "CalculatedPetReaction" },
 
   "Products": [
     {

@@ -4,17 +4,11 @@
   "Breadcrumbs": [
     {
       "Name": "",
-      "$Name": {
-        "Bind": "FormattedName"
-      },
       "SearchQuery$": "",
       "IsActive": false,
       "IsGhost": false,
       "IsAdd": false,
       "SelectTrigger$": 0,
-      "$IsGhost": {
-        "Bind": "IsGhostParentSet"
-      },
       "Siblings": [
         {
           "Name": "",

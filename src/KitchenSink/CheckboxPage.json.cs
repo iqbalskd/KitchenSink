@@ -4,6 +4,11 @@ namespace KitchenSink
 {
     partial class CheckboxPage : Json
     {
+        static CheckboxPage()
+        {
+            DefaultTemplate.DrivingLicenseReaction.Bind = nameof(CalculatedDrivingLicenseReaction);
+        }
+
         public string CalculatedDrivingLicenseReaction
         {
             get

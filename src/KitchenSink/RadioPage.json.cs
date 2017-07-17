@@ -21,6 +21,11 @@ namespace KitchenSink
             this.SelectedPet = "dogs";
         }
 
+        static RadioPage()
+        {
+            DefaultTemplate.PetReaction.Bind = nameof(CalculatedPetReaction);
+        }
+
         public string CalculatedPetReaction
         {
             get { return "You like " + SelectedPet; }
