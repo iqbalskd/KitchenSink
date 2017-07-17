@@ -6,7 +6,7 @@ namespace KitchenSink
     {
         static ToggleButtonPage()
         {
-            DefaultTemplate.AcceptTermsAndConditionsReaction.Bind = "CalculatedAcceptTermsAndConditionsReaction";
+            DefaultTemplate.AcceptTermsAndConditionsReaction.Bind = nameof(CalculatedAcceptTermsAndConditionsReaction);
         }
 
         public string CalculatedAcceptTermsAndConditionsReaction =>

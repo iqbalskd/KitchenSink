@@ -77,8 +77,8 @@ namespace KitchenSink
 
         static BreadcrumbPageBreadcrumbsElement()
         {
-            DefaultTemplate.Name.Bind = "FormattedName";
-            DefaultTemplate.IsGhost.Bind = "IsGhostParentSet";
+            DefaultTemplate.Name.Bind = nameof(FormattedName);
+            DefaultTemplate.IsGhost.Bind = nameof(IsGhostParentSet);
         }
 
         public string FormattedName

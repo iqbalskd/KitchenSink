@@ -13,7 +13,7 @@ namespace KitchenSink
 
         static DecimalPage()
         {
-            DefaultTemplate.PriceReaction.Bind = "CalculatedPriceReaction";
+            DefaultTemplate.PriceReaction.Bind = nameof(CalculatedPriceReaction);
         }
 
         public string CalculatedPriceReaction

@@ -6,7 +6,7 @@ namespace KitchenSink
     {
         static CheckboxPage()
         {
-            DefaultTemplate.DrivingLicenseReaction.Bind = "CalculatedDrivingLicenseReaction";
+            DefaultTemplate.DrivingLicenseReaction.Bind = nameof(CalculatedDrivingLicenseReaction);
         }
 
         public string CalculatedDrivingLicenseReaction

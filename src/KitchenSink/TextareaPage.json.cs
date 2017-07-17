@@ -6,7 +6,7 @@ namespace KitchenSink
     {
         static TextareaPage()
         {
-            DefaultTemplate.BioReaction.Bind = "CalculatedBioReaction";
+            DefaultTemplate.BioReaction.Bind = nameof(CalculatedBioReaction);
         }
 
         public string CalculatedBioReaction

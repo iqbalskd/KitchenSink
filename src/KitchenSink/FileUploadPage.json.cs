@@ -33,7 +33,7 @@ namespace KitchenSink
         {
             static FileUploadFilePage()
             {
-                DefaultTemplate.FileSizeString.Bind = "FileSizeStringBind";
+                DefaultTemplate.FileSizeString.Bind = nameof(FileSizeStringBind);
             }
 
             public FileUploadPage ParentPage

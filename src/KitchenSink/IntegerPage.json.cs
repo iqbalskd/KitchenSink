@@ -7,7 +7,7 @@ namespace KitchenSink
     {
         static IntegerPage()
         {
-            DefaultTemplate.AgeReaction.Bind = "CalculatedAgeReaction";
+            DefaultTemplate.AgeReaction.Bind = nameof(CalculatedAgeReaction);
         }
 
         public string CalculatedAgeReaction

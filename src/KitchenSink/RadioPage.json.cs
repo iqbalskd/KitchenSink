@@ -23,7 +23,7 @@ namespace KitchenSink
 
         static RadioPage()
         {
-            DefaultTemplate.PetReaction.Bind = "CalculatedPetReaction";
+            DefaultTemplate.PetReaction.Bind = nameof(CalculatedPetReaction);
         }
 
         public string CalculatedPetReaction

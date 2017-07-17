@@ -6,7 +6,7 @@ namespace KitchenSink
     {
         static PasswordPage()
         {
-            DefaultTemplate.PasswordReaction.Bind = "CalculatedPasswordReaction";
+            DefaultTemplate.PasswordReaction.Bind = nameof(CalculatedPasswordReaction);
         }
 
         public string CalculatedPasswordReaction
