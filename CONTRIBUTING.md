@@ -53,11 +53,11 @@ Before running the steps, you need to:
 To run a specific test, add the param `--test="<testname>"` to `test.bat` line 18. Example: 
 
 ```
---test="KitchenSink.Tests.Test.FileUploadPageTest(Chrome).FileUploadPage_UploadAndDeleteAFile"`
+--test="KitchenSink.Tests.Test.FileUploadPageTest(Chrome).FileUploadPage_UploadAndDeleteAFile"
 ```
 
 To test in a specific browser, add the param `--params="browsers=<browsername>"` to `test.bat` line 18. Possible values: `Chrome`, `Firefox`, `Edge` (separated by a comma). Example: 
 
 ```
---params="Browsers=Chrome"`
+--params="Browsers=Chrome"
 ```
