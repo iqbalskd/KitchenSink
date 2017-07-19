@@ -39,12 +39,12 @@
             </template>
         </x-breadcrumb>
         <div slot="kitchensink/breadcrumb-adding-heading">
-            <template slot="kitchensink/breadcrumb-adding-heading" is="dom-if" if="{{model.CurrentTreeItem.IsAdd}}" restamp>
+            <template is="dom-if" if="{{model.CurrentTreeItem.IsAdd}}" restamp>
                 <h5>Adding a new type in <strong>{{model.CurrentTreeItem.ParentName}}</strong></h5>
             </template>
         </div>
         <div slot="kitchensink/breadcrumb-editing-heading">
-            <template slot="kitchensink/breadcrumb-editing-heading" is="dom-if" if="{{!model.CurrentTreeItem.IsAdd}}" restamp>
+            <template is="dom-if" if="{{!model.CurrentTreeItem.IsAdd}}" restamp>
                 <h5>Editing <strong>{{model.CurrentTreeItem.Name$}}</strong></h5>
             </template>
         </div>
