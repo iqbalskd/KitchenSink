@@ -22,4 +22,10 @@
         </table>
         <button slot="kitchensink/table-button" class="btn btn-sm btn-default" value="{{model.AddPetTrigger$::click}}" onmousedown="++this.value">Add a pet</button>
     </template>
+    <template is="declarative-shadow-dom">
+        <slot name="kitchensink/table-heading"></slot>
+        <slot name="kitchensink/table-description"></slot>
+        <slot name="kitchensink/table-table"></slot>
+        <slot name="kitchensink/table-button"></slot>
+    </template>
 </template>

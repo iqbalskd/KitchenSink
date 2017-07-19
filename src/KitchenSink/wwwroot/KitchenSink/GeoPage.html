@@ -13,4 +13,10 @@
         </google-map>
         <button slot="kitchensink/geo-reset-button" value="{{model.Position.ResetTrigger$::click}}" onclick="this.value++" class="btn btn-primary">Reset</button>
     </template>
+    <template is="declarative-shadow-dom">
+        <slot name="kitchensink/geo-heading"></slot>
+        <slot name="kitchensink/geo-description"></slot>
+        <slot name="kitchensink/geo-google-map"></slot>
+        <slot name="kitchensink/geo-reset-button"></slot>
+    </template>
 </template>

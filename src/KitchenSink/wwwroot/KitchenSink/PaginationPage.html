@@ -91,4 +91,11 @@
             };
         })();
     </script>
+    <template is="declarative-shadow-dom">
+        <slot name="kitchensink/pagination-heading"></slot>
+        <slot name="kitchensink/pagination-description"></slot>
+        <slot name="kitchensink/pagination-juicy-select-items-per-page"></slot>
+        <slot name="kitchensink/pagination-navigation"></slot>
+        <slot name="kitchensink/pagination-page-number"></slot>
+    </template>
 </template>
