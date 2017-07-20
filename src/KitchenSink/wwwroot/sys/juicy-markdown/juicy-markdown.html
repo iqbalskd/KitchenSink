@@ -1,7 +1,7 @@
 <!--
 Copyright 2014 Smörgåsbord Development.
 Update to Polymer 1.0 by carlos araya
-version: 1.0.0
+version: 1.0.1
 -->
 <link rel="import" href="../polymer/polymer.html">
 <!--
@@ -24,10 +24,8 @@ version: 1.0.0
   </style>
   <template>
     <!-- New way to do template if tags -->
-    <template is="dom-if" if="{{ghcss}}">
-      <style>
-        @import "../github-markdown-css/github-markdown.css";
-      </style>
+    <template is="dom-if" if="{{ghcss}}" restamp>
+        <link rel="stylesheet" type="text/css" href="http://juicy.github.io/github-markdown-css/github-markdown.css">
     </template>
     <link rel="stylesheet" href="../highlightjs/styles/default.css">
     <!-- TODO: try to remove this layer -->
@@ -76,7 +74,7 @@ version: 1.0.0
       this.parseText(newValue);
     },
     parseText: function (text) {
-      this.$.preview.innerHTML = marked(text, this.options);
+      this.$.preview.innerHTML = marked(text ? text : "", this.options);
     }
   });
 </script>

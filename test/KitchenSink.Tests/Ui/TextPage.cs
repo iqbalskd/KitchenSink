@@ -52,10 +52,9 @@ namespace KitchenSink.Tests.Ui
             inputElement.SendKeys(Keys.Enter);
         }
 
-        public IWebElement GetInputForPaperElement(IWebElement paperElement)
+        public IWebElement GetInputForPaperElement(IWebElement paperInput)
         {
-            var shadowRoot = ExpandShadowRoot(paperElement);
-            return shadowRoot.FindElement(By.Id("input"));
+            return ExpandShadowRoot(paperInput).FindElement(By.CssSelector("input"));
         }
 
         public IWebElement GetLabelForPaperElement(IWebElement paperElement)

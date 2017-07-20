@@ -1,6 +1,6 @@
 {
   "name": "starcounter-upload",
-  "version": "0.0.1",
+  "version": "0.0.7",
   "homepage": "https://github.com/Starcounter/starcounter-upload",
   "authors": [
     "Konstantin <const.miyang@gmail.com>"
@@ -23,16 +23,15 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "~1.3.0"
+    "polymer": "^1.5.0"
   },
-  "_release": "0.0.1",
+  "_release": "0.0.7",
   "_resolution": {
     "type": "version",
-    "tag": "0.0.1",
-    "commit": "e52ba8a1fd73304e605240385e4abe195e7c7a5b"
+    "tag": "0.0.7",
+    "commit": "5e9e61776548783a648c3da4e37215771fdcd9ea"
   },
-  "_source": "git://github.com/Starcounter/starcounter-upload.git",
-  "_target": "~0.0.1",
-  "_originalSource": "Starcounter/starcounter-upload",
-  "_direct": true
+  "_source": "https://github.com/Starcounter/starcounter-upload.git",
+  "_target": "^0.0.7",
+  "_originalSource": "Starcounter/starcounter-upload"
 }

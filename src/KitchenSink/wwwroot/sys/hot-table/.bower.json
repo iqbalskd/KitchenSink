@@ -33,7 +33,7 @@
     "branch": "fix-styles-issue-23",
     "commit": "a40f17765410e8f930f0c1f16cb34cde5ec9d9e6"
   },
-  "_source": "git://github.com/handsontable/hot-table.git",
+  "_source": "https://github.com/handsontable/hot-table.git",
   "_target": "fix-styles-issue-23",
   "_originalSource": "handsontable/hot-table"
 }

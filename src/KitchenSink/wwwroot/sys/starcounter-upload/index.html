@@ -13,6 +13,13 @@
         body {
             padding: 50px;
         }
+
+        span.btn-link,
+        span.btn-link:hover {
+            text-decoration: none;
+            color: inherit;
+            cursor: text;
+        }
     </style>
 </head>
 <body>
@@ -24,6 +31,7 @@
                     <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Type</th>
                             <th>Size</th>
                             <th>Progress</th>
                             <th></th>
@@ -33,6 +41,7 @@
                         <template is="dom-repeat" items="{{model.files}}">
                             <tr>
                                 <td>{{item.file.name}}</td>
+                                <td>{{item.file.type}}</td>
                                 <td>{{item.sizeString}}</td>
                                 <td>
                                     <span>{{item.progress}}</span>%
@@ -55,6 +64,7 @@
                     <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Type</th>
                             <th>Size</th>
                             <th>Progress</th>
                             <th></th>
@@ -64,6 +74,7 @@
                         <template is="dom-repeat" items="{{tasks}}">
                             <tr>
                                 <td>{{item.file.name}}</td>
+                                <td>{{item.file.type}}</td>
                                 <td>{{item.sizeString}}</td>
                                 <td>
                                     <span>{{item.progress}}</span>%
@@ -80,8 +91,9 @@
         </div>
         <hr />
         <p>
-            <starcounter-upload upload-url="/starcounter-upload" session-id="mock-session" tasks="{{tasks}}" on-statechange="onUploadingStateChange" multiple="true">
+            <starcounter-upload upload-url="/starcounter-upload" session-id="mock-session" tasks="{{tasks}}" on-statechange="onUploadingStateChange" multiple="true" auto-upload="true">
                 <button type="button" class="btn btn-sm btn-default" on-click="selectFile">Select files to upload</button>
+                <span class="btn btn-sm btn-link">Click <code>Ctrl + V</code> to paste image from clipboard</span>
             </starcounter-upload>
         </p>
         <p>
