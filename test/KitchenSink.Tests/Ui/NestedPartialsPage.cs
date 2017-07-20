@@ -14,7 +14,7 @@ namespace KitchenSink.Tests.Ui
         [FindsBy(How = How.XPath, Using = "//button[text() = 'Add child']")]
         public IWebElement AddChildButton { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//juicy-composition")]
+        [FindsBy(How = How.XPath, Using = "//starcounter-include")]
         public IList<IWebElement> ChildCompositions { get; set; }
 
         public void AddChild()

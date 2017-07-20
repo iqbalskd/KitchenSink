@@ -17,4 +17,11 @@
 
         <div slot="kitchensink/radio-reaction-label" class="kitchensink-test-pet-reaction-label">{{model.PetReaction}}</div>
     </template>
+    <template is="declarative-shadow-dom">
+        <slot name="kitchensink/radio-heading"></slot>
+        <slot name="kitchensink/radio-description"></slot>
+        <slot name="kitchensink/radio-description-recommend"></slot>
+        <slot name="kitchensink/radio-paper-radio-group"></slot>
+        <slot name="kitchensink/radio-reaction-label"></slot>
+    </template>
 </template>

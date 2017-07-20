@@ -29,4 +29,13 @@
             Your favorite country is: <span>{{model.FavoriteCountry$}}</span>
         </p>
     </template>
+    <template is="declarative-shadow-dom">
+        <slot name="kitchensink/multiselect-heading"></slot>
+        <slot name="kitchensink/multiselect-description"></slot>
+        <slot name="kitchensink/multiselect-countries-multiselect"></slot>
+        <slot name="kitchensink/multiselect-visited-label"></slot>
+        <slot name="kitchensink/multiselect-favorite-country-select-label"></slot>
+        <slot name="kitchensink/multiselect-favorite-country-select"></slot>
+        <slot name="kitchensink/multiselect-favorite-label"></slot>
+    </template>
 </template>
