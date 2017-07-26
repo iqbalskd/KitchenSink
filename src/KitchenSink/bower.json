@@ -32,7 +32,9 @@
     "starcounter-upload": "Starcounter/starcounter-upload#^0.0.7",
     "momentjs": "2.10.6",
     "pikaday": "1.3.3",
-    "pikaday-decorator": "0.2.1"
+    "pikaday-decorator": "0.2.1",
+    "palindrom-connection": "*",
+    "palindrom-polymer": "git://github.com/Palindrom/palindrom-polymer-client#palindrom-polymer"
   },
   "resolutions": {
     "pikaday": "1.3.3"
