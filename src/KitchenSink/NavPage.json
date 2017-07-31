@@ -1,11 +1,3 @@
 {
-  "Html": "/KitchenSink/NavPage.html",
-
-  "NavLinks": [
-    {
-      "Label": "",
-      "Url": ""
-    }
-  ],
-  "CurrentPage": {}
+  "Html": "/KitchenSink/NavPage.html"
 }

@@ -1,4 +1,5 @@
 {
-  Html: "/KitchenSink/MasterPage.html",
-  CurrentPage: {}
+  "Html": "/KitchenSink/MasterPage.html",
+  "NavPage": {},
+  "CurrentPage": {}
 }
