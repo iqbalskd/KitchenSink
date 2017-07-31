@@ -103,8 +103,7 @@ namespace KitchenSink
             Handle.GET("/KitchenSink/Redirect/{?}", (string param) =>
             {
                 var master = WrapPage<RedirectPage>("/KitchenSink/partial/Redirect") as MasterPage;
-                var nav = master.CurrentPage as NavPage;
-                var page = nav.CurrentPage as RedirectPage;
+                var page = master.CurrentPage as RedirectPage;
                 page.YourFavoriteFood = "You've got some tasty " + param;
                 return master;
             });
@@ -174,14 +173,7 @@ namespace KitchenSink
                         return;
                     }
 
-                    NavPage nav = master.CurrentPage as NavPage;
-
-                    if (nav == null)
-                    {
-                        return;
-                    }
-
-                    FileUploadPage page = nav.CurrentPage as FileUploadPage;
+                    FileUploadPage page = master.CurrentPage as FileUploadPage;
 
                     if (page == null)
                     {
@@ -234,6 +226,8 @@ namespace KitchenSink
             Handle.GET("/KitchenSink/partial/autocomplete", () => Db.Scope(() => new AutocompletePage()));
             Handle.GET("/KitchenSink/autocomplete", () => WrapPage<AutocompletePage>("/KitchenSink/partial/autocomplete"));
 
+            Handle.GET("/KitchenSink/nav", () => { return new NavPage(); }, new HandlerOptions() { SelfOnly = true });
+
             //for a launcher
             Handle.GET("/KitchenSink/app-name", () => { return new AppName(); });
 
@@ -246,18 +240,17 @@ namespace KitchenSink
         private static Json WrapPage<T>(string partialPath) where T : Json
         {
             var master = GetMasterPageFromSession();
-            var nav = master.CurrentPage as NavPage;
 
-            if (nav.CurrentPage != null && nav.CurrentPage.GetType().Equals(typeof(T)))
+            if (master.CurrentPage != null && master.CurrentPage.GetType().Equals(typeof(T)))
             {
                 return master;
             }
 
-            nav.CurrentPage = Self.GET(partialPath);
+            master.CurrentPage = Self.GET(partialPath);
 
-            if (nav.CurrentPage.Data == null)
+            if (master.CurrentPage.Data == null)
             {
-                nav.CurrentPage.Data = null; //trick to invoke OnData in partial
+                master.CurrentPage.Data = null; //trick to invoke OnData in partial
             }
 
             return master;
@@ -275,7 +268,7 @@ namespace KitchenSink
             if (master == null)
             {
                 master = new MasterPage();
-                master.CurrentPage = new NavPage();
+                master.NavPage = Self.GET("/kitchensink/nav");
                 Session.Current.Data = master;
             }
 

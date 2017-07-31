@@ -1,17 +1,4 @@
-﻿.kitchensink-layout {
-  display: flex;
-}
-
-.kitchensink-layout__column-left {
-  flex: 0 0 160px;
-  margin-right: 20px;
-}
-
-.kitchensink-layout__column-right {
-  flex: 0 1 600px;
-}
-
-.kitchensink-menu__heading {
+﻿.kitchensink-menu__heading {
   font-size: 100%;
 }
 

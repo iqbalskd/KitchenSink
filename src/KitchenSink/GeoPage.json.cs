@@ -63,12 +63,8 @@ namespace KitchenSink
             Session.ForAll((s, sessionId) =>
             {
                 var master = s.Data as MasterPage;
-                var navpage = master?.CurrentPage as NavPage;
-                if (!(navpage?.CurrentPage is GeoPage)) return;
-                if ((GeoPage) navpage.CurrentPage != null)
-                {
-                    s.CalculatePatchAndPushOnWebSocket();
-                }
+                if (!(master?.CurrentPage is GeoPage)) return;
+                s.CalculatePatchAndPushOnWebSocket();
             });
         }
     }

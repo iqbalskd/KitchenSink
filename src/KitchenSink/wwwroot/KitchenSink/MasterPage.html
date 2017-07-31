@@ -1,9 +1,31 @@
 ﻿<link rel="stylesheet" href="/KitchenSink/style.css">
 <template>
     <template id="root" is="dom-bind">
-        <starcounter-include slot="kitchensink/master-current-page" partial="{{model.CurrentPage}}"></starcounter-include>
+        <starcounter-include slot="kitchensink/nav" partial="{{model.NavPage}}"></starcounter-include>
+        <starcounter-include slot="kitchensink/current" partial="{{model.CurrentPage}}"></starcounter-include>
     </template>
     <template is="declarative-shadow-dom">
-        <slot name="kitchensink/master-current-page"></slot>
+        <style>
+            .kitchensink-layout {
+                display: flex;
+            }
+
+            .kitchensink-layout__column-left {
+                flex: 0 0 160px;
+                margin-right: 20px;
+            }
+
+            .kitchensink-layout__column-right {
+                flex: 0 1 600px;
+            }
+        </style>
+        <div class="kitchensink-layout">
+            <nav class="kitchensink-layout__column-left">
+                <slot name="kitchensink/nav"></slot>
+            </nav>
+            <div class="kitchensink-layout__column-right">
+                <slot name="kitchensink/current"></slot>
+            </div>
+        </div>
     </template>
 </template>
