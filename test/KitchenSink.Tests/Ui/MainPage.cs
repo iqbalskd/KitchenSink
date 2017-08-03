@@ -38,7 +38,11 @@ namespace KitchenSink.Tests.Ui
             ClickOn(TablePageLink);
             return new TablePage(Driver);
         }
-
+        public UrlPage GoToUrlPage()
+        {            
+            ClickOn(UrlPageLink);
+            return new UrlPage(Driver);
+        }
         public ValidationPage GoToValidationPage()
         {
             ClickOn(ValidationPageLink);

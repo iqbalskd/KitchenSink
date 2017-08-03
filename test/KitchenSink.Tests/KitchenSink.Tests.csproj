@@ -67,6 +67,7 @@
     <Compile Include="Test\RadioPageTest.cs" />
     <Compile Include="Test\BaseTest.cs" />
     <Compile Include="Test\CheckboxPageTest.cs" />
+    <Compile Include="Test\UrlPageTest.cs" />
     <Compile Include="Test\ToggleButtonPageTest.cs" />
     <Compile Include="Test\AutoCompletePageTest.cs" />
     <Compile Include="Test\FileUploadPageTest.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Ui\BasePage.cs" />
     <Compile Include="Ui\ButtonPage.cs" />
     <Compile Include="Ui\CheckboxPage.cs" />
+    <Compile Include="Ui\UrlPage.cs" />
     <Compile Include="Ui\ToggleButtonPage.cs" />
     <Compile Include="Ui\AutoCompletePage.cs" />
     <Compile Include="Ui\FileUploadPage.cs" />
