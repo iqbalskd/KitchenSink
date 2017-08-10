@@ -2,15 +2,15 @@
     <template is="dom-bind">
         <h1 slot="kitchensink/url-heading" class="kitchensink-heading-1">Link</h1>
 
-        <h6 slot="kitchensink/url-description">JSON's primitive value type <code>string</code> can be mapped directly to HTML <code>a href=""</code>.</h6>
+        <p slot="kitchensink/url-description">JSON's primitive value type <code>string</code> can be mapped directly to HTML <code>a href=""</code>.</p>
 
         <a slot="kitchensink/url-link" href="{{model.Url}}">{{model.Label}}</a>
 
-        <h6 slot="kitchensink/url-description-targeted">Setting any target except <code>_self</code> would disable page morphing</h6>
+        <p slot="kitchensink/url-description-targeted">Setting any target except <code>_self</code> would disable page morphing</p>
 
         <a slot="kitchensink/targeted-url-link" target="_black" href="{{model.Url}}">Targetted: {{model.Label}}</a>
 
-        <h6 slot="kitchensink/url-description-targeted-iframe">iframe targets are also supported</h6>
+        <p slot="kitchensink/url-description-targeted-iframe">iframe targets are also supported</p>
 
         <a slot="kitchensink/url-link-iframe-targetted" target="link-target" href="{{model.Url}}">iframe-targetted: {{model.Label}}</a>
         <iframe slot="kitchensink/url-targeted-iframe" id="link-target" name="link-target"></iframe>

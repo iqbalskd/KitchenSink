@@ -11,7 +11,7 @@ namespace KitchenSink.Tests.Test
     [TestFixture(Config.Browser.Firefox)]
     internal class UrlPageTest : BaseTest
     {
-        private UrlPage _UrlPage;
+        private UrlPage _urlPage;
         private MainPage _mainPage;
 
         public UrlPageTest(Config.Browser browser) : base(browser)
@@ -22,54 +22,54 @@ namespace KitchenSink.Tests.Test
         public void SetUp()
         {
             _mainPage = new MainPage(Driver).GoToMainPage();
-            _UrlPage = _mainPage.GoToUrlPage();
+            _urlPage = _mainPage.GoToUrlPage();
         }
 
-        private string getIframeCurrentURL()
+        private string GetIframeCurrentURL()
         {
-            IJavaScriptExecutor JSExecuter = (IJavaScriptExecutor)Driver;
-            return (string)JSExecuter.ExecuteScript("return document.querySelector('#link-target').contentWindow.location.href");
+            IJavaScriptExecutor jsExecuter = (IJavaScriptExecutor)Driver;
+            return (string)jsExecuter.ExecuteScript("return document.querySelector('#link-target').contentWindow.location.href");
         }
 
         [TearDown]
         public void TeadDown()
         {
-            _UrlPage = _mainPage.GoToUrlPage();
+            _urlPage = _mainPage.GoToUrlPage();
         }
 
         [Test]
         public void UrlPage_ClickSimpleLink()
         {
-            IJavaScriptExecutor JSExecuter = (IJavaScriptExecutor)Driver;
-            WaitUntil(x => _UrlPage.SimpleMorphableLink.Displayed);
+            IJavaScriptExecutor jsExecuter = (IJavaScriptExecutor)Driver;
+            WaitUntil(x => _urlPage.SimpleMorphableLink.Displayed);
 
             // leave a foot print in the window object
-            JSExecuter.ExecuteScript("window.footprintExists = true");
+            jsExecuter.ExecuteScript("window.footprintExists = true");
 
             // control test 
             Assert.AreEqual("http://localhost:8080/KitchenSink/Url", Driver.Url);
-            Assert.AreEqual(true, JSExecuter.ExecuteScript("return window.footprintExists"));
+            Assert.AreEqual(true, jsExecuter.ExecuteScript("return window.footprintExists"));
 
-            _UrlPage.ClickSimpleMorphableLink();
+            _urlPage.ClickSimpleMorphableLink();
 
             System.Threading.Thread.Sleep(2000);
 
             Assert.AreEqual(Driver.Url, "http://localhost:8080/KitchenSink");
 
             // if the foot print still exists, we can infer that the page was actually morphed, not fully loaded
-            Assert.AreEqual(true, JSExecuter.ExecuteScript("return window.footprintExists"));
+            Assert.AreEqual(true, jsExecuter.ExecuteScript("return window.footprintExists"));
 
         }
         
         [Test]
         public void UrlPage_ClickBlankTargettedLink()
         {
-            WaitUntil(x => _UrlPage.BlankTargettedLink.Displayed);
+            WaitUntil(x => _urlPage.BlankTargettedLink.Displayed);
 
             //control test 
             Assert.AreEqual(Driver.WindowHandles.Count, 1);
 
-            _UrlPage.ClickBlankTargettedLink();
+            _urlPage.ClickBlankTargettedLink();
 
             System.Threading.Thread.Sleep(500);
 
@@ -86,16 +86,16 @@ namespace KitchenSink.Tests.Test
         [Test]
         public void UrlPage_ClickIframeTargettedLink()
         {
-            WaitUntil(x => _UrlPage.IframeTargettedLink != null && _UrlPage.IframeTargettedLink.Displayed);
+            WaitUntil(x => _urlPage.IframeTargettedLink != null && _urlPage.IframeTargettedLink.Displayed);
 
             //control test 
-            Assert.AreEqual(getIframeCurrentURL(), "about:blank");
+            Assert.AreEqual(GetIframeCurrentURL(), "about:blank");
 
-            _UrlPage.ClickIframeTargettedLink();
+            _urlPage.ClickIframeTargettedLink();
 
             System.Threading.Thread.Sleep(500);
 
-            Assert.AreEqual(getIframeCurrentURL(), "http://localhost:8080/KitchenSink");
+            Assert.AreEqual(GetIframeCurrentURL(), "http://localhost:8080/KitchenSink");
         }
     }
 }
