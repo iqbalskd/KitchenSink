@@ -33,6 +33,9 @@ namespace KitchenSink.Tests.Ui
         [FindsBy(How = How.XPath, Using = "//a[text() = 'Table']")]
         public IWebElement TablePageLink { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//a[text() = 'Link']")]
+        public IWebElement UrlPageLink { get; set; }
+
         [FindsBy(How = How.XPath, Using = "//a[text() = 'Validation']")]
         public IWebElement ValidationPageLink { get; set; }
 

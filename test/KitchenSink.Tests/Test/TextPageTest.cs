@@ -1,5 +1,4 @@
 ﻿using KitchenSink.Tests.Ui;
-
 using KitchenSink.Tests.Utilities;
 using NUnit.Framework;
 using OpenQA.Selenium;
