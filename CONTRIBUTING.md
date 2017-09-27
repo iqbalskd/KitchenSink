@@ -46,9 +46,9 @@ Before running the steps, you need to:
 
 ### Run the test (from command line)
 
-1. Start Selenium Remote Driver: `java -jar selenium-server-standalone-3.*.jar`
-2. Build the solution (build.bat)
-3. Start the KitchenSink.Test runner (test.bat)
+1. Start Selenium Remote Driver with the enablePassThrough option off: `java -jar selenium-server-standalone-3.*.jar -enablePassThrough false`
+2. Build the solution (`build.bat`)
+3. Start the KitchenSink.Test runner (`test.bat`)
 
 To run a specific test, add the param `--test="<testname>"`.
 
