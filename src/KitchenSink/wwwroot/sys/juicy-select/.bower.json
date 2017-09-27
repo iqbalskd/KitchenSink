@@ -23,13 +23,13 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer"
+    "polymer": "Polymer/polymer#1.9 - 2"
   },
-  "_release": "9e6e0be17b",
+  "_release": "219a1494f3",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "9e6e0be17b53b29ec84c2347cf01b225f699ff7d"
+    "commit": "219a1494f32e2e290c3c9ae47e57876b1a370d4e"
   },
   "_source": "https://github.com/Juicy/juicy-select.git",
   "_target": "master",
