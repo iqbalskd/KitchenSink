@@ -50,14 +50,12 @@ Before running the steps, you need to:
 2. Build the solution (build.bat)
 3. Start the KitchenSink.Test runner (test.bat)
 
-To run a specific test, add the param `--test="<testname>"` to `test.bat` line 18. Example: 
+To run a specific test, add the param `--test="<testname>"`.
+
+To connect to a remote web driver on a different host, add the param `--params="Server=<Uri>"`
+
+To run in a specific browser, add the param `--params="Browsers=<BrowserName>"` (case sensitive). Possible values: `Chrome`, `Firefox`, `Edge` (separated by a comma). 
 
 ```
---test="KitchenSink.Tests.Test.FileUploadPageTest(Chrome).FileUploadPage_UploadAndDeleteAFile"
-```
-
-To test in a specific browser, add the param `--params="browsers=<browsername>"` to `test.bat` line 18. Possible values: `Chrome`, `Firefox`, `Edge` (separated by a comma). Example: 
-
-```
---params="Browsers=Chrome"
+test --params="Server=http://192.168.1.49:4444/wd/hub" --params="Browsers=Chrome" --test="KitchenSink.Tests.Test.TextareaPageTest(Chrome).TextareaPage_WriteToTextArea"
 ```
