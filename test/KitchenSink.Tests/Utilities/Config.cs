@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 
 namespace KitchenSink.Tests.Utilities
 {
@@ -22,7 +24,11 @@ namespace KitchenSink.Tests.Utilities
         }
 
         public static readonly TimeSpan Timeout = TimeSpan.FromSeconds(60);
-        public static readonly Uri KitchenSinkUrl = new Uri("http://localhost:8080/KitchenSink");
+        public static readonly string LocalIP = Dns.GetHostEntry(Dns.GetHostName())
+   .AddressList.First(
+       f => f.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+   .ToString();
+        public static readonly Uri KitchenSinkUrl = new Uri($"http://{LocalIP}:8080/KitchenSink");
         public static readonly Uri RemoteWebDriverUri = new Uri("http://localhost:4444/wd/hub");
 
         public static readonly Dictionary<Buttons, string> ButtonsDictionary = new Dictionary<Buttons, string>

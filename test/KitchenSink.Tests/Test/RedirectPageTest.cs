@@ -45,7 +45,7 @@ namespace KitchenSink.Tests.Test
         {
             _redirectPage.ClickButton(Config.Buttons.Morph);
             WaitUntil(x => Driver.Url == Config.KitchenSinkUrl.ToString());
-            Assert.AreEqual(Config.KitchenSinkUrl, Driver.Url);
+            Assert.AreEqual(Config.KitchenSinkUrl.ToString(), Driver.Url);
         }
 
         [Test]
