@@ -47,14 +47,14 @@ namespace KitchenSink.Tests.Test
             jsExecuter.ExecuteScript("window.footprintExists = true");
 
             // control test 
-            Assert.AreEqual("http://localhost:8080/KitchenSink/Url", Driver.Url);
+            Assert.AreEqual($"{Config.KitchenSinkUrl}/Url", Driver.Url);
             Assert.AreEqual(true, jsExecuter.ExecuteScript("return window.footprintExists"));
 
             _urlPage.ClickSimpleMorphableLink();
 
             System.Threading.Thread.Sleep(2000);
 
-            Assert.AreEqual(Driver.Url, "http://localhost:8080/KitchenSink");
+            Assert.AreEqual(Driver.Url, Config.KitchenSinkUrl.ToString());
 
             // if the foot print still exists, we can infer that the page was actually morphed, not fully loaded
             Assert.AreEqual(true, jsExecuter.ExecuteScript("return window.footprintExists"));
@@ -95,7 +95,7 @@ namespace KitchenSink.Tests.Test
 
             System.Threading.Thread.Sleep(500);
 
-            Assert.AreEqual(GetIframeCurrentURL(), "http://localhost:8080/KitchenSink");
+            Assert.AreEqual(GetIframeCurrentURL(), Config.KitchenSinkUrl.ToString());
         }
     }
 }

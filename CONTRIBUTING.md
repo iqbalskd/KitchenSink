@@ -46,18 +46,16 @@ Before running the steps, you need to:
 
 ### Run the test (from command line)
 
-1. Start Selenium Remote Driver: `java -jar selenium-server-standalone-3.*.jar`
-2. Build the solution (build.bat)
-3. Start the KitchenSink.Test runner (test.bat)
+1. Start Selenium Remote Driver with the enablePassThrough option off: `java -jar selenium-server-standalone-3.*.jar -enablePassThrough false`
+2. Build the solution (`build.bat`)
+3. Start the KitchenSink.Test runner (`test.bat`)
 
-To run a specific test, add the param `--test="<testname>"` to `test.bat` line 18. Example: 
+To run a specific test, add the param `--test="<testname>"`.
 
-```
---test="KitchenSink.Tests.Test.FileUploadPageTest(Chrome).FileUploadPage_UploadAndDeleteAFile"
-```
+To connect to a remote web driver on a different host, add the param `--params="Server=<Uri>"`
 
-To test in a specific browser, add the param `--params="browsers=<browsername>"` to `test.bat` line 18. Possible values: `Chrome`, `Firefox`, `Edge` (separated by a comma). Example: 
+To run in a specific browser, add the param `--params="Browsers=<BrowserName>"` (case sensitive). Possible values: `Chrome`, `Firefox`, `Edge` (separated by a comma). 
 
 ```
---params="Browsers=Chrome"
+test --params="Server=http://192.168.1.49:4444/wd/hub" --params="Browsers=Chrome" --test="KitchenSink.Tests.Test.TextareaPageTest(Chrome).TextareaPage_WriteToTextArea"
 ```

@@ -34,9 +34,15 @@ namespace KitchenSink.Tests.Test
                 //_browsersToRun.Add("Edge");
             }
 
+            Uri serverUri = Config.RemoteWebDriverUri;
+            if (TestContext.Parameters["Server"] != null)
+            {
+                serverUri = new Uri(TestContext.Parameters["Server"]);
+            }
+
             if (_browsersToRun.Contains(Config.BrowserDictionary[_browser]))
             {
-                Driver = WebDriverManager.StartDriver(_browser, Config.Timeout, Config.RemoteWebDriverUri);
+                Driver = WebDriverManager.StartDriver(_browser, Config.Timeout, serverUri);
             }
             else
             {
