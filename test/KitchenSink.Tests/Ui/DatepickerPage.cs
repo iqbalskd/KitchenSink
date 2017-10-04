@@ -30,7 +30,6 @@ namespace KitchenSink.Tests.Ui
             DatePicker.Clear();
             DatePicker.SendKeys(date);
             DatePicker.SendKeys(Keys.Enter);
-            ClickOn(SelectedDay);
         }
     }
 }
