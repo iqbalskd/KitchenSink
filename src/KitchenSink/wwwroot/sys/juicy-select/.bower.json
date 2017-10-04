@@ -25,13 +25,14 @@
   "dependencies": {
     "polymer": "Polymer/polymer#1.9 - 2"
   },
-  "_release": "b8a0725560",
+  "version": "1.0.0",
+  "_release": "1.0.0",
   "_resolution": {
-    "type": "branch",
-    "branch": "master",
-    "commit": "b8a0725560de0e4ca11b0e31801a1006751ede44"
+    "type": "version",
+    "tag": "1.0.0",
+    "commit": "74e771e98d2225c60cb9cb7ef6d603ff8f32c1a3"
   },
   "_source": "https://github.com/Juicy/juicy-select.git",
-  "_target": "master",
+  "_target": "^1.0.0",
   "_originalSource": "Juicy/juicy-select"
 }
