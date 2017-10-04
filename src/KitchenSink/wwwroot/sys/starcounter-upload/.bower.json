@@ -1,11 +1,11 @@
 {
   "name": "starcounter-upload",
-  "version": "0.0.7",
+  "version": "1.0.0",
   "homepage": "https://github.com/Starcounter/starcounter-upload",
   "authors": [
     "Konstantin <const.miyang@gmail.com>"
   ],
-  "description": "Starcounter Polymer element to uplaod files over WebSocket",
+  "description": "Starcounter Polymer element to upload files over WebSocket",
   "main": "starcounter-upload.html",
   "moduleType": [],
   "keywords": [
@@ -23,15 +23,15 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "^1.5.0"
+    "polymer": "polymer#1.9 - 2"
   },
-  "_release": "0.0.7",
+  "_release": "1.0.0",
   "_resolution": {
     "type": "version",
-    "tag": "0.0.7",
-    "commit": "5e9e61776548783a648c3da4e37215771fdcd9ea"
+    "tag": "1.0.0",
+    "commit": "198b46dd37f593d6b4fa15dfb528a4d57e9e0e49"
   },
   "_source": "https://github.com/Starcounter/starcounter-upload.git",
-  "_target": "^0.0.7",
+  "_target": "^1.0.0",
   "_originalSource": "Starcounter/starcounter-upload"
 }

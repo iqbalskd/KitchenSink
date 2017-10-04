@@ -29,7 +29,7 @@
     "paper-dialog": "PolymerElements/paper-dialog#^2.0.0",
     "paper-input": "PolymerElements/paper-input#^2.0.1",
     "paper-toggle-button": "PolymerElements/paper-toggle-button#^2.0.0",
-    "starcounter-upload": "Starcounter/starcounter-upload#^0.0.7",
+    "starcounter-upload": "Starcounter/starcounter-upload#^1.0.0",
     "momentjs": "latest",
     "pikaday": "latest",
     "pikaday-decorator": "latest"
