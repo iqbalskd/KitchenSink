@@ -28,15 +28,15 @@ namespace KitchenSink.Tests.Test
         public void RedirectPage_ClickingOnFruitShouldChangeUrlAndText()
         {
             _redirectPage.ClickButton(Config.Buttons.Fruit);
-            Assert.IsTrue(WaitForText(_redirectPage.InfoLabel, "You've got some tasty apple", 5));
+            Assert.IsTrue(WaitForText(_redirectPage.InfoLabel, "You've got some tasty apple", 15));
             Assert.AreEqual(Config.KitchenSinkUrl + "/Redirect/apple", Driver.Url);
-            
+
             _redirectPage.ClickButton(Config.Buttons.Vegetable);
-            Assert.IsTrue(WaitForText(_redirectPage.InfoLabel, "You've got some tasty carrot", 5));
+            Assert.IsTrue(WaitForText(_redirectPage.InfoLabel, "You've got some tasty carrot", 15));
             Assert.AreEqual(Config.KitchenSinkUrl + "/Redirect/carrot", Driver.Url);
 
             _redirectPage.ClickButton(Config.Buttons.Bread);
-            Assert.IsTrue(WaitForText(_redirectPage.InfoLabel, "You've got some tasty baguette", 5));
+            Assert.IsTrue(WaitForText(_redirectPage.InfoLabel, "You've got some tasty baguette", 15));
             Assert.AreEqual(Config.KitchenSinkUrl + "/Redirect/baguette", Driver.Url);
         }
 
