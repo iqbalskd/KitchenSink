@@ -48,7 +48,7 @@ namespace KitchenSink.Tests.Test
             _autoCompletePage.PlaceInput.SendKeys("P");
             WaitUntil(x => _autoCompletePage.PlacesAutoComplete.Count > 0);
             _autoCompletePage.ChoosePlace("Poland");
-            Assert.IsTrue(WaitForText(_autoCompletePage.PlaceInfoLabel, "Capital of Poland is Warsaw", 30));
+            Assert.IsTrue(WaitForText(_autoCompletePage.PlaceInfoLabel, "Capital of Poland is Warsaw", 20));
         }
 
         [Test]
@@ -59,7 +59,7 @@ namespace KitchenSink.Tests.Test
             _autoCompletePage.ProductsInput.SendKeys("B");
             WaitUntil(x => _autoCompletePage.ProductsAutoComplete.Count > 0);
             _autoCompletePage.ChooseProducts("Bread");
-            Assert.IsTrue(WaitForText(_autoCompletePage.ProductsInfoLabel, "Bread costs $1", 30));
+            Assert.IsTrue(WaitForText(_autoCompletePage.ProductsInfoLabel, "Bread costs $1", 20));
         }
     }
 }
