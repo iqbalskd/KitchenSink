@@ -1,5 +1,7 @@
 ﻿using System;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Firefox;
 
@@ -14,22 +16,17 @@ namespace KitchenSink.Tests.Utilities
             {
                 case Config.Browser.Chrome:
                     {
-                        driver = new RemoteWebDriver(remoteWebDriverUri, DesiredCapabilities.Chrome());
+                        driver = new RemoteWebDriver(remoteWebDriverUri, new ChromeOptions());
                         break;
                     }
                 case Config.Browser.Edge:
                     {
-                        driver = new RemoteWebDriver(remoteWebDriverUri, DesiredCapabilities.Edge());
+                        driver = new RemoteWebDriver(remoteWebDriverUri, new EdgeOptions());
                         break;
                     }
                 case Config.Browser.Firefox:
                     {
-                        var profile = new FirefoxProfile();
-                        profile.SetPreference("dom.file.createInChild", true); //needed for file upload in Selenium 3.5.3/3.6.0 and FF 55
-                        DesiredCapabilities capabilities = DesiredCapabilities.Firefox();
-                        string prof = profile.ToBase64String();
-                        capabilities.SetCapability(FirefoxDriver.ProfileCapabilityName, prof); //Selenium must be started with -enablePassThrough false
-                        driver = new RemoteWebDriver(remoteWebDriverUri, capabilities);
+                        driver = new RemoteWebDriver(remoteWebDriverUri, new FirefoxOptions());
                         break;
                     }
             }
