@@ -1,5 +1,5 @@
-using Starcounter;
 using System;
+using Starcounter;
 
 namespace KitchenSink
 {
@@ -13,12 +13,9 @@ namespace KitchenSink
     {
         void Handle(Input.AddChildTrigger action)
         {
-            this.ChildPartial = new NestedPartial()
-            {
-                Data = new AnyData(),
-                Html = NestedPartial.DefaultTemplate.Html.DefaultValue + "?" + DateTime.Now
-                //normally you don't need this
-            };
+            var newNestedChild = Self.GET<NestedPartial>("/KitchenSink/partial/nested");
+            newNestedChild.Html = DefaultTemplate.Html.DefaultValue + "?" + DateTime.Now;   //normally you don't need this
+            this.ChildPartial = newNestedChild;
         }
     }
 }
