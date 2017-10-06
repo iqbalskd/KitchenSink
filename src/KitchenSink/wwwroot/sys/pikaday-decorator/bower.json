@@ -5,7 +5,7 @@
         "Florian Roy"
     ],
     "description": "Pikaday decorator with polymer",
-    "main": "element/*",
+    "main": "pikaday-decorator.html",
     "ignore": [
         "**/.*",
         "node_modules",
@@ -15,8 +15,8 @@
     ],
     "keywords": ["Polymer", "web-components", "datepicker", "html", "pikaday"],
     "dependencies": {
-        "polymer": "Polymer/polymer#^1.1.*",
-        "pikaday": "master",
+        "polymer": "Polymer/polymer#^1.2.*",
+        "pikaday": "1.5.*",
         "momentjs": "2.*"
     },
     "devDependencies": {

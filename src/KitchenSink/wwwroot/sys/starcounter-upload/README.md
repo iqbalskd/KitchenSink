@@ -1,5 +1,5 @@
 # starcounter-upload
-Starcounter Polymer element to uplaod files over WebSocket
+Starcounter Polymer element to upload files over WebSocket
 
 ## Properties
 
@@ -46,6 +46,8 @@ Name          | Parameters       | Description
 	<input type="hidden" name="CustomerParameter" value="CustomValue" slot="parameters" />
 </starcounter-upload>
 ```
+## Notes
+- `starcounter-upload` is a [hybrid element](https://www.polymer-project.org/2.0/docs/devguide/hybrid-elements). 
 
 ## License
 
