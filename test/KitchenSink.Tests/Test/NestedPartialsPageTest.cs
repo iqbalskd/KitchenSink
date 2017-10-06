@@ -1,4 +1,5 @@
-﻿using KitchenSink.Tests.Ui;
+﻿using System.Linq;
+using KitchenSink.Tests.Ui;
 using KitchenSink.Tests.Utilities;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -36,6 +37,24 @@ namespace KitchenSink.Tests.Test
             var compositionsAfter = _nestedPartialsPage.ChildCompositions.Count;
 
             Assert.Greater(compositionsAfter, compositionsBefore);
+        }
+
+        [Test]
+        public void NestedPartialsPage_AddNewChildAndSubchild()
+        {
+            WaitUntil(x => _nestedPartialsPage.ChildCompositions.Count > 0);
+            var compositionsBefore = _nestedPartialsPage.ChildCompositions.Count;
+
+            _nestedPartialsPage.AddChild();
+            WaitUntil(x => _nestedPartialsPage.ChildCompositions.Count > compositionsBefore);
+            var compositionsCurrent = _nestedPartialsPage.ChildCompositions.Count;
+
+            _nestedPartialsPage.Driver.FindElements(By.XPath("//button[text() = 'Add child']")).Last().Click();
+            WaitUntil(x => _nestedPartialsPage.ChildCompositions.Count > compositionsCurrent);
+
+            var compositionsAfter = _nestedPartialsPage.ChildCompositions.Count;
+
+            Assert.AreEqual(compositionsBefore + 2, compositionsAfter);
         }
     }
 }
