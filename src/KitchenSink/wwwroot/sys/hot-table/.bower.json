@@ -10,6 +10,10 @@
     "grid",
     "table"
   ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0",
+    "handsontable": "~0.24.0"
+  },
   "ignore": [
     "**/.*",
     "node_modules",
@@ -19,21 +23,40 @@
     "test",
     "tests"
   ],
-  "dependencies": {
-    "polymer": "Polymer/polymer#^1.2.0",
-    "handsontable": "~0.23.0"
-  },
   "devDependencies": {
-    "google-map": "GoogleWebComponents/google-map#^1.1.7"
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^v1.0.0",
+    "google-map": "GoogleWebComponents/google-map#^1.2.0"
+  },
+  "variants": {
+    "1.x": {
+      "dependencies": {
+        "polymer": "Polymer/polymer#^1.9"
+      },
+      "devDependencies": {
+        "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+        "web-component-tester": "^4.0.0",
+        "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
+        "google-map": "GoogleWebComponents/google-map#^1.2.0"
+      },
+      "resolutions": {
+        "webcomponentsjs": "^0.7"
+      }
+    }
+  },
+  "resolutions": {
+    "polymer": "^2.0.0"
   },
   "homepage": "https://github.com/handsontable/hot-table",
-  "_release": "a40f177654",
+  "version": "0.6.1",
+  "_release": "0.6.1",
   "_resolution": {
-    "type": "branch",
-    "branch": "fix-styles-issue-23",
-    "commit": "a40f17765410e8f930f0c1f16cb34cde5ec9d9e6"
+    "type": "version",
+    "tag": "v0.6.1",
+    "commit": "edfb81003efaa9a89df010a9f43e1180fe061c4c"
   },
   "_source": "https://github.com/handsontable/hot-table.git",
-  "_target": "fix-styles-issue-23",
-  "_originalSource": "handsontable/hot-table"
+  "_target": "^0.6.1",
+  "_originalSource": "hot-table"
 }
