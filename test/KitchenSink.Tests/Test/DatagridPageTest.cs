@@ -33,5 +33,17 @@ namespace KitchenSink.Tests.Test
             _datagridPage.AddPet();
             WaitUntil(x => _datagridPage.GetTableRowsCount() == 4);
         }
+
+        [Test]
+        public void TablePage_MakeCatSound()
+        {
+            WaitUntil(x => _datagridPage.CheckTableVisible());
+            Assert.AreEqual(1, _datagridPage.GetCatsCount());
+            Assert.AreEqual(1, _datagridPage.GetMeowsCount());
+            _datagridPage.ReplaceTextInACell("Dog", "Cat");
+            WaitUntil(x => _datagridPage.GetMeowsCount() == 2);
+            Assert.AreEqual(2, _datagridPage.GetCatsCount());
+            Assert.AreEqual(2, _datagridPage.GetMeowsCount());
+        }
     }
 }

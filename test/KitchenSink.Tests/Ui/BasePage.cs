@@ -99,6 +99,13 @@ namespace KitchenSink.Tests.Ui
             element.Click();
         }
 
+        public void DblClickOn(IWebElement elementName, int seconds = 10)
+        {
+            IWebElement element = WaitForElementToBeClickable(elementName, seconds);
+            element.Click();
+            element.Click();
+        }
+
         public IWebElement ExpandShadowRoot(IWebElement shadowRootElement)
         {
             IWebElement shadowTreeParent = (IWebElement)((IJavaScriptExecutor)Driver)
