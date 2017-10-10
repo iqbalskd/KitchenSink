@@ -32,7 +32,7 @@
     "starcounter-upload": "Starcounter/starcounter-upload#^1.0.0",
     "momentjs": "latest",
     "pikaday": "latest",
-    "pikaday-decorator": "latest"
+    "pikaday-decorator": "#master"
   },
   "resolutions": {
 	"iron-selector" : "latest",
