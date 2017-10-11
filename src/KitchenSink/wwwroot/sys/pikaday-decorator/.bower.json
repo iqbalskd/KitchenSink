@@ -1,5 +1,6 @@
 {
   "name": "pikaday-decorator",
+  "version": "0.9.0",
   "authors": [
     "Florian Roy"
   ],
@@ -29,13 +30,13 @@
     "web-component-tester": "*"
   },
   "homepage": "https://github.com/display-interactive/pikaday-decorator",
-  "_release": "f768b99657",
+  "_release": "0.9.0",
   "_resolution": {
-    "type": "branch",
-    "branch": "master",
+    "type": "version",
+    "tag": "0.9.0",
     "commit": "f768b99657cf71f938c075c86d930007e9c5c208"
   },
   "_source": "https://github.com/display-interactive/pikaday-decorator.git",
-  "_target": "master",
+  "_target": "*",
   "_originalSource": "pikaday-decorator"
 }
