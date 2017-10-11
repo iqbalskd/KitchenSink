@@ -15,28 +15,13 @@
             The below datagrid is synced with the server. When you type a name of an animal (try <code>Dog</code>, <code>Cat</code> or <code>Rabbit</code>) in the 2nd column, the server will push the sound or other action that this animal makes in the 3rd column.
         </p>
 
-        <hot-table slot="kitchensink/datagrid-table" datarows="{{model.Pets}}" forcererender="{{forceRerender(model.Pets.*)}}">
+        <hot-table slot="kitchensink/datagrid-table" datarows="{{model.Pets}}">
             <hot-column value="Name$" header="Name"></hot-column>
             <hot-column value="Kind$" header="Kind"></hot-column>
             <hot-column value="Sound" header="Sound" read-only></hot-column>
         </hot-table>
         <button slot="kitchensink/datagrid-button" class="btn btn-sm btn-default" value="{{model.AddPetTrigger$::click}}" onmousedown="++this.value">Add a pet</button>
     </template>
-    <script>
-        (function () {
-            var script = document._currentScript || document.currentScript;
-            var template = script.previousElementSibling;
-
-            template.forceRerender = function () {
-                //this is a workaround for hot-table bug with Polymer notification protocol
-                //can be removed after https://github.com/handsontable/hot-table/issues/46 is done
-                var elem = document.querySelector('hot-table[slot="kitchensink/datagrid-table"]');
-                if (elem && elem.hot && elem.hot.render) {
-                    elem.hot.render();
-                }
-            };
-        })();
-    </script>
     <template is="declarative-shadow-dom">
         <slot name="kitchensink/datagrid-heading"></slot>
         <slot name="kitchensink/datagrid-description"></slot>
