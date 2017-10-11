@@ -35,7 +35,7 @@ namespace KitchenSink.Tests.Test
         }
 
         [Test]
-        public void TablePage_MakeCatSound()
+        public void TablePage_ChangeDogToCatFeature()
         {
             WaitUntil(x => _datagridPage.CheckTableVisible());
             Assert.AreEqual(1, _datagridPage.GetCatsCount());
