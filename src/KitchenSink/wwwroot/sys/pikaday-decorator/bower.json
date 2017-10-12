@@ -11,11 +11,12 @@
         "node_modules",
         "bower_components",
         "test",
-        "tests"
+        "tests",
+        "demo"
     ],
     "keywords": ["Polymer", "web-components", "datepicker", "html", "pikaday"],
     "dependencies": {
-        "polymer": "Polymer/polymer#^1.2.*",
+        "polymer": "^1.8.*",
         "pikaday": "1.5.*",
         "momentjs": "2.*"
     },
