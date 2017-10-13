@@ -5,6 +5,8 @@ using KitchenSink.Tests.Utilities;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using NUnit.Framework.Interfaces;
+using System.IO;
 
 namespace KitchenSink.Tests.Test
 {
@@ -48,12 +50,30 @@ namespace KitchenSink.Tests.Test
             {
                 Assert.Ignore(Config.BrowserDictionary[_browser] + " is on browsers ignore list");
             }
+
+            Driver.Manage().Window.Maximize();
         }
 
         [OneTimeTearDown]
         public void TestFixtureTearDown()
         {
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+            {
+                var screenshot = ((ITakesScreenshot)Driver).GetScreenshot();
+                var dirPath = "C:\\selenium";
+                if (!Directory.Exists(dirPath))
+                {
+                    throw new Exception($"I cannot make a screenshot of the failed test because the directory {dirPath} does not exist");
+                }
+                string filePath = $"{dirPath}\\Test fail {GetSafeFilename(TestContext.CurrentContext.Test.FullName)}.png";
+                screenshot.SaveAsFile(filePath, ScreenshotImageFormat.Png);
+            }
             Driver?.Quit();
+        }
+
+        private string GetSafeFilename(string filename)
+        {
+            return string.Join("_", filename.Split(Path.GetInvalidFileNameChars()));
         }
 
         protected TResult WaitUntil<TResult>(Func<IWebDriver, TResult> condition)
