@@ -1,21 +1,26 @@
 ﻿<template>
-    <template is="dom-bind">
-        <h1 slot="kitchensink/url-heading" class="kitchensink-heading-1">Link</h1>
+    <dom-bind>
+        <template>
+            <h1 slot="kitchensink/url-heading" class="kitchensink-heading-1">Link</h1>
 
-        <p slot="kitchensink/url-description">JSON's primitive value type <code>string</code> can be mapped directly to HTML <code>a href=""</code>.</p>
+            <p slot="kitchensink/url-description">JSON's primitive value type
+                <code>string</code> can be mapped directly to HTML
+                <code>a href=""</code>.</p>
 
-        <a slot="kitchensink/url-link" href="{{model.Url}}">{{model.Label}}</a>
+            <a slot="kitchensink/url-link" href="{{model.Url}}">{{model.Label}}</a>
 
-        <p slot="kitchensink/url-description-targeted">Setting any target except <code>_self</code> would disable page morphing</p>
+            <p slot="kitchensink/url-description-targeted">Setting any target except
+                <code>_self</code> would disable page morphing</p>
 
-        <a slot="kitchensink/targeted-url-link" target="_black" href="{{model.Url}}">Targetted: {{model.Label}}</a>
+            <a slot="kitchensink/targeted-url-link" target="_black" href="{{model.Url}}">Targetted: {{model.Label}}</a>
 
-        <p slot="kitchensink/url-description-targeted-iframe">iframe targets are also supported</p>
+            <p slot="kitchensink/url-description-targeted-iframe">iframe targets are also supported</p>
 
-        <a slot="kitchensink/url-link-iframe-targetted" target="link-target" href="{{model.Url}}">iframe-targetted: {{model.Label}}</a>
-        <iframe slot="kitchensink/url-targeted-iframe" id="link-target" name="link-target"></iframe>
+            <a slot="kitchensink/url-link-iframe-targetted" target="link-target" href="{{model.Url}}">iframe-targetted: {{model.Label}}</a>
+            <iframe slot="kitchensink/url-targeted-iframe" id="link-target" name="link-target"></iframe>
 
-    </template>
+        </template>
+    </dom-bind>
     <template is="declarative-shadow-dom">
         <slot name="kitchensink/url-heading"></slot>
         <div>
@@ -38,7 +43,11 @@
             <p>
                 <slot name="kitchensink/url-targeted-iframe"></slot>
             </p>
-            <p><em><small>demo iframe</small></em></p>
+            <p>
+                <em>
+                    <small>demo iframe</small>
+                </em>
+            </p>
         </div>
     </template>
 </template>

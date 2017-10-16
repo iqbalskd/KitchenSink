@@ -32,7 +32,7 @@ namespace KitchenSink.Tests.Test
             else
             {
                 _browsersToRun.Add("Chrome");
-                _browsersToRun.Add("Firefox");
+                //_browsersToRun.Add("Firefox");
                 //_browsersToRun.Add("Edge");
             }
 

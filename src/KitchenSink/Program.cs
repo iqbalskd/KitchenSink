@@ -10,7 +10,52 @@ namespace KitchenSink
         {
             var app = Application.Current;
             app.Use(new HtmlFromJsonProvider());
-            app.Use(new PartialToStandaloneHtmlProvider());
+            #region Implicit standalone page template
+            const string ImplicitStandaloneTemplate = @"<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=""utf-8"">
+    <title>{0}</title>
+    <script src=""/sys/webcomponentsjs/webcomponents-hi-sd-ce.js""></script>
+    <script src=""/sys/document-register-element/build/document-register-element.js""></script>
+    <script>
+      /* this script must run before Polymer is imported */
+      /*
+       * Let Polymer use native Shadow DOM if available.
+       * Otherwise (at least Polymer 1.x) assumes everybody else
+       * uses ShadyDOM, which is not true, as many Vanilla CE uses
+       * real Shadow DOM.
+       */
+      window.Polymer = {{
+        dom: ""shadow""
+      }};
+    </script>
+    <link rel=""import"" href=""/sys/polymer/polymer.html"">
+    <link rel=""import"" href=""/sys/starcounter.html"">
+    <link rel=""import"" href=""/sys/starcounter-include/starcounter-include.html"">
+    <link rel=""import"" href=""/sys/starcounter-debug-aid/src/starcounter-debug-aid.html"">
+    <link rel=""import"" href=""/sys/bootstrap.html"">
+    <style>
+        body {{
+            margin: 20px;
+        }}
+        body > starcounter-include{{
+            height: 100%;
+        }}
+    </style>
+</head>
+<body>
+    <dom-bind id=""puppet-root"">
+        <template>
+            <starcounter-include view-model=""{{{{model}}}}""></starcounter-include>
+        </template>
+    </dom-bind>
+    <puppet-client ref=""puppet-root"" remote-url=""{1}""></puppet-client>
+    <starcounter-debug-aid></starcounter-debug-aid>
+</body>
+</html>";
+            #endregion
+            app.Use(new PartialToStandaloneHtmlProvider(ImplicitStandaloneTemplate));
 
             DummyData.Create();
 
