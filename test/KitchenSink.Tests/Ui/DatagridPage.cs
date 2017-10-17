@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using System.Linq;
 
 namespace KitchenSink.Tests.Ui
 {
@@ -16,14 +17,42 @@ namespace KitchenSink.Tests.Ui
 
         public bool CheckTableVisible()
         {
-            var shadowRoot = ExpandShadowRoot(Driver.FindElement(By.XPath("//hot-table")));
-            return shadowRoot.FindElement(By.ClassName("htCore")).Displayed;
+            return GetHotTableShadowRoot().FindElement(By.ClassName("htCore")).Displayed;
         }
 
         public int GetTableRowsCount()
         {
-            var shadowRoot = ExpandShadowRoot(Driver.FindElement(By.XPath("//hot-table")));
-            return shadowRoot.FindElement(By.ClassName("htCore")).FindElements(By.XPath("tbody//tr")).Count;
+            return GetHotTableShadowRoot().FindElement(By.ClassName("htCore")).FindElements(By.XPath("tbody//tr")).Count;
+        }
+
+        public IWebElement GetHotTableShadowRoot()
+        {
+            return ExpandShadowRoot(Driver.FindElement(By.XPath("//hot-table")));
+        }
+
+        public IReadOnlyCollection<IWebElement> GetCellsByText(string searchText)
+        {
+            return GetHotTableShadowRoot().FindElement(By.ClassName("htCore")).FindElements(By.XPath($"tbody//tr//td[text() = '{searchText}']"));
+        }
+
+        public int GetCatsCount()
+        {
+            return GetCellsByText("Cat").Count;
+        }
+
+        public int GetMeowsCount()
+        {
+            return GetCellsByText("Meow").Count;
+        }
+
+        public void ReplaceTextInACell(string searchText, string newText)
+        {
+            var td = GetCellsByText(searchText).First();
+            DblClickOn(td);
+            var input = GetHotTableShadowRoot().FindElement(By.CssSelector("textarea.handsontableInput"));
+            input.Clear();
+            input.SendKeys(newText);
+            input.SendKeys(Keys.Enter);
         }
 
         public void AddPet()
