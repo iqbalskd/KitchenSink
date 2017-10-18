@@ -10,7 +10,6 @@ namespace KitchenSink
 {
     public static class HandleFile
     {
-        // Can't use "StarcounterFileUploadWebSocketGroup" because of https://github.com/Starcounter/Starcounter/issues/3435
         public const string WebSocketGroupName = "SCFileUploadWSG";
 
         public static readonly ConcurrentDictionary<ulong, UploadTask> Uploads =
@@ -22,16 +21,16 @@ namespace KitchenSink
 
             Handle.GET(url, (string parameters, Request request) =>
             {
-                string sessionId;
-                string fileName;
-                long fileSize;
-                string error;
-
-                if (!ResolveUploadParameters(parameters, out sessionId, out fileName, out fileSize, out error))
+                if (!ResolveUploadParameters(
+                    parameters,
+                    out string sessionId,
+                    out string fileName,
+                    out long fileSize,
+                    out string error))
                 {
                     return new Response()
                     {
-                        StatusCode = (ushort) System.Net.HttpStatusCode.BadRequest,
+                        StatusCode = (ushort)System.Net.HttpStatusCode.BadRequest,
                         Body = error
                     };
                 }
@@ -42,21 +41,21 @@ namespace KitchenSink
                 }
 
                 WebSocket ws = request.SendUpgrade(WebSocketGroupName);
-                UploadTask task = new UploadTask(sessionId, fileName, fileSize, parameters);
+                var task = new UploadTask(sessionId, fileName, fileSize, parameters);
 
-                task.StateChange += (s, a) => { UploadingAction(s as UploadTask); };
+                task.StateChange += (s, a) => UploadingAction(s as UploadTask);
 
                 if (!Uploads.TryAdd(ws.ToUInt64(), task))
                 {
                     return new Response()
                     {
-                        StatusCode = (ushort) System.Net.HttpStatusCode.BadRequest,
+                        StatusCode = (ushort)System.Net.HttpStatusCode.BadRequest,
                         Body = "Unable to create upload task"
                     };
                 }
 
                 return HandlerStatus.Handled;
-            }, new HandlerOptions() {SkipRequestFilters = true});
+            }, new HandlerOptions() { SkipRequestFilters = true });
 
             Handle.WebSocket(WebSocketGroupName, (byte[] data, WebSocket ws) =>
             {
@@ -79,17 +78,20 @@ namespace KitchenSink
 
             Handle.WebSocketDisconnect(WebSocketGroupName, (ws) =>
             {
-                UploadTask task;
 
-                if (Uploads.TryRemove(ws.ToUInt64(), out task))
+                if (Uploads.TryRemove(ws.ToUInt64(), out UploadTask task))
                 {
                     task.Close();
                 }
             });
         }
 
-        private static bool ResolveUploadParameters(string Parameters, out string SessionId, out string FileName,
-            out long FileSize, out string Error)
+        private static bool ResolveUploadParameters(
+            string Parameters,
+            out string SessionId,
+            out string FileName,
+            out long FileSize,
+            out string Error)
         {
             FileName = null;
             FileSize = -1;
@@ -178,18 +180,7 @@ namespace KitchenSink
                 this.FileStream = new FileStream(this.FilePath, FileMode.Append);
             }
 
-            public string TempFileName
-            {
-                get
-                {
-                    if (this.FileStream != null)
-                    {
-                        return this.FileStream.Name;
-                    }
-
-                    return null;
-                }
-            }
+            public string TempFileName => this.FileStream?.Name;
 
             public int Progress
             {
@@ -210,7 +201,7 @@ namespace KitchenSink
                         return -1;
                     }
 
-                    int progress = (int) (100.0*this.FileStream.Position/this.FileSize);
+                    int progress = (int)(100.0 * this.FileStream.Position / this.FileSize);
 
                     return progress;
                 }
@@ -245,10 +236,7 @@ namespace KitchenSink
 
             protected void OnUploading()
             {
-                if (this.StateChange != null)
-                {
-                    this.StateChange(this, EventArgs.Empty);
-                }
+                this.StateChange?.Invoke(this, EventArgs.Empty);
             }
         }
     }
