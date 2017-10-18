@@ -10,7 +10,7 @@ namespace KitchenSink
 {
     public static class HandleFile
     {
-        public const string WebSocketGroupName = "SCFileUploadWSG";
+        public const string WebSocketGroupName = "StarcounterFileUploadWebSocketGroup";
 
         public static readonly ConcurrentDictionary<ulong, UploadTask> Uploads =
             new ConcurrentDictionary<ulong, UploadTask>();
