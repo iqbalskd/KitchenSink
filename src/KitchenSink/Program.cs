@@ -233,8 +233,8 @@ namespace KitchenSink
 
             Handle.GET("/KitchenSink/menu", () => { return new AppMenuPage(); });
 
-            Blender.MapUri("/KitchenSink/menu", "menu");
-            Blender.MapUri("/KitchenSink/app-name", "app-name");
+            Blender.MapUri("/KitchenSink/menu", string.Empty, new string[] { "menu" });
+            Blender.MapUri("/KitchenSink/app-name", string.Empty, new string[] { "app", "icon" });
         }
 
         private static Json WrapPage<T>(string partialPath) where T : Json
