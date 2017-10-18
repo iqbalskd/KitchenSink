@@ -62,7 +62,7 @@ namespace KitchenSink
             Transaction.Commit();
             Session.ForAll((s, sessionId) =>
             {
-                var master = s.Data as MasterPage;
+                var master = s.Store[nameof(MasterPage)] as MasterPage;
                 if (!(master?.CurrentPage is GeoPage)) return;
                 s.CalculatePatchAndPushOnWebSocket();
             });

@@ -164,16 +164,16 @@ namespace KitchenSink
 
             HandleFile.GET("/KitchenSink/fileupload/upload", task =>
             {
-                Session.ScheduleTask(task.SessionId, (s, id) =>
+                Session.ScheduleTask(task.SessionId, (session, id) =>
                 {
-                    MasterPage master = s.Data as MasterPage;
+                    var master = session.Store[nameof(MasterPage)] as MasterPage;
 
                     if (master == null)
                     {
                         return;
                     }
 
-                    FileUploadPage page = master.CurrentPage as FileUploadPage;
+                    var page = master.CurrentPage as FileUploadPage;
 
                     if (page == null)
                     {
@@ -219,7 +219,7 @@ namespace KitchenSink
                         item.Progress = task.Progress;
                     }
 
-                    s.CalculatePatchAndPushOnWebSocket();
+                    session.CalculatePatchAndPushOnWebSocket();
                 });
             });
 
@@ -257,18 +257,15 @@ namespace KitchenSink
 
         public static MasterPage GetMasterPageFromSession()
         {
-            if (Session.Current == null)
-            {
-                Session.Current = new Session(SessionOptions.PatchVersioning);
-            }
-
-            MasterPage master = Session.Current.Data as MasterPage;
+            var master = Session.Ensure().Store[nameof(MasterPage)] as MasterPage;
 
             if (master == null)
             {
-                master = new MasterPage();
-                master.NavPage = Self.GET("/kitchensink/nav");
-                Session.Current.Data = master;
+                master = new MasterPage
+                {
+                    NavPage = Self.GET("/kitchensink/nav")
+                };
+                Session.Current.Store[nameof(MasterPage)] = master;
             }
 
             return master;
