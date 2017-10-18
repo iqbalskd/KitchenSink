@@ -228,7 +228,6 @@ namespace KitchenSink
 
             Handle.GET("/KitchenSink/nav", () => { return new NavPage(); }, new HandlerOptions() { SelfOnly = true });
 
-            //for a launcher
             Handle.GET("/KitchenSink/app-name", () => { return new AppName(); });
 
             Handle.GET("/KitchenSink/menu", () => { return new AppMenuPage(); });
