@@ -10,10 +10,8 @@ namespace KitchenSink
         public string Name { get; set; }
         public TreeItem Parent { get; set; }
 
-        public QueryResultRows<TreeItem> Children
-        {
-            get { return Db.SQL<TreeItem>("SELECT i FROM TreeItem i WHERE Parent = ?", this); }
-        }
+        public QueryResultRows<TreeItem> Children =>
+            Db.SQL<TreeItem>("SELECT i FROM TreeItem i WHERE Parent = ?", this);
     }
 
     partial class BreadcrumbPage : Json
@@ -105,39 +103,23 @@ namespace KitchenSink
             }
         }
 
-        public bool IsGhostParentSet
-        {
-            get { return (GhostParent != null); }
-        }
+        public bool IsGhostParentSet => GhostParent != null;
 
-        public TreeItem ParentItem
-        {
-            get
-            {
-                if (GhostParent != null)
-                {
-                    return GhostParent;
-                }
-                else
-                {
-                    return Data.Parent;
-                }
-            }
-        }
+        public TreeItem ParentItem => GhostParent ?? Data.Parent;
 
         void Handle(Input.SelectTrigger action)
         {
             if (Data != null)
             {
-                BreadcrumbPage breadcrumbPage = (BreadcrumbPage) Parent.Parent;
+                var breadcrumbPage = (BreadcrumbPage) Parent.Parent;
                 breadcrumbPage.SetActiveItem(Data);
             }
         }
 
         void Handle(Input.AddSiblingTrigger action)
         {
-            BreadcrumbPage breadcrumbPage = (BreadcrumbPage) Parent.Parent;
-            TreeItem item = new TreeItem()
+            var breadcrumbPage = (BreadcrumbPage) Parent.Parent;
+            var item = new TreeItem()
             {
                 Parent = ParentItem
             };
@@ -154,7 +136,6 @@ namespace KitchenSink
             Siblings.Clear();
 
             QueryResultRows<TreeItem> result;
-            //if (GhostParent != null) {
             if (query.Length > 0)
             {
                 result = Db.SQL<TreeItem>("SELECT i FROM TreeItem i WHERE Parent = ? AND Name LIKE ? FETCH ?",
@@ -164,15 +145,6 @@ namespace KitchenSink
             {
                 result = Db.SQL<TreeItem>("SELECT i FROM TreeItem i WHERE Parent = ? FETCH ?", ParentItem, 5);
             }
-            /*}
-            else {
-                if (query.Length > 0) {
-                    result = Db.SQL<TreeItem>("SELECT i FROM TreeItem i WHERE Parent = ? AND NOT i = ? AND Name LIKE ? FETCH ?", ParentItem, Data, query + "%", 5);
-                }
-                else {
-                    result = Db.SQL<TreeItem>("SELECT i FROM TreeItem i WHERE Parent = ? AND NOT i = ? FETCH ?", ParentItem, Data, 5);
-                }
-            }*/
 
             Siblings.Data = result;
         }
@@ -183,7 +155,7 @@ namespace KitchenSink
     {
         void Handle(Input.SelectTrigger action)
         {
-            BreadcrumbPage breadcrumbPage = (BreadcrumbPage) Parent.Parent.Parent.Parent;
+            var breadcrumbPage = (BreadcrumbPage) Parent.Parent.Parent.Parent;
             breadcrumbPage.SetActiveItem(Data);
         }
     }
@@ -194,7 +166,7 @@ namespace KitchenSink
         void Handle(Input.SaveTrigger action)
         {
             Transaction.Commit();
-            BreadcrumbPage breadcrumbPage = (BreadcrumbPage) Parent;
+            var breadcrumbPage = (BreadcrumbPage) Parent;
             breadcrumbPage.SetActiveItem(Data);
         }
     }
