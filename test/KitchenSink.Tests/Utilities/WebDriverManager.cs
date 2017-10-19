@@ -16,24 +16,28 @@ namespace KitchenSink.Tests.Utilities
             {
                 case Config.Browser.Chrome:
                     {
-                        driver = new RemoteWebDriver(remoteWebDriverUri, new ChromeOptions());
+                        var options = new ChromeOptions();
+                        options.AddArgument("--start-maximized");
+                        driver = new RemoteWebDriver(remoteWebDriverUri, options);
                         break;
                     }
                 case Config.Browser.Edge:
                     {
                         driver = new RemoteWebDriver(remoteWebDriverUri, new EdgeOptions());
+                        driver.Manage().Window.Maximize(); // EdgeOptions does NOT contain AddArgument method
                         break;
                     }
                 case Config.Browser.Firefox:
                     {
-                        driver = new RemoteWebDriver(remoteWebDriverUri, new FirefoxOptions());
+                        var options = new FirefoxOptions();
+                        options.AddArgument("--start-maximized");
+                        driver = new RemoteWebDriver(remoteWebDriverUri, options);
                         break;
                     }
             }
 
             IWebDriver eventDriver = new KitchenSinkTestEventListener(driver);
             driver = eventDriver;
-            driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().PageLoad = timeout;
             driver.Manage().Timeouts().AsynchronousJavaScript = timeout;
             return driver;

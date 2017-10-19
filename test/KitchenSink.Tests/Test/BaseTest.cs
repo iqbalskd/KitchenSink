@@ -50,8 +50,6 @@ namespace KitchenSink.Tests.Test
             {
                 Assert.Ignore(Config.BrowserDictionary[_browser] + " is on browsers ignore list");
             }
-
-            Driver.Manage().Window.Maximize();
         }
 
         [OneTimeTearDown]
