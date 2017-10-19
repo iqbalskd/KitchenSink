@@ -30,7 +30,7 @@ namespace KitchenSink.Tests.Utilities
                 case Config.Browser.Firefox:
                     {
                         driver = new RemoteWebDriver(remoteWebDriverUri, new FirefoxOptions());
-                        driver.Manage().Window.Maximize(); // Argument --start-maximized doesn't work on Firefox
+                        //driver.Manage().Window.Maximize(); // Argument --start-maximized doesn't work on Firefox
                         break;
                     }
             }
