@@ -16,21 +16,17 @@ namespace KitchenSink.Tests.Utilities
             {
                 case Config.Browser.Chrome:
                     {
-                        var options = new ChromeOptions();
-                        options.AddArgument("--start-maximized");
-                        driver = new RemoteWebDriver(remoteWebDriverUri, options);
+                        driver = new RemoteWebDriver(remoteWebDriverUri, new ChromeOptions());
                         break;
                     }
                 case Config.Browser.Edge:
                     {
                         driver = new RemoteWebDriver(remoteWebDriverUri, new EdgeOptions());
-                        driver.Manage().Window.Maximize(); // EdgeOptions does NOT contain AddArgument method
                         break;
                     }
                 case Config.Browser.Firefox:
                     {
                         driver = new RemoteWebDriver(remoteWebDriverUri, new FirefoxOptions());
-                        //driver.Manage().Window.Maximize(); // Argument --start-maximized doesn't work on Firefox
                         break;
                     }
             }
