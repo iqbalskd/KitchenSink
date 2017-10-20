@@ -33,7 +33,6 @@ namespace KitchenSink.Tests.Utilities
 
             IWebDriver eventDriver = new KitchenSinkTestEventListener(driver);
             driver = eventDriver;
-            driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().PageLoad = timeout;
             driver.Manage().Timeouts().AsynchronousJavaScript = timeout;
             return driver;
