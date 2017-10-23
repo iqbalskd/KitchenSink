@@ -16,20 +16,9 @@ namespace KitchenSink
 <head>
     <meta charset=""utf-8"">
     <title>{0}</title>
-    <script src=""/sys/webcomponentsjs/webcomponents-hi-sd-ce.js""></script>
+    <script src=""/sys/webcomponentsjs/webcomponents-lite.js""></script>
     <script src=""/sys/document-register-element/build/document-register-element.js""></script>
-    <script>
-      /* this script must run before Polymer is imported */
-      /*
-       * Let Polymer use native Shadow DOM if available.
-       * Otherwise (at least Polymer 1.x) assumes everybody else
-       * uses ShadyDOM, which is not true, as many Vanilla CE uses
-       * real Shadow DOM.
-       */
-      window.Polymer = {{
-        dom: ""shadow""
-      }};
-    </script>
+    
     <link rel=""import"" href=""/sys/polymer/polymer.html"">
     <link rel=""import"" href=""/sys/starcounter.html"">
     <link rel=""import"" href=""/sys/starcounter-include/starcounter-include.html"">
