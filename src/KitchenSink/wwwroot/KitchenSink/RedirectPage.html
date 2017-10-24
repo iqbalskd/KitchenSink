@@ -1,4 +1,4 @@
-﻿<link rel="import" href="/sys/puppet-redirect/puppet-redirect.html">
+﻿<link rel="import" href="/sys/palindrom-redirect/palindrom-redirect.html">
 
 <template>
     <template is="dom-bind">
@@ -32,8 +32,8 @@
 
         <button slot="kitchensink/redirect-external-link-button" class="btn btn-sm btn-default kitchensink-test-redirect-button" value="{{model.GoToDocsTrigger$::click}}" onmousedown="++this.value">Redirect to Starcounter.io</button>
 
-        <link slot="kitchensink/redirect-link-morph" is="puppet-redirect" history url="{{model.MorphUrl$}}" />
-        <link slot="kitchensink/redirect-link-redirect" is="puppet-redirect" url="{{model.RedirectUrl$}}" />
+        <link slot="kitchensink/redirect-link-morph" is="palindrom-redirect" history url="{{model.MorphUrl$}}" />
+        <link slot="kitchensink/redirect-link-redirect" is="palindrom-redirect" url="{{model.RedirectUrl$}}" />
     </template>
     <template is="declarative-shadow-dom">
         <slot name="kitchensink/redirect-heading"></slot>
