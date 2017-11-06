@@ -78,7 +78,7 @@ namespace KitchenSink.Tests.Test
 
         protected TResult WaitUntil<TResult>(Func<IWebDriver, TResult> condition)
         {
-            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(300));
             return wait.Until(condition);
         }
 
