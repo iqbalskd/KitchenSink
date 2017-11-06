@@ -9,6 +9,8 @@ namespace KitchenSink.Tests.Test
     [TestFixture(Config.Browser.Chrome)]
     [TestFixture(Config.Browser.Edge)]
     [TestFixture(Config.Browser.Firefox)]
+    [Ignore("For test purposes")]
+
     internal class UrlPageTest : BaseTest
     {
         private UrlPage _urlPage;

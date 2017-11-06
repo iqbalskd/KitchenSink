@@ -7,6 +7,8 @@ namespace KitchenSink.Tests.Test
     [Parallelizable(ParallelScope.Fixtures)]
     [TestFixture(Config.Browser.Edge)]
     [TestFixture(Config.Browser.Firefox)]
+    [Ignore("For test purposes")]
+
     class MarkdownPageTest : BaseTest
     {
         private MarkdownPage _markdown;

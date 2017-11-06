@@ -8,6 +8,7 @@ namespace KitchenSink.Tests.Test
     [TestFixture(Config.Browser.Chrome)]
     [TestFixture(Config.Browser.Edge)]
     [TestFixture(Config.Browser.Firefox)]
+    [Ignore("For test purposes")]
     class AutoCompletePageTest : BaseTest
     {
         private AutoCompletePage _autoCompletePage;

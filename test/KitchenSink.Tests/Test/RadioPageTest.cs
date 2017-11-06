@@ -8,6 +8,8 @@ namespace KitchenSink.Tests.Test
     [TestFixture(Config.Browser.Chrome)]
     [TestFixture(Config.Browser.Edge)]
     [TestFixture(Config.Browser.Firefox)]
+    [Ignore("For test purposes")]
+
     class RadioPageTest : BaseTest
     {
         private RadioPage _radioPage;

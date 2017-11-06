@@ -9,6 +9,8 @@ namespace KitchenSink.Tests.Test
     [TestFixture(Config.Browser.Chrome)]
     [TestFixture(Config.Browser.Edge)]
     [TestFixture(Config.Browser.Firefox)]
+    [Ignore("For test purposes")]
+
     class PaginationPageTest : BaseTest
     {
         private PaginationPage _paginationPage;
