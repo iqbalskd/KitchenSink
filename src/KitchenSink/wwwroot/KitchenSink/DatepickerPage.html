@@ -23,4 +23,16 @@
 
         <input slot="kitchensink/datepicker-day-input" type="text" value="{{model.Day}}" readonly="readonly" class="form-control kitchensink-test-day-input" />
     </template>
+    <template is="declarative-shadow-dom">
+        <slot name="kitchensink/datepicker-heading"></slot>
+        <slot name="kitchensink/datepicker-description"></slot>
+        <slot name="kitchensink/datepicker-date-label"></slot>
+        <slot name="kitchensink/datepicker-pikaday"></slot>
+        <slot name="kitchensink/datepicker-year-label"></slot>
+        <slot name="kitchensink/datepicker-year-input"></slot>
+        <slot name="kitchensink/datepicker-month-label"></slot>
+        <slot name="kitchensink/datepicker-month-input"></slot>
+        <slot name="kitchensink/datepicker-day-label"></slot>
+        <slot name="kitchensink/datepicker-day-input"></slot>
+    </template>
 </template>

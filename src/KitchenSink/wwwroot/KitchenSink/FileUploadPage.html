@@ -79,7 +79,7 @@
             </template>
         </div>
 
-        <starcounter-upload  slot="kitchensink/fileupload-upload" session-id="{{model.SessionId}}" upload-url="{{model.UploadUrl}}" tasks="{{tasks}}" multiple="true"></starcounter-upload>
+        <starcounter-upload slot="kitchensink/fileupload-upload" session-id="{{model.SessionId}}" upload-url="{{model.UploadUrl}}" tasks="{{tasks}}" multiple auto-upload></starcounter-upload>
 
         <button slot="kitchensink/fileupload-select-button" type="button" class="btn btn-sm btn-primary" on-click="selectFile">Select file</button>
 
@@ -138,4 +138,19 @@
             };
         })();
     </script>
+    <template is="declarative-shadow-dom">
+        <slot name="kitchensink/fileupload-heading"></slot>
+        <slot name="kitchensink/fileupload-description"></slot>
+        <slot name="kitchensink/fileupload-warning"></slot>
+        <slot name="kitchensink/fileupload-upload-file-header"></slot>
+        <slot name="kitchensink/fileupload-files-table"></slot>
+        <slot name="kitchensink/fileupload-no-files-message"></slot>
+        <slot name="kitchensink/fileupload-uploading-header"></slot>
+        <slot name="kitchensink/fileupload-uploading-table"></slot>
+        <slot name="kitchensink/fileupload-ongoing-message"></slot>
+        <slot name="kitchensink/fileupload-upload"></slot>
+        <slot name="kitchensink/fileupload-select-button"></slot>
+        <slot name="kitchensink/fileupload-cancel-button"></slot>
+        <slot name="kitchensink/fileupload-tasks-collection"></slot>
+    </template>
 </template>

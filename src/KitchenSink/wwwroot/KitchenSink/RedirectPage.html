@@ -1,4 +1,4 @@
-﻿<link rel="import" href="/sys/puppet-redirect/puppet-redirect.html">
+﻿<link rel="import" href="/sys/palindrom-redirect/palindrom-redirect.html">
 
 <template>
     <template is="dom-bind">
@@ -32,7 +32,26 @@
 
         <button slot="kitchensink/redirect-external-link-button" class="btn btn-sm btn-default kitchensink-test-redirect-button" value="{{model.GoToDocsTrigger$::click}}" onmousedown="++this.value">Redirect to Starcounter.io</button>
 
-        <link slot="kitchensink/redirect-link-morph" is="puppet-redirect" history url$="{{model.MorphUrl$}}" />
-        <link slot="kitchensink/redirect-link-redirect" is="puppet-redirect" url$="{{model.RedirectUrl$}}" />
+        <link slot="kitchensink/redirect-link-morph" is="palindrom-redirect" history url="{{model.MorphUrl$}}" />
+        <link slot="kitchensink/redirect-link-redirect" is="palindrom-redirect" url="{{model.RedirectUrl$}}" />
+    </template>
+    <template is="declarative-shadow-dom">
+        <slot name="kitchensink/redirect-heading"></slot>
+        <slot name="kitchensink/redirect-description"></slot>
+        <slot name="kitchensink/redirect-current-partial-heading"></slot>
+        <slot name="kitchensink/redirect-current-partial-description"></slot>
+        <slot name="kitchensink/redirect-current-partial-label"></slot>
+        <slot name="kitchensink/redirect-current-partial-fruit-button"></slot>
+        <slot name="kitchensink/redirect-current-partial-vegetable-button"></slot>
+        <slot name="kitchensink/redirect-current-partial-bread-button"></slot>
+        <slot name="kitchensink/redirect-current-partial-favorite-label"></slot>
+        <slot name="kitchensink/redirect-another-partial-heading"></slot>
+        <slot name="kitchensink/redirect-another-partial-description"></slot>
+        <slot name="kitchensink/redirect-another-partial-button"></slot>
+        <slot name="kitchensink/redirect-external-link-heading"></slot>
+        <slot name="kitchensink/redirect-external-link-description"></slot>
+        <slot name="kitchensink/redirect-external-link-button"></slot>
+        <slot name="kitchensink/redirect-link-morph"></slot>
+        <slot name="kitchensink/redirect-link-redirect"></slot>
     </template>
 </template>

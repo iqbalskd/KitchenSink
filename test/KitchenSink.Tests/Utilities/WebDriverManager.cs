@@ -1,6 +1,9 @@
 ﻿using System;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Remote;
+using OpenQA.Selenium.Firefox;
 
 namespace KitchenSink.Tests.Utilities
 {
@@ -13,24 +16,23 @@ namespace KitchenSink.Tests.Utilities
             {
                 case Config.Browser.Chrome:
                     {
-                        driver = new RemoteWebDriver(remoteWebDriverUri, DesiredCapabilities.Chrome());
+                        driver = new RemoteWebDriver(remoteWebDriverUri, new ChromeOptions());
                         break;
                     }
                 case Config.Browser.Edge:
                     {
-                        driver = new RemoteWebDriver(remoteWebDriverUri, DesiredCapabilities.Edge());
+                        driver = new RemoteWebDriver(remoteWebDriverUri, new EdgeOptions());
                         break;
                     }
                 case Config.Browser.Firefox:
                     {
-                        driver = new RemoteWebDriver(remoteWebDriverUri, DesiredCapabilities.Firefox());
+                        driver = new RemoteWebDriver(remoteWebDriverUri, new FirefoxOptions());
                         break;
                     }
             }
 
             IWebDriver eventDriver = new KitchenSinkTestEventListener(driver);
             driver = eventDriver;
-            driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().PageLoad = timeout;
             driver.Manage().Timeouts().AsynchronousJavaScript = timeout;
             return driver;

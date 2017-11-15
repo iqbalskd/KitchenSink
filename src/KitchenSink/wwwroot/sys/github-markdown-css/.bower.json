@@ -30,7 +30,7 @@
     "tag": "0.2.0",
     "commit": "a6ef67c85af5354de8e6589b4c774c7c6b229043"
   },
-  "_source": "git://github.com/sindresorhus/github-markdown-css.git",
+  "_source": "https://github.com/sindresorhus/github-markdown-css.git",
   "_target": "^0.2.0",
   "_originalSource": "github-markdown-css"
 }

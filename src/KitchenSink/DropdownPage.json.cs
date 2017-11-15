@@ -5,7 +5,7 @@ namespace KitchenSink
     [Database]
     public class SoftwareProduct
     {
-        public string Name;
+        public string Name { get; set; }
         public string Key
         {
             get
@@ -19,7 +19,8 @@ namespace KitchenSink
     {
         static DropdownPage()
         {
-            DropdownPage.DefaultTemplate.SelectedProductKey.Bind = "SelectedProductKeyBind";
+            DropdownPage.DefaultTemplate.SelectedProductKey.Bind = nameof(SelectedProductKeyBind);
+            DefaultTemplate.PetReaction.Bind = nameof(CalculatedPetReaction);
         }
 
         protected override void OnData()

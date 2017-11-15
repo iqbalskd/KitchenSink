@@ -8,6 +8,11 @@
         
         <kitchensink-chart slot="kitchensink/chartpage-chart" temperatures="{{model.Temperatures}}" labels="{{model.Labels}}"></kitchensink-chart>
     </template>
+    <template is="declarative-shadow-dom">
+        <slot name="kitchensink/chartpage-heading"></slot>
+        <slot name="kitchensink/chartpage-description"></slot>
+        <slot name="kitchensink/chartpage-chart"></slot>
+    </template>
 </template>
 
 <dom-module id="kitchensink-chart">

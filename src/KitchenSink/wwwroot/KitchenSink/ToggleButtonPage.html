@@ -10,4 +10,10 @@
 
         <paper-toggle-button slot="kitchensink/toggleButton-toggle-button" class="kitchensink-test-tooglebutton" checked="{{model.AcceptTermsAndConditions$::change}}"></paper-toggle-button>
     </template>
+    <template is="declarative-shadow-dom">
+        <slot name="kitchensink/toggleButton-heading"></slot>
+        <slot name="kitchensink/toggleButton-description"></slot>
+        <slot name="kitchensink/toggleButton-label"></slot>
+        <slot name="kitchensink/toggleButton-toggle-button"></slot>
+    </template>
 </template>

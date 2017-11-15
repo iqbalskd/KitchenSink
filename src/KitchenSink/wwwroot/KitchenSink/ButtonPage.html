@@ -74,8 +74,34 @@
             };
 
             template.onAddCarrotsClick = function () {
-                template.set("model.AddCarrots$", ++template.model.AddCarrotsTrigger$);
+                template.set("model.AddCarrotsTrigger$", ++template.model.AddCarrotsTrigger$);
             };
         })();
     </script>
+    <template is="declarative-shadow-dom">
+        <slot name="kitchensink/buttonpage-heading"></slot>
+        <slot name="kitchensink/buttonpage-description"></slot>
+        <slot name="kitchensink/buttonpage-regular-heading"></slot>
+        <slot name="kitchensink/buttonpage-regular-description"></slot>
+        <slot name="kitchensink/buttonpage-regular-increment-label"></slot>
+        <slot name="kitchensink/buttonpage-regular-increment-ways"></slot>
+        <slot name="kitchensink/buttonpage-regular-reaction-label"></slot>
+        <slot name="kitchensink/buttonpage-regular-add-carrots"></slot>
+        <slot name="kitchensink/buttonpage-switch-heading"></slot>
+        <slot name="kitchensink/buttonpage-switch-description"></slot>
+        <slot name="kitchensink/buttonpage-switch-button"></slot>
+        <slot name="kitchensink/buttonpage-switch-reaction-label"></slot>
+        <slot name="kitchensink/buttonpage-disable-heading"></slot>
+        <slot name="kitchensink/buttonpage-disable-description"></slot>
+        <slot name="kitchensink/buttonpage-disable-button"></slot>
+        <slot name="kitchensink/buttonpage-disable-label"></slot>
+        <slot name="kitchensink/buttonpage-self-heading"></slot>
+        <slot name="kitchensink/buttonpage-self-reaction-label"></slot>
+        <slot name="kitchensink/buttonpage-self-button"></slot>
+        <slot name="kitchensink/buttonpage-binding-issue-heading"></slot>
+        <slot name="kitchensink/buttonpage-binding-issue-description"></slot>
+        <slot name="kitchensink/buttonpage-binding-issue-click-label"></slot>
+        <slot name="kitchensink/buttonpage-binding-issue-button"></slot>
+        <slot name="kitchensink/buttonpage-binding-issue-label"></slot>
+    </template>
 </template>

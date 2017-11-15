@@ -33,6 +33,9 @@ namespace KitchenSink.Tests.Ui
         [FindsBy(How = How.XPath, Using = "//a[text() = 'Table']")]
         public IWebElement TablePageLink { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//a[text() = 'Link']")]
+        public IWebElement UrlPageLink { get; set; }
+
         [FindsBy(How = How.XPath, Using = "//a[text() = 'Validation']")]
         public IWebElement ValidationPageLink { get; set; }
 
@@ -93,6 +96,13 @@ namespace KitchenSink.Tests.Ui
         public void ClickOn(IWebElement elementName, int seconds = 10)
         {
             IWebElement element = WaitForElementToBeClickable(elementName, seconds);
+            element.Click();
+        }
+
+        public void DblClickOn(IWebElement elementName, int seconds = 10)
+        {
+            IWebElement element = WaitForElementToBeClickable(elementName, seconds);
+            element.Click();
             element.Click();
         }
 

@@ -7,11 +7,11 @@ namespace KitchenSink
     [Database]
     public class GroceryProduct
     {
-        public decimal Price;
-        public string Name;
+        public decimal Price { get; set; }
+        public string Name { get; set; }
     }
 
-    partial class AutocompletePage : Partial
+    partial class AutocompletePage
     {
         private static readonly Country[] AvailableCountries = new[]
         {

@@ -10,4 +10,11 @@
 
         <input slot="kitchensink/integer-input" type="number" value="{{model.Age$::input}}" placeholder="Age" class="form-control">
     </template>
+    <template is="declarative-shadow-dom">
+        <slot name="kitchensink/integer-heading"></slot>
+        <slot name="kitchensink/integer-description"></slot>
+        <slot name="kitchensink/integer-info"></slot>
+        <slot name="kitchensink/integer-label"></slot>
+        <slot name="kitchensink/integer-input"></slot>
+    </template>
 </template>

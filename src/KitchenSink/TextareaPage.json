@@ -3,6 +3,5 @@
 
   "Bio$": "",
 
-  "BioReaction": "",
-  "$BioReaction": { "Bind": "CalculatedBioReaction" }
+  "BioReaction": ""
 }

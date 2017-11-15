@@ -5,7 +5,7 @@
 
 <dom-module id="pikaday-decorator">
     <template>
-        <content></content>
+        <slot></slot>
     </template>
 </dom-module>
 <script>
@@ -128,7 +128,7 @@
          *
          * Not implementing isRTL (use <html dir="rtl"> instead)
          */
-        ready: function() {
+        attached: function() {
             var input = Polymer.dom(this).querySelector('input'),
                 trigger = Polymer.dom(this).querySelector(this.triggerSelector),
                 opts = {

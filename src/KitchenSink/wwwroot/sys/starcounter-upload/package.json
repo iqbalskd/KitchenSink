@@ -1,12 +1,12 @@
 {
     "name": "starcounter-upload",
-    "version": "0.0.0",
-    "description": "<starcounter-upload> is a Starcounter Polymer element to uplaod files over WebSocket",
+    "version": "1.0.0",
+    "description": "<starcounter-upload> is a Starcounter Polymer element to upload files over WebSocket",
     "main": "starcounter-upload.html",
     "directories": { },
     "dependencies": { },
     "devDependencies": {
-        "grunt-bump": "^0.5.0"
+        "grunt-bump": "^0.7.0"
     },
     "repository": {
         "type": "git",

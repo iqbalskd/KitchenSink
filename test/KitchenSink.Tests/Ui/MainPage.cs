@@ -1,10 +1,4 @@
-﻿using KitchenSink.Tests.Ui.SectionArray;
-using KitchenSink.Tests.Ui.SectionBoolean;
-using KitchenSink.Tests.Ui.SectionCustom;
-using KitchenSink.Tests.Ui.SectionNumber;
-using KitchenSink.Tests.Ui.SectionObject;
-using KitchenSink.Tests.Ui.SectionString;
-using KitchenSink.Tests.Utilities;
+﻿using KitchenSink.Tests.Utilities;
 using OpenQA.Selenium;
 
 namespace KitchenSink.Tests.Ui
@@ -44,7 +38,11 @@ namespace KitchenSink.Tests.Ui
             ClickOn(TablePageLink);
             return new TablePage(Driver);
         }
-
+        public UrlPage GoToUrlPage()
+        {            
+            ClickOn(UrlPageLink);
+            return new UrlPage(Driver);
+        }
         public ValidationPage GoToValidationPage()
         {
             ClickOn(ValidationPageLink);

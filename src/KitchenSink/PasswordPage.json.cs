@@ -4,6 +4,11 @@ namespace KitchenSink
 {
     partial class PasswordPage : Json
     {
+        static PasswordPage()
+        {
+            DefaultTemplate.PasswordReaction.Bind = nameof(CalculatedPasswordReaction);
+        }
+
         public string CalculatedPasswordReaction
         {
             get

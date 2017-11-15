@@ -39,14 +39,23 @@ Before running the steps, you need to:
 
 1. Start Selenium Remote Driver: `java -jar selenium-server-standalone-3.*.jar`
 2. Open `KitchenSink.sln` in Visual Studio and enable Test Explorer (Test > Window > Test Explorer)
-3. You need to install NUnit 3 Test Adapter in VS addon window in order to see tests in Test Explorer window
+3. You need to install NUnit 3 Test Adapter in VS (Tools > Extensions and Updates... > Online) in order to see tests in Test Explorer window
 3. Start the KitchenSink app
 4. Press "Run all" in Test Explorer
    - If you get an error about some packages not installed, right click on the project in Solution Explorer. Choose "Manage NuGet Packages" and click on "Restore".
 
 ### Run the test (from command line)
 
-1. Start Selenium Remote Driver: `java -jar selenium-server-standalone-3.*.jar`
-2. Build the solution (build.bat)
-3. Run the KitchenSink app (run.bat)
-4. Start the KitchenSink.Test runner (test.bat)
+1. Start Selenium Remote Driver with the enablePassThrough option off: `java -jar selenium-server-standalone-3.*.jar -enablePassThrough false`
+2. Build the solution (`build.bat`)
+3. Start the KitchenSink.Test runner (`test.bat`)
+
+To run a specific test, add the param `--test="<testname>"`.
+
+To connect to a remote web driver on a different host, add the param `--params="Server=<Uri>"`
+
+To run in a specific browser, add the param `--params="Browsers=<BrowserName>"` (case sensitive). Possible values: `Chrome`, `Firefox`, `Edge` (separated by a comma). 
+
+```
+test --params="Server=http://192.168.1.49:4444/wd/hub" --params="Browsers=Chrome" --test="KitchenSink.Tests.Test.TextareaPageTest(Chrome).TextareaPage_WriteToTextArea"
+```

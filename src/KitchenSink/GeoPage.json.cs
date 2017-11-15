@@ -5,8 +5,8 @@ namespace KitchenSink
     [Database]
     public class GeoCoordinates
     {
-        public double Latitude;
-        public double Longitude;
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
     }
 
     partial class GeoPage : Json
@@ -62,13 +62,9 @@ namespace KitchenSink
             Transaction.Commit();
             Session.ForAll((s, sessionId) =>
             {
-                var master = s.Data as MasterPage;
-                var navpage = master?.CurrentPage as NavPage;
-                if (!(navpage?.CurrentPage is GeoPage)) return;
-                if ((GeoPage) navpage.CurrentPage != null)
-                {
-                    s.CalculatePatchAndPushOnWebSocket();
-                }
+                var master = s.Store[nameof(MasterPage)] as MasterPage;
+                if (!(master?.CurrentPage is GeoPage)) return;
+                s.CalculatePatchAndPushOnWebSocket();
             });
         }
     }

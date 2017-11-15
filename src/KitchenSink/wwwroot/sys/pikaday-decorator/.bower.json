@@ -1,17 +1,18 @@
 {
   "name": "pikaday-decorator",
-  "version": "0.2.1",
+  "version": "0.9.0",
   "authors": [
     "Florian Roy"
   ],
   "description": "Pikaday decorator with polymer",
-  "main": "element/*",
+  "main": "pikaday-decorator.html",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "demo"
   ],
   "keywords": [
     "Polymer",
@@ -21,22 +22,21 @@
     "pikaday"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.1.*",
-    "pikaday": "master",
+    "polymer": "^1.8.*",
+    "pikaday": "1.5.*",
     "momentjs": "2.*"
   },
   "devDependencies": {
     "web-component-tester": "*"
   },
   "homepage": "https://github.com/display-interactive/pikaday-decorator",
-  "_release": "0.2.1",
+  "_release": "0.9.0",
   "_resolution": {
     "type": "version",
-    "tag": "0.2.1",
-    "commit": "4323095008a9268e0d1b1c87fdcc4fd42c266ae0"
+    "tag": "0.9.0",
+    "commit": "f768b99657cf71f938c075c86d930007e9c5c208"
   },
-  "_source": "git://github.com/display-interactive/pikaday-decorator.git",
-  "_target": "~0.2.1",
-  "_originalSource": "display-interactive/pikaday-decorator",
-  "_direct": true
+  "_source": "https://github.com/display-interactive/pikaday-decorator.git",
+  "_target": "*",
+  "_originalSource": "pikaday-decorator"
 }

@@ -10,4 +10,11 @@
 
         <div slot="kitchensink/checkbox-license-label" class="kitchensink-test-driver-license-label">{{model.DrivingLicenseReaction}}</div>
     </template>
+    <template is="declarative-shadow-dom">
+        <slot name="kitchensink/checkbox-heading"></slot>
+        <slot name="kitchensink/checkbox-description"></slot>
+        <slot name="kitchensink/checkbox-label"></slot>
+        <slot name="kitchensink/checkbox-input"></slot>
+        <slot name="kitchensink/checkbox-license-label"></slot>
+    </template>
 </template>

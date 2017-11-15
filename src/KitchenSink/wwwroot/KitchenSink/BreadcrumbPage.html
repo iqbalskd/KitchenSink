@@ -39,12 +39,12 @@
             </template>
         </x-breadcrumb>
         <div slot="kitchensink/breadcrumb-adding-heading">
-            <template slot="kitchensink/breadcrumb-adding-heading" is="dom-if" if="{{model.CurrentTreeItem.IsAdd}}" restamp>
+            <template is="dom-if" if="{{model.CurrentTreeItem.IsAdd}}" restamp>
                 <h5>Adding a new type in <strong>{{model.CurrentTreeItem.ParentName}}</strong></h5>
             </template>
         </div>
         <div slot="kitchensink/breadcrumb-editing-heading">
-            <template slot="kitchensink/breadcrumb-editing-heading" is="dom-if" if="{{!model.CurrentTreeItem.IsAdd}}" restamp>
+            <template is="dom-if" if="{{!model.CurrentTreeItem.IsAdd}}" restamp>
                 <h5>Editing <strong>{{model.CurrentTreeItem.Name$}}</strong></h5>
             </template>
         </div>
@@ -53,5 +53,19 @@
         <input slot="kitchensink/breadcrumb-name-input" type="text" value="{{model.CurrentTreeItem.Name$::change}}" placeholder="Name" class="form-control">
 
         <button slot="kitchensink/breadcrumb-name-save" class="btn btn-sm btn-default" value="{{model.CurrentTreeItem.SaveTrigger$::click}}" onmousedown="++this.value">Save</button>
+    </template>
+    <template is="declarative-shadow-dom">
+        <slot name="kitchensink/breadcrumb-heading"></slot>
+        <slot name="kitchensink/breadcrumb-simple-breadcrumb-heading"></slot>
+        <slot name="kitchensink/breadcrumb-simple-breadcrumb-description"></slot>
+        <slot name="kitchensink/breadcrumb-simple-breadcrumb"></slot>
+        <slot name="kitchensink/breadcrumb-navigation-breadcrumb-heading"></slot>
+        <slot name="kitchensink/breadcrumb-navigation-breadcrumb-description"></slot>
+        <slot name="kitchensink/breadcrumb-navigation-breadcrumb"></slot>
+        <slot name="kitchensink/breadcrumb-adding-heading"></slot>
+        <slot name="kitchensink/breadcrumb-editing-heading"></slot>
+        <slot name="kitchensink/breadcrumb-name-heading"></slot>
+        <slot name="kitchensink/breadcrumb-name-input"></slot>
+        <slot name="kitchensink/breadcrumb-name-save"></slot>
     </template>
 </template>

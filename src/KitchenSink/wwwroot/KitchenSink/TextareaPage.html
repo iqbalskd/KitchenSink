@@ -8,4 +8,10 @@
 
         <textarea slot="kitchensink/textarea-textarea" test-value$="{{model.Bio$}}" value="{{model.Bio$::input}}" class="form-control kitchensink-test-textarea" rows="3"></textarea>
     </template>
+    <template is="declarative-shadow-dom">
+        <slot name="kitchensink/textarea-heading"></slot>
+        <slot name="kitchensink/textarea-description"></slot>
+        <slot name="kitchensink/textarea-label"></slot>
+        <slot name="kitchensink/textarea-textarea"></slot>
+    </template>
 </template>
