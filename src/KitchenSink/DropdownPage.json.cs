@@ -1,3 +1,4 @@
+using System.Linq;
 using Starcounter;
 
 namespace KitchenSink
@@ -40,7 +41,7 @@ namespace KitchenSink
             this.SelectedPet = "dogs";
 
             this.Products.Data = Db.SQL("SELECT p FROM KitchenSink.SoftwareProduct p ORDER BY p.Name");
-            this.SelectedProduct.Data = Db.SQL("SELECT p FROM KitchenSink.SoftwareProduct p WHERE p.Name = ?", "Starcounter Database").First;
+            this.SelectedProduct.Data = Db.SQL("SELECT p FROM KitchenSink.SoftwareProduct p WHERE p.Name = ?", "Starcounter Database").FirstOrDefault();
         }
 
         public string CalculatedPetReaction => $"You like { SelectedPet}";

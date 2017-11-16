@@ -1,4 +1,5 @@
-﻿using Starcounter;
+﻿using System.Linq;
+using Starcounter;
 
 namespace KitchenSink
 {
@@ -9,14 +10,14 @@ namespace KitchenSink
             Db.Transact(() =>
             {
                 // For Dropdown page
-                if (Db.SQL("SELECT p FROM KitchenSink.SoftwareProduct p").First == null)
+                if (!Db.SQL("SELECT p FROM KitchenSink.SoftwareProduct p").Any())
                 {
                     new SoftwareProduct { Name = "Starcounter Database" };
                     new SoftwareProduct { Name = "Polymer JavaScript library" };
                 }
 
                 // For Pagination page
-                if (Db.SQL<Book>("SELECT b FROM KitchenSink.Book b").First == null)
+                if (!Db.SQL<Book>("SELECT b FROM KitchenSink.Book b").Any())
                 {
                     // change the number of element with adjusting elementsInTotal
                     int elementsInTotal = 100;
@@ -39,7 +40,7 @@ namespace KitchenSink
                 BreadcrumbTestData.Create();
 
                 // For Autocomplete page
-                if (Db.SQL("SELECT p FROM KitchenSink.GroceryProduct p").First == null)
+                if (!Db.SQL("SELECT p FROM KitchenSink.GroceryProduct p").Any())
                 {
                     new GroceryProduct { Name = "Bread", Price = 1 };
                     new GroceryProduct { Name = "Butter", Price = 3 };

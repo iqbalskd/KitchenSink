@@ -1,6 +1,7 @@
 using Starcounter;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace KitchenSink
 {
@@ -10,7 +11,7 @@ namespace KitchenSink
         public string Name { get; set; }
         public TreeItem Parent { get; set; }
 
-        public QueryResultRows<TreeItem> Children =>
+        public IEnumerable<TreeItem> Children =>
             Db.SQL<TreeItem>("SELECT i FROM TreeItem i WHERE Parent = ?", this);
     }
 
@@ -20,7 +21,7 @@ namespace KitchenSink
         {
             base.OnData();
 
-            var treeItem = Db.SQL<TreeItem>("SELECT i FROM TreeItem i WHERE Parent IS NOT NULL FETCH ?", 1).First;
+            var treeItem = Db.SQL<TreeItem>("SELECT i FROM TreeItem i WHERE Parent IS NOT NULL FETCH ?", 1).FirstOrDefault();
             SetActiveItem(treeItem);
         }
 
@@ -89,7 +90,7 @@ namespace KitchenSink
                 }
                 else if (IsGhost)
                 {
-                    var count = Db.SlowSQL<Int64>("SELECT COUNT(*) FROM TreeItem i WHERE Parent = ?", ParentItem).First;
+                    var count = Db.SlowSQL<Int64>("SELECT COUNT(*) FROM TreeItem i WHERE Parent = ?", ParentItem).FirstOrDefault();
                     return count + " children";
                 }
                 else if (Data != null)
@@ -135,7 +136,7 @@ namespace KitchenSink
         {
             Siblings.Clear();
 
-            QueryResultRows<TreeItem> result;
+            IEnumerable<TreeItem> result;
             if (query.Length > 0)
             {
                 result = Db.SQL<TreeItem>("SELECT i FROM TreeItem i WHERE Parent = ? AND Name LIKE ? FETCH ?",

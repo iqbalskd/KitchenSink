@@ -1,3 +1,4 @@
+using System.Linq;
 using Starcounter;
 
 namespace KitchenSink
@@ -17,15 +18,12 @@ namespace KitchenSink
 
         public void Init()
         {
-            Position.Data = Db.SQL<GeoCoordinates>("SELECT gp FROM GeoCoordinates gp").First;
-            if (Position.Data == null)
-            {
-                Position.Data = new GeoCoordinates()
-                {
-                    Latitude = DefaultLatitude,
-                    Longitude = DefaultLongitude
-                };
-            }
+            Position.Data = Db.SQL<GeoCoordinates>("SELECT gp FROM GeoCoordinates gp").FirstOrDefault()
+                            ?? new GeoCoordinates
+                            {
+                                Latitude = DefaultLatitude,
+                                Longitude = DefaultLongitude
+                            };
         }
     }
 
