@@ -1,4 +1,5 @@
-﻿using Starcounter;
+﻿using System.Linq;
+using Starcounter;
 
 /*
 Test data hierarchy:
@@ -21,12 +22,7 @@ namespace KitchenSink
     {
         public static bool Exists()
         {
-            var exists = Db.SQL<TreeItem>("SELECT i FROM TreeItem i FETCH ?", 1).First;
-            if (exists == null)
-            {
-                return false;
-            }
-            return true;
+            return Db.SQL<TreeItem>("SELECT i FROM TreeItem i FETCH ?", 1).Any();
         }
 
         public static void DeleteAll()

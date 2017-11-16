@@ -27,7 +27,7 @@ namespace KitchenSink
         public void Handle(Input.ProductsSearch action)
         {
             var searchTerm = action.Value == "*" ? "%" : $"%{action.Value}%";
-            this.FoundProducts = Db.SQL("SELECT i FROM KitchenSink.GroceryProduct i WHERE Name LIKE ?", searchTerm);
+            this.FoundProducts.Data = Db.SQL("SELECT i FROM KitchenSink.GroceryProduct i WHERE Name LIKE ?", searchTerm);
             foreach (var product in FoundProducts)
             {
                 product.SelectAction = () =>

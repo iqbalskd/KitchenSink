@@ -13,7 +13,7 @@ namespace KitchenSink
             {
                 System.Threading.Thread.CurrentThread.Join(3000);
 
-                Starcounter.Session.ScheduleTask(this.Session.SessionId, (s, id) =>
+                Starcounter.Session.ScheduleTask(Session.Current.SessionId, (s, id) =>
                 {
                     if (s == null)
                     {

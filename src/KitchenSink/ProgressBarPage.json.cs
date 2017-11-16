@@ -18,7 +18,7 @@ namespace KitchenSink
 
             this.Progress = 0;
             this.TaskIsRunnning = true;
-            StartSimpleProgressBar(30, Session.SessionId);
+            StartSimpleProgressBar(30, Session.Current.SessionId);
         }
 
         void StartSimpleProgressBar(int delay, string sessionId)
